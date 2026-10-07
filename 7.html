@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 7: Bentuk & Perspektif - DGP Kelas XI</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        /* Print Styles for PDF Download */
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+        .print-only { display: none; }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 7</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB IV - PERTEMUAN 07</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Bentuk & <span class="gold-gradient-text">Perspektif</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai prinsip menggambar bentuk dan teknik perspektif—mulai dari proporsi, komposisi, gelap-terang, hingga perspektif 1, 2, dan 3 titik hilang dengan berbagai sudut pandang—sebagai fondasi untuk menciptakan ilusi ruang tiga dimensi pada media dua dimensi dalam desain grafis percetakan.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="6.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 6
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Menggambar bentuk adalah cara menggambar dengan meniru objek dan mengutamakan kemiripan rupa. Semakin mendekati kemiripan rupa, berarti gambar bentuk yang dibuat semakin sempurna. Dalam konteks desain grafis percetakan, kemampuan menggambar bentuk dan memahami perspektif adalah keterampilan fundamental yang menjembatani dunia dua dimensi (kertas/layar) dengan ilusi tiga dimensi yang meyakinkan.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Perspektif sendiri merupakan teknik atau metode untuk menggambar objek-objek berupa benda, ruang (interior), dan lingkungan (eksterior) yang ukurannya lebih besar dari manusia. Teknik ini ada karena keterbatasan jarak pandang mata kita dalam melihat objek—semakin jauh jarak mata dengan benda, semakin kecil penampakannya, dan bahkan akan hilang dari pandangan pada jarak tertentu. Penguasaan perspektif memungkinkan desainer untuk menciptakan karya yang realistis, proporsional, dan komunikatif secara visual.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Gambar Bentuk:</strong> Cara menggambar dengan meniru objek dan mengutamakan kemiripan rupa, berdasarkan garis dan bentuk dasar geometris.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Perspektif:</strong> Teknik menggambar yang menerapkan hukum pandangan—objek dekat tampak besar, objek jauh tampak kecil—untuk menciptakan ilusi kedalaman ruang.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Titik Hilang (Vanishing Point):</strong> Titik terjauh dari jangkauan pandang, selalu terletak pada garis horizon.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Garis Horizon:</strong> Garis khayal mata (tidak nyata) yang posisinya bergantung pada posisi pengamat—di mana kita berada, di situlah garis horizon berada.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Proporsi:</strong> Kesebandingan, keseimbangan, atau kesesuaian bentuk dan ukuran antara bagian yang satu dengan yang lain dalam suatu objek.</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Landasan Teoretis Gambar Bentuk</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Menggambar bentuk atau alam benda berarti menggambar berdasarkan garis dan bentuk dasar geometris. Pemahaman terhadap klasifikasi bentuk dan prinsip-prinsip seni rupa adalah kunci untuk menghasilkan karya yang proporsional dan estetis.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Macam-Macam Bentuk Dasar</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Bentuk Kubistis:</strong> Bentuk-bentuk yang menyerupai kubus atau benda yang bentuk dasarnya kubus. Contoh: TV, meja, kursi, kulkas, lemari.</li>
+                        <li>▸ <strong>Bentuk Silindris:</strong> Benda yang bentuk dasarnya menyerupai silinder atau bulat. Contoh: gelas, botol, bolam lampu, bola, kendi, teko, ember, guci, cangkir, kaleng, piring.</li>
+                        <li>▸ <strong>Bentuk Bebas:</strong> Benda yang bentuknya tidak beraturan atau yang tidak termasuk kubistis dan silindris. Contoh: kain, buah-buahan, bunga, busana.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Prinsip-Prinsip Seni Rupa dalam Menggambar Bentuk</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li><strong>Perspektif:</strong> Gambar harus sesuai dengan keadaan sebenarnya—gambar yang dekat kelihatan besar dan sebaliknya. Menggambar dengan hukum perspektif berarti menggambar dengan pandangan satu arah atau dua titik lenyap.</li>
+                        <li><strong>Proporsi:</strong> Kesebandingan, keseimbangan, atau kesesuaian bentuk dan ukuran suatu benda antara bagian yang satu dengan yang lain. Proporsi yang tepat menghasilkan gambar yang wajar; jika tidak sesuai, akan terkesan janggal.</li>
+                        <li><strong>Komposisi:</strong> Susunan atau letak objek gambar. Penyatuan komposisi objek akan lebih memperindah dan menampakkan maksud gambar.</li>
+                        <li><strong>Gelap-Terang (Half-Tone):</strong> Benda terlihat oleh mata karena terkena cahaya. Bagian yang terkena cahaya tampak terang, bagian yang tidak terkena cahaya tampak gelap.</li>
+                        <li><strong>Bayang-Bayang (Shadow):</strong> Peranannya sangat menentukan untuk terciptanya kesan tiga dimensi. Terdiri dari tiga jenis:
+                            <ul class="ml-6 mt-1 space-y-1">
+                                <li>• <em>Bayang-bayang awak:</em> Bayangan yang ada pada benda tersebut karena sinar.</li>
+                                <li>• <em>Bayang-bayang langkah:</em> Bayangan benda karena sinar yang mengenai benda lain.</li>
+                                <li>• <em>Bayang-bayang sendiri:</em> Bayangan benda pada permukaan yang licin.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Enam Teknik Menggambar Bentuk</h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">1. Linear</p>
+                            <p>Menggambar objek dengan garis sebagai unsur paling menentukan, baik garis lurus atau lengkung.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">2. Blok</p>
+                            <p>Menggambar dengan menutup objek gambar satu warna, sehingga tampak bentuk globalnya (siluet).</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">3. Arsir</p>
+                            <p>Menggambar dengan garis-garis sejajar atau menyilang untuk menentukan gelap terang sehingga tampak tiga dimensi.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">4. Dusel</p>
+                            <p>Penentuan gelap terang menggunakan pensil gambar yang digoreskan dalam posisi miring (rebah).</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">5. Pointilis</p>
+                            <p>Menentukan gelap terang dengan pensil atau pena yang dititik-titikkan sebanyak mungkin.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">6. Aquarel</p>
+                            <p>Menggambar dengan cat air menggunakan sapuan warna tipis, sehingga hasil transparan/tembus pandang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gambar Perspektif -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Teknik Gambar Perspektif</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Perspektif adalah teknik menggambar objek (benda, ruang interior, lingkungan eksterior) yang ukurannya lebih besar dari manusia. Dua hal yang menjadi patokan utama dalam teknik perspektif adalah <strong>titik hilang</strong> dan <strong>garis horizon</strong>.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Tiga Sudut Pandang dalam Perspektif</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Sudut Pandang Mata Burung:</strong> Mata seolah-olah berada di atas dan melihat objek di bawah. Garis horizon berada di <em>atas</em> bidang gambar.</li>
+                        <li>▸ <strong>Sudut Pandang Normal:</strong> Diri seolah-olah berdiri normal memandang lurus ke depan. Bagian atas dan bawah terlihat lebih seimbang. Garis horizon berada di <em>tengah-tengah</em> bidang gambar.</li>
+                        <li>▸ <strong>Sudut Pandang Mata Kucing:</strong> Seolah-olah berada di posisi tiarap dan melihat ke depan, sehingga objek bagian atas lebih dominan. Garis horizon berada di <em>bawah</em> bidang gambar.</li>
+                    </ul>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-dove mr-2"></i> 1 Titik Hilang</h4>
+                        <p class="text-sm">Hanya memiliki satu titik fokus pada garis horizon. Semua garis objek bersumber dari titik ini. Cocok untuk menggambar interior ruangan atau jalan lurus.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-building mr-2"></i> 2 Titik Hilang</h4>
+                        <p class="text-sm">Memiliki dua titik fokus di ujung kiri dan kanan garis horizon. Persimpangan garis membentuk sudut. Cocok untuk menggambar bangunan dari sudut pandang pojok.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-city mr-2"></i> 3 Titik Hilang</h4>
+                        <p class="text-sm">Digunakan untuk objek yang sangat luas, besar, tinggi, dan mengalami distorsi ekstrem. Biasanya untuk outdoor atau sudut pandang dari udara.</p>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Tahapan Umum Menggambar Perspektif</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Buatlah garis horizon sesuai sudut pandang yang dipilih (atas/tengah/bawah bidang gambar).</li>
+                        <li>Letakkan titik hilang pada garis horizon (bisa di pinggir, tengah, atau luar bidang gambar).</li>
+                        <li>Buatlah garis batas ruangan/dinding dengan patokan garis berasal dari titik hilang.</li>
+                        <li>Gambarkan bangun dasar dengan patokan garis dari titik hilang.</li>
+                        <li>Gambarkan seluruh detail benda dengan patokan komposisi pada bangun dasar.</li>
+                        <li>Arsirlah seperlunya untuk memberikan kesan tiga dimensi, volume, dan karakter benda.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Kegagalan Proporsi dalam Desain Interior</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang siswa ditugaskan membuat ilustrasi interior ruang tamu untuk brosur properti. Ia menggambar sofa, meja, dan jendela tanpa memperhatikan hukum perspektif—semua objek digambar dengan ukuran yang sama meskipun posisinya berjauhan. Akibatnya, ruang tamu terlihat datar, tidak meyakinkan, dan seperti "dunia kartun" yang tidak profesional. Brosur gagal menarik minat calon pembeli karena tidak mampu memberikan kesan ruang yang nyata.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Penguasaan perspektif dan proporsi adalah kunci untuk menciptakan ilusi ruang yang meyakinkan dalam desain grafis percetakan, terutama untuk brosur properti, katalog produk, dan ilustrasi arsitektur.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu mulai dengan <strong>garis horizon dan titik hilang</strong> sebelum menggambar objek. Ini adalah fondasi perspektif yang tidak boleh dilewatkan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>bangun dasar geometris</strong> (kotak, silinder, bola) sebagai kerangka sebelum menambahkan detail objek.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Perhatikan <strong>proporsi</strong> antar objek—objek yang lebih jauh harus digambar lebih kecil, dan sebaliknya.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Jangan abaikan <strong>bayang-bayang</strong>—ia adalah kunci untuk menciptakan kesan tiga dimensi yang meyakinkan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Latihlah <strong>sketsa cepat</strong> objek di sekitar Anda menggunakan prinsip perspektif untuk mempertajam pengamatan.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Penguasaan gambar bentuk dan perspektif adalah fondasi tak tergantikan dalam desain grafis percetakan. Pemahaman terhadap prinsip proporsi, komposisi, gelap-terang, dan bayang-bayang, serta kemampuan menerapkan teknik perspektif 1, 2, dan 3 titik hilang dengan berbagai sudut pandang, akan membekali siswa dengan keterampilan visual yang komprehensif. Desainer yang memahami hukum perspektif akan mampu menciptakan karya yang tidak hanya estetis, tetapi juga realistis, proporsional, dan komunikatif secara visual.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Sadjiman, E. S. (2009). <em>Dasar-Dasar Nirmana</em>. Yogyakarta: Andi Offset.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="6.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 6: Gambar Ilustrasi
+            </a>
+            <a href="8.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Ujian Tengah Semester <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 7</h2>
+                <p class="text-gray-400 mt-2">Materi: Prinsip gambar bentuk dan teknik perspektif.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300" id="pg-questions">
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">1. Menggambar bentuk adalah cara menggambar dengan...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Mengimajinasikan objek dari ingatan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Membuat objek abstrak tanpa referensi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Meniru objek dan mengutamakan kemiripan rupa</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Menggambar dengan teknik pointilis saja</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">2. Bentuk benda yang menyerupai kubus atau benda yang bentuk dasarnya kubus (seperti TV, meja, kulkas) disebut bentuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. Kubistis</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Silindris</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Bebas</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Organik</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">3. Bentuk benda yang menyerupai silinder atau bulat (seperti gelas, botol, bola, kendi) disebut bentuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Kubistis</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Silindris</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Bebas</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Geometris</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Prinsip seni rupa yang mengatur kesebandingan bentuk dan ukuran antara bagian yang satu dengan yang lain dalam suatu objek disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Komposisi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Perspektif</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Gelap-terang</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Proporsi</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">5. Teknik menggambar bentuk dengan menggunakan garis-garis sejajar atau menyilang untuk menentukan gelap terang sehingga tampak tiga dimensi disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Linear</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Blok</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Arsir</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Dusel</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">6. Teknik menggambar bentuk dengan menggunakan cat air dengan sapuan warna tipis sehingga hasilnya transparan disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Aquarel</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Pointilis</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Blok</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Linear</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">7. Dalam teknik perspektif, titik terjauh dari jangkauan pandang yang selalu terletak pada garis horizon disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Garis horizon</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Titik hilang</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Titik fokus</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Titik pusat</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Pada sudut pandang mata burung, letak garis horizon berada...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Di tengah-tengah bidang gambar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Di bagian bawah bidang gambar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Di luar bidang gambar</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Di bagian atas bidang gambar</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">9. Perspektif dengan tiga titik hilang biasanya digunakan untuk menggambarkan...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Objek kecil seperti perhiasan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Interior ruangan sederhana</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Sesuatu yang sangat luas, besar, tinggi, dan mengalami distorsi ekstrem</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Objek datar seperti poster</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">10. Bayangan yang ada pada benda tersebut karena sinar mengenai benda disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Bayang-bayang awak</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Bayang-bayang langkah</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Bayang-bayang sendiri</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Bayang-bayang semu</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan tiga macam bentuk dasar dalam menggambar bentuk (kubistis, silindris, bebas) beserta masing-masing 3 contoh objeknya!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Sebutkan dan jelaskan lima prinsip seni rupa yang perlu diperhatikan dalam menggambar bentuk! Berikan contoh penerapan masing-masing prinsip!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Bandingkan perbedaan antara teknik menggambar bentuk linear, blok, arsir, dusel, pointilis, dan aquarel! Jelaskan kapan masing-masing teknik sebaiknya digunakan!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Jelaskan perbedaan antara perspektif 1 titik hilang, 2 titik hilang, dan 3 titik hilang! Berikan contoh objek yang cocok untuk masing-masing jenis perspektif!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Jelaskan tiga sudut pandang dalam gambar perspektif (mata burung, normal, mata kucing)! Bagaimana posisi garis horizon dan titik hilang pada masing-masing sudut pandang?</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Kunci Jawaban Pilihan Ganda
+        const kunciJawaban = {
+            q1: 'c', q2: 'a', q3: 'b', q4: 'd', q5: 'c',
+            q6: 'a', q7: 'b', q8: 'd', q9: 'c', q10: 'a'
+        };
+
+        function hitungSkor() {
+            // 1. Validasi Data Siswa
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            // 2. Validasi & Hitung Pilihan Ganda
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            // 3. Validasi Essay (Cek apakah sudah diisi, minimal 20 karakter)
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            // Simulasi Penilaian Essay (Skor kelengkapan 80 jika semua diisi dengan baik)
+            const skorEssay = 80; 
+
+            // 4. Tampilkan Hasil
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            // Scroll ke hasil
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Disable form inputs
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 7 - Bentuk & Perspektif\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan7_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 7 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 7 (Bentuk & Perspektif):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Set tanggal hari ini secara otomatis
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

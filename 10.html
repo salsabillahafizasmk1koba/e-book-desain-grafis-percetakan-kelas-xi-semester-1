@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 10: Manipulasi Objek Vektor - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 10</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB V (LANJUTAN) - PERTEMUAN 10</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Manipulasi <span class="gold-gradient-text">Objek Vektor</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai teknik penggabungan objek (Combine, Weld) dan pemotongan objek (Trim, Simplify, Intersect) dalam CorelDraw sebagai keterampilan fundamental untuk menciptakan bentuk-bentuk kompleks, logo kreatif, dan efek transparan yang menjadi ciri khas desain grafis profesional.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="9.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 9
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Dalam desain grafis profesional, bentuk-bentuk kompleks—seperti logo, ikon, ilustrasi, dan ornamen—jarang sekali dibuat dari satu objek tunggal. Sebaliknya, mereka merupakan hasil dari <strong>manipulasi objek vektor</strong> yang melibatkan penggabungan dan pemotongan beberapa bentuk dasar. CorelDraw menyediakan serangkaian perintah <em>shaping</em> yang powerful untuk melakukan operasi ini dengan presisi matematis.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Penguasaan perintah <strong>Combine, Weld, Trim, Simplify,</strong> dan <strong>Intersect</strong> bukan hanya keterampilan teknis, melainkan juga cara berpikir desainer dalam mendekonstruksi dan merekonstruksi bentuk. Dengan memahami logika di balik setiap perintah, siswa akan mampu menciptakan bentuk-bentuk yang tidak mungkin dibuat dengan alat dasar (seperti Rectangle Tool atau Ellipse Tool) saja. Pertemuan ini akan membongkar setiap perintah secara mendalam, lengkap dengan studi kasus dan tips praktis.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Shaping Commands:</strong> Perintah-perintah dalam CorelDraw untuk menggabungkan, memotong, atau membuat objek baru dari kombinasi objek yang sudah ada.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Objek Pemotong (Cutter):</strong> Objek yang digunakan untuk memotong objek lain. Dalam perintah Trim, objek pemotong harus berada DI ATAS objek yang dipotong.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Objek Tunggal (Single Object):</strong> Hasil penggabungan beberapa objek menjadi satu entitas yang dapat diedit sebagai satu kesatuan.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Area Transparan:</strong> Bagian kosong yang tercipta saat objek digabungkan dengan Combine—bagian ini akan menampilkan warna background di belakangnya.</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Lima Perintah Shaping Utama</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    CorelDraw menyediakan lima perintah shaping utama yang menjadi fondasi manipulasi objek vektor. Setiap perintah memiliki logika, hasil, dan kasus penggunaan yang berbeda. Memahami perbedaan ini adalah kunci untuk bekerja secara efisien dan kreatif.
+                </p>
+
+                <!-- Combine -->
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30 mt-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-luxury-gold font-serif text-xl">1. Combine (Ctrl + L)</h4>
+                        <span class="text-xs bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded">Arrange → Combine</span>
+                    </div>
+                    <p class="text-sm mb-3"><strong>Fungsi:</strong> Menggabungkan dua atau lebih objek menjadi satu objek tunggal. Area perpotongan antar objek akan menjadi <strong>berlubang (transparan)</strong>.</p>
+                    <p class="text-sm mb-3"><strong>Karakteristik:</strong></p>
+                    <ul class="text-sm space-y-1 ml-4 mb-3">
+                        <li>▸ Objek hasil Combine masih dapat dipecah kembali dengan perintah <em>Break Apart (Ctrl + K)</em></li>
+                        <li>▸ Area perpotongan bersifat transparan—background di belakangnya akan terlihat</li>
+                        <li>▸ Warna objek mengikuti warna objek yang terakhir dipilih (paling atas dalam urutan seleksi)</li>
+                    </ul>
+                    <p class="text-sm mb-2"><strong>Cara Penggunaan:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4 mb-3">
+                        <li>Pilih objek-objek yang akan digabungkan (tahan Shift untuk multi-seleksi)</li>
+                        <li>Tekan <strong>Ctrl + L</strong> atau klik menu <em>Arrange → Combine</em></li>
+                        <li>Atau klik tombol <em>Combine</em> pada Property Bar</li>
+                    </ol>
+                    <p class="text-sm italic text-gray-400"><strong>Kasus Penggunaan Ideal:</strong> Membuat efek teks transparan dengan tekstur grunge, logo dengan bagian berlubang, ornamen dengan area negatif.</p>
+                </div>
+
+                <!-- Weld -->
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-luxury-gold font-serif text-xl">2. Weld</h4>
+                        <span class="text-xs bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded">Arrange → Shaping → Weld</span>
+                    </div>
+                    <p class="text-sm mb-3"><strong>Fungsi:</strong> Menggabungkan beberapa objek menjadi satu objek baru yang <strong>tidak dapat dipecah kembali</strong>. Warna menjadi seragam (satu warna).</p>
+                    <p class="text-sm mb-3"><strong>Karakteristik:</strong></p>
+                    <ul class="text-sm space-y-1 ml-4 mb-3">
+                        <li>▸ Hasil Weld bersifat permanen—tidak bisa dipecah dengan Break Apart</li>
+                        <li>▸ Area perpotongan menyatu tanpa lubang</li>
+                        <li>▸ Warna mengikuti objek target (bisa diatur di docker Weld)</li>
+                        <li>▸ Garis tepi (outline) yang tumpang tindih akan menyatu menjadi satu garis</li>
+                    </ul>
+                    <p class="text-sm mb-2"><strong>Cara Penggunaan:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4 mb-3">
+                        <li>Pilih objek-objek yang akan digabungkan</li>
+                        <li>Klik menu <em>Arrange → Shaping → Weld</em></li>
+                        <li>Atau klik tombol <em>Weld</em> pada Property Bar</li>
+                    </ol>
+                    <p class="text-sm italic text-gray-400"><strong>Kasus Penggunaan Ideal:</strong> Membuat bentuk organik dari kombinasi bentuk geometris, logo solid tanpa area transparan, ikon sederhana.</p>
+                </div>
+
+                <!-- Trim -->
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-luxury-gold font-serif text-xl">3. Trim</h4>
+                        <span class="text-xs bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded">Arrange → Shaping → Trim</span>
+                    </div>
+                    <p class="text-sm mb-3"><strong>Fungsi:</strong> Memotong objek dengan objek pemotong yang <strong>berada di atasnya</strong>. Bagian yang tumpang tindih akan hilang dari objek yang dipotong.</p>
+                    <p class="text-sm mb-3"><strong>Karakteristik:</strong></p>
+                    <ul class="text-sm space-y-1 ml-4 mb-3">
+                        <li>▸ Objek pemotong HARUS berada DI ATAS objek yang akan dipotong</li>
+                        <li>▸ Objek pemotong tetap utuh (tidak ikut terpotong)</li>
+                        <li>▸ Bagian yang tumpang tindih pada objek target akan hilang</li>
+                        <li>▸ Objek target tetap dapat diedit setelah dipotong</li>
+                    </ul>
+                    <p class="text-sm mb-2"><strong>Cara Penggunaan:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4 mb-3">
+                        <li>Pastikan objek pemotong berada DI ATAS objek target</li>
+                        <li>Pilih objek pemotong terlebih dahulu, lalu Shift+klik objek target</li>
+                        <li>Klik menu <em>Arrange → Shaping → Trim</em></li>
+                        <li>Atau klik tombol <em>Trim</em> pada Property Bar</li>
+                    </ol>
+                    <p class="text-sm italic text-gray-400"><strong>Kasus Penggunaan Ideal:</strong> Membuat lubang pada bentuk, memotong teks dengan bentuk tertentu, membuat efek "gigitan" pada objek.</p>
+                </div>
+
+                <!-- Simplify -->
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-luxury-gold font-serif text-xl">4. Simplify</h4>
+                        <span class="text-xs bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded">Arrange → Shaping → Simplify</span>
+                    </div>
+                    <p class="text-sm mb-3"><strong>Fungsi:</strong> Perintah khusus untuk memotong objek yang <strong>telah terletak di bawah objek lain</strong>. Jika ada tumpukan lebih dari satu objek, objek di atas akan memotong objek di bawahnya secara otomatis.</p>
+                    <p class="text-sm mb-3"><strong>Karakteristik:</strong></p>
+                    <ul class="text-sm space-y-1 ml-4 mb-3">
+                        <li>▸ Tidak perlu memilih objek pemotong secara spesifik</li>
+                        <li>▸ Semua objek yang tumpang tindih akan saling memotong secara otomatis</li>
+                        <li>▸ Objek di atas memotong objek di bawahnya</li>
+                        <li>▸ Sangat efisien untuk tumpukan objek kompleks</li>
+                    </ul>
+                    <p class="text-sm mb-2"><strong>Cara Penggunaan:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4 mb-3">
+                        <li>Pilih objek yang akan dipotong (objek di bawah)</li>
+                        <li>Klik menu <em>Arrange → Shaping → Simplify</em></li>
+                        <li>Atau klik tombol <em>Simplify</em> pada Property Bar</li>
+                    </ol>
+                    <p class="text-sm italic text-gray-400"><strong>Kasus Penggunaan Ideal:</strong> Membersihkan tumpukan objek yang saling menutupi, membuat pola berulang yang terpotong rapi.</p>
+                </div>
+
+                <!-- Intersect -->
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-luxury-gold font-serif text-xl">5. Intersect</h4>
+                        <span class="text-xs bg-luxury-gold/20 text-luxury-gold px-2 py-1 rounded">Arrange → Shaping → Intersect</span>
+                    </div>
+                    <p class="text-sm mb-3"><strong>Fungsi:</strong> Menciptakan objek baru berdasarkan <strong>perpotongan/irisan</strong> beberapa objek yang terseleksi, <strong>tanpa menghilangkan objek asli</strong>.</p>
+                    <p class="text-sm mb-3"><strong>Karakteristik:</strong></p>
+                    <ul class="text-sm space-y-1 ml-4 mb-3">
+                        <li>▸ Objek asli tetap utuh (tidak hilang)</li>
+                        <li>▸ Hanya area irisan/perpotongan yang menjadi objek baru</li>
+                        <li>▸ Objek baru dapat dipindahkan dan diedit secara terpisah</li>
+                        <li>▸ Warna objek baru mengikuti objek target</li>
+                    </ul>
+                    <p class="text-sm mb-2"><strong>Cara Penggunaan:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4 mb-3">
+                        <li>Pilih dua atau lebih objek yang saling tumpang tindih</li>
+                        <li>Klik menu <em>Arrange → Shaping → Intersect</em></li>
+                        <li>Atau klik tombol <em>Intersect</em> pada Property Bar</li>
+                        <li>Objek baru akan muncul di atas objek asli—pindahkan ke posisi yang diinginkan</li>
+                    </ol>
+                    <p class="text-sm italic text-gray-400"><strong>Kasus Penggunaan Ideal:</strong> Membuat bentuk lensa (irisan dua lingkaran), elemen dekoratif dari perpotongan bentuk, pola geometris kompleks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perbandingan -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-balance-scale mr-2"></i> Tabel Perbandingan Perintah Shaping</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="text-left py-2 text-luxury-gold">Perintah</th>
+                            <th class="text-left py-2 text-luxury-gold">Hasil</th>
+                            <th class="text-left py-2 text-luxury-gold">Objek Asli</th>
+                            <th class="text-left py-2 text-luxury-gold">Area Perpotongan</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800"><td class="py-2 font-semibold">Combine</td><td>Satu objek tunggal</td><td>Hilang (bisa dipecah)</td><td>Berlubang/transparan</td></tr>
+                        <tr class="border-b border-gray-800"><td class="py-2 font-semibold">Weld</td><td>Satu objek baru</td><td>Hilang (permanen)</td><td>Menyatu (solid)</td></tr>
+                        <tr class="border-b border-gray-800"><td class="py-2 font-semibold">Trim</td><td>Objek target terpotong</td><td>Pemotong utuh, target terpotong</td><td>Hilang dari target</td></tr>
+                        <tr class="border-b border-gray-800"><td class="py-2 font-semibold">Simplify</td><td>Objek bawah terpotong</td><td>Otomatis terpotong</td><td>Hilang dari target</td></tr>
+                        <tr><td class="py-2 font-semibold">Intersect</td><td>Objek baru dari irisan</td><td>Tetap utuh</td><td>Menjadi objek baru</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Kombinasi Objek dengan Efek Transparan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Studi Kasus: Efek Grunge Texture pada Teks</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Salah satu aplikasi paling populer dari perintah Combine adalah menciptakan <strong>efek teks transparan dengan tekstur grunge</strong>. Teknik ini banyak digunakan dalam desain poster, logo, dan branding untuk menciptakan kesan vintage, urban, atau artistik.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Langkah-Langkah Pembuatan</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li><strong>Siapkan Objek Grunge Texture:</strong> Buat atau import tekstur grunge vektor (bisa berupa kumpulan bentuk tidak beraturan)</li>
+                        <li><strong>Buat Teks:</strong> Tekan <strong>F8</strong> untuk mengaktifkan Text Tool, klik di atas tekstur, dan ketik huruf yang diinginkan (misalnya huruf "A")</li>
+                        <li><strong>Kembali ke Pick Tool:</strong> Tekan <strong>Spasi</strong> untuk kembali ke Pick Tool</li>
+                        <li><strong>Seleksi Semua Objek:</strong> Tekan <strong>Ctrl + A</strong> untuk menyeleksi semua objek (tekstur + teks)</li>
+                        <li><strong>Lakukan Combine:</strong> Tekan tombol <em>Combine</em> di Property Bar atau tekan <strong>Ctrl + L</strong></li>
+                        <li><strong>Hasil:</strong> Teks akan memiliki area transparan mengikuti bentuk tekstur grunge. Jika diberi background berwarna di belakangnya, background akan terlihat menembus area tekstur</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Mengapa Combine, Bukan Weld?</h4>
+                    <p class="text-sm">Karena efek yang diinginkan adalah <strong>area transparan</strong> di dalam teks. Jika menggunakan Weld, area perpotongan akan menyatu menjadi solid dan efek transparan tidak akan tercipta. Combine secara spesifik menciptakan "lubang" di area perpotongan, yang merupakan kunci dari efek grunge texture ini.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus Tambahan -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Kesalahan Umum dalam Manipulasi Objek</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang siswa diminta membuat logo sederhana berbentuk lingkaran dengan "gigitan" di salah satu sisinya (seperti logo Apple). Ia menggunakan perintah <em>Weld</em> untuk menggabungkan lingkaran dengan bentuk gigitan. Hasilnya, bentuk gigitan menyatu dengan lingkaran menjadi satu bentuk solid—bukan "gigitan" yang berlubang. Logo terlihat seperti lingkaran dengan tonjolan aneh, bukan lingkaran yang digigit.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Kesalahannya: Ia seharusnya menggunakan perintah <em>Trim</em>, bukan <em>Weld</em>. Dengan Trim, bentuk gigitan (sebagai objek pemotong di atas) akan memotong lingkaran, menciptakan efek "gigitan" yang diinginkan.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Pemilihan perintah shaping yang tepat sangat krusial. Salah perintah = salah hasil. Pahami logika setiap perintah sebelum mengeksekusi.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Sebelum melakukan perintah shaping, <strong>selalu buat duplikat objek asli</strong> (Ctrl+D) sebagai cadangan. Jika hasil tidak sesuai, Anda masih memiliki objek asli.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk perintah <strong>Trim</strong>, pastikan objek pemotong berada DI ATAS objek target. Gunakan perintah <em>To Front of Page (Ctrl+Home)</em> jika perlu memindahkan objek pemotong ke depan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Combine</strong> saat ingin menciptakan area transparan (seperti efek grunge pada teks). Gunakan <strong>Weld</strong> saat ingin menggabungkan objek menjadi solid tanpa lubang.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Intersect</strong> saat ingin mengambil hanya bagian irisan dari dua objek dan tetap mempertahankan objek aslinya untuk keperluan lain.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk membatalkan perintah <em>Combine</em>, gunakan <strong>Break Apart (Ctrl+K)</strong>. Namun ingat: <em>Weld</em> tidak bisa dibatalkan—jadi pertimbangkan matang-matang sebelum menggunakan Weld.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Latihlah kombinasi perintah shaping. Misalnya: buat bentuk dasar → Weld beberapa bentuk → Trim dengan bentuk lain → Intersect untuk detail. Kombinasi ini akan menghasilkan bentuk yang sangat kompleks dan kreatif.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Manipulasi objek vektor melalui perintah shaping (Combine, Weld, Trim, Simplify, Intersect) adalah jantung dari desain grafis profesional. Setiap perintah memiliki logika dan hasil yang berbeda: Combine menciptakan area transparan, Weld menyatukan objek secara permanen, Trim memotong objek dengan objek pemotong di atas, Simplify memotong otomatis objek di bawah, dan Intersect menciptakan objek baru dari irisan tanpa menghilangkan objek asli. Penguasaan kelima perintah ini akan membuka pintu bagi siswa untuk menciptakan bentuk-bentuk kompleks, logo kreatif, dan efek visual yang tidak mungkin dibuat dengan alat dasar saja.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Corel Corporation. (2023). <em>CorelDraw Official Documentation: Shaping Objects</em>. Ottawa.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="9.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 9: Dasar Citra Vektor
+            </a>
+            <a href="11.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 11: Efek Gambar Vektor <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 10</h2>
+                <p class="text-gray-400 mt-2">Materi: Manipulasi objek vektor (Combine, Weld, Trim, Simplify, Intersect).</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">1. Perintah untuk menggabungkan dua atau lebih objek menjadi satu objek tunggal dengan area perpotongan yang berlubang (transparan) adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Combine</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Weld</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Trim</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Intersect</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">2. Perbedaan utama antara Combine dan Weld adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. Weld menghasilkan area transparan, Combine menghasilkan solid</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Combine menghasilkan area transparan dan bisa dipecah, Weld menyatu permanen tanpa lubang</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Keduanya menghasilkan efek yang sama persis</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Combine untuk memotong, Weld untuk menggabungkan</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">3. Shortcut keyboard untuk perintah Combine adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Ctrl + K</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Ctrl + W</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Ctrl + L</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Ctrl + M</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Untuk memotong objek dengan perintah Trim, syarat utama yang harus dipenuhi adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Objek pemotong harus berada di bawah objek target</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Kedua objek harus memiliki warna yang sama</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Objek target harus lebih besar dari objek pemotong</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Objek pemotong harus berada DI ATAS objek target</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">5. Perintah yang digunakan untuk memotong objek yang telah terletak di bawah objek lain secara otomatis adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Simplify</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Trim</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Combine</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Weld</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">6. Perintah Intersect digunakan untuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Menggabungkan objek menjadi satu warna solid</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Menciptakan objek baru dari irisan/perpotongan beberapa objek tanpa menghilangkan objek asli</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Memotong objek yang berada di bawah</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Mengubah urutan objek</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">7. Untuk membatalkan perintah Combine dan mengembalikan objek ke bentuk semula, digunakan perintah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Undo (Ctrl+Z)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Reverse (Ctrl+R)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Break Apart (Ctrl+K)</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Separate (Ctrl+S)</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Dalam pembuatan efek teks transparan dengan tekstur grunge, perintah yang PALING TEPAT digunakan adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Weld</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Trim</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Intersect</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Combine</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">9. Jika seorang siswa ingin membuat logo berbentuk lingkaran dengan "gigitan" di salah satu sisinya (seperti logo Apple), perintah yang HARUS digunakan adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Trim</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Weld</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Combine</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Simplify</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">10. Karakteristik hasil dari perintah Weld adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Objek hasil bisa dipecah kembali dengan Break Apart</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Objek menyatu permanen menjadi satu warna solid tanpa area transparan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Area perpotongan menjadi berlubang</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Objek asli tetap utuh di tempatnya</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan perbedaan mendasar antara perintah Combine dan Weld dari segi hasil, karakteristik, dan kasus penggunaan idealnya! Berikan masing-masing satu contoh penerapan!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Bandingkan perbedaan antara perintah Trim dan Simplify! Kapan sebaiknya menggunakan Trim, dan kapan sebaiknya menggunakan Simplify? Berikan contoh kasus untuk masing-masing!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Jelaskan langkah-langkah pembuatan efek teks transparan dengan tekstur grunge menggunakan perintah Combine! Mengapa perintah Combine dipilih, bukan Weld atau Trim?</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Apa fungsi dari perintah Intersect? Berikan contoh kasus di mana perintah Intersect lebih tepat digunakan dibandingkan Combine, Weld, atau Trim!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Seorang siswa ingin membuat logo sederhana berbentuk lingkaran dengan "gigitan" di salah satu sisinya. Ia menggunakan perintah Weld, tetapi hasilnya tidak sesuai harapan (lingkaran malah memiliki tonjolan aneh). Analisis kesalahan yang dilakukan siswa tersebut dan jelaskan solusi yang benar!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'a', q2: 'b', q3: 'c', q4: 'd', q5: 'a',
+            q6: 'b', q7: 'c', q8: 'd', q9: 'a', q10: 'b'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 10 - Manipulasi Objek Vektor\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan10_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 10 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 10 (Manipulasi Objek Vektor):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

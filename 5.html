@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 5: Gambar Sketsa - DGP Kelas XI</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        /* Print Styles for PDF Download */
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+        .print-only { display: none; }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 5</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB III - PERTEMUAN 05</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Gambar <span class="gold-gradient-text">Sketsa</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai teknik dasar menggambar sketsa—mulai dari sketsa bentuk, makhluk hidup, hingga suasana ramai—sebagai fondasi keterampilan visual yang esensial bagi setiap desainer grafis percetakan.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="4.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 4
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Sketsa (<em>sketch</em>) merupakan gambaran atau lukisan yang kasar, ringan, dan semata-mata hanya menampilkan garis besar atau belum selesai. Sketsa sering kali digunakan sebagai pengingat, bagan, atau rencana bagi sebuah lukisan maupun desain akhir. Dalam konteks desain grafis percetakan, kemampuan membuat sketsa adalah keterampilan fundamental yang menjembatani ide abstrak di kepala dengan eksekusi visual di atas media.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Sebelum seorang desainer menyentuh perangkat lunak seperti CorelDraw atau Photoshop, sketsa manual adalah tahap pertama yang menentukan kualitas konsep. Sketsa yang baik tidak hanya mempercepat proses kreatif, tetapi juga meminimalisir kesalahan dalam eksekusi akhir. Oleh karena itu, siswa harus memahami prinsip, peralatan, teknik, dan berbagai jenis sketsa secara mendalam.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Sketsa:</strong> Gambaran kasar yang bersifat sementara, baik di atas kertas maupun kanvas, dengan tujuan untuk dikerjakan lebih lanjut sebagai karya akhir.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Kerangka Gambar:</strong> Garis-garis vertikal, horizontal, diagonal, maupun melengkung yang dibuat tipis-tipis sebagai fondasi bentuk.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Garis Sekunder:</strong> Garis bantu yang membentuk kerangka kotak/kubus atau bentuk dasar lainnya dalam keadaan tipis.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Teknik Pensil:</strong> Cara memegang pensil (seperti menulis vs. menggenggam) yang memengaruhi karakter goresan—detail vs. ekspresif.</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Landasan Teoretis Gambar Sketsa</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Gambar sketsa bukan sekadar coretan asal-asalan. Ia memiliki aturan, teknik, dan pendekatan yang terstruktur. Berikut adalah penjabaran teoretis yang wajib dipahami oleh setiap calon desainer.
+                </p>
+                
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Manfaat Sketsa</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ Memberikan gambaran tema secara visual sebelum eksekusi akhir.</li>
+                        <li>▸ Meminimalisir kesalahan dalam proses desain.</li>
+                        <li>▸ Mempertajam pengamatan terhadap objek.</li>
+                        <li>▸ Meningkatkan kemampuan koordinasi antara hasil pengamatan dan keterampilan tangan.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Aturan Membuat Sketsa</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Membuat kerangka gambar yang terdiri dari garis-garis vertikal, horizontal, diagonal, maupun melengkung secara <strong>tipis-tipis</strong>.</li>
+                        <li>Menggambar garis sekundernya, misalnya melukis kerangka kotak/kubus dalam keadaan tipis.</li>
+                        <li>Menebalkan garis-garis sketsa yang sudah benar, dengan ketebalan sesuai karakter jenis garis yang diinginkan.</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Peralatan Sketsa</h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-white mb-1">Media Gambar:</p>
+                            <p>Kertas HVS, kertas manila, kertas padalarang, kertas roti, kertas kalkir, kertas sketsa.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white mb-1">Alat Gambar Manual:</p>
+                            <p>Pensil (2H hingga 6B), rapido, pena.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white mb-1">Alat Gambar Digital:</p>
+                            <p>Komputer dengan CAD, digital pen, software desain grafis.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white mb-1">Alat Bantu:</p>
+                            <p>Light box, scanner, meja gambar, mistar, busur derajat, mal, penghapus.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Teknik Memegang Pensil</h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-white mb-1">1. Seperti Menulis</p>
+                            <p>Sangat sesuai untuk menghasilkan gambar yang <strong>detail</strong> dan presisi.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white mb-1">2. Menggenggam (Ibu Jari di Atas)</p>
+                            <p>Sangat baik untuk membuat garis-garis yang <strong>berani</strong> dan ekspresif.</p>
+                        </div>
+                    </div>
+                    <p class="text-sm mt-3 italic text-gray-400">Catatan: Semakin kuat tekanan, arsir semakin tebal; semakin lemah tekanan, arsir semakin tipis. Kekuatan goresan juga dipengaruhi oleh kekasaran kertas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jenis-Jenis Sketsa -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tiga Jenis Sketsa Utama</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3"><i class="fas fa-cube mr-2"></i> A. Sketsa Bentuk (Benda Mati)</h4>
+                    <p class="text-sm mb-3">Benda mati tidak dapat bergerak, sehingga lebih mudah dianalisis menggunakan kelima panca indra (melihat, menyentuh, meraba, mencium, mendengar, merasakan) sebelum mulai menggambar.</p>
+                    <p class="text-sm mb-3"><strong>Teknik Skala Sederhana:</strong> Rentangkan tangan lurus ke depan, pegang pensil tegak lurus diarahkan ke benda, picingkan mata, gunakan ibu jari untuk menandai ukuran benda pada batang pensil, lalu pindahkan skala tersebut ke kertas gambar.</p>
+                    <p class="text-sm italic text-gray-400">Contoh objek: cangkir, vas bunga, buah-buahan, botol.</p>
+                </div>
+
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3"><i class="fas fa-leaf mr-2"></i> B. Sketsa Makhluk Hidup</h4>
+                    <p class="text-sm mb-3">Membutuhkan kecermatan lebih tinggi karena makhluk hidup memiliki karakter yang beragam:</p>
+                    <ul class="text-sm space-y-2 ml-4">
+                        <li>▸ <strong>Tumbuhan:</strong> Dapat diamati secara tetap karena diam.</li>
+                        <li>▸ <strong>Binatang:</strong> Selalu bergerak, memerlukan kecepatan dan ketajaman penglihatan.</li>
+                        <li>▸ <strong>Manusia:</strong> Memerlukan pengetahuan <em>anatomi plastis</em> tentang fenomena permukaan bentuk tubuh. Bentuk dasar tubuh manusia dapat disederhanakan menjadi rangkaian <strong>silinder bervolume</strong> dengan otot-otot utama.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3"><i class="fas fa-city mr-2"></i> C. Sketsa Suasana Ramai</h4>
+                    <p class="text-sm mb-3">Obyek outdoor seperti kebun, ladang, perkampungan padat, keramaian kota, gedung-gedung, dan kesibukan pasar. Kontak langsung melalui pengamatan untuk mendapatkan impresi dan mengembangkan imajinasi.</p>
+                    <p class="text-sm mb-3"><strong>Prinsip Utama:</strong> Gambarlah secara keseluruhan, hindari keinginan untuk menggambar secara detail. Pertimbangkan objek yang akan ditampilkan dan yang hendak dihilangkan.</p>
+                    <div class="grid md:grid-cols-2 gap-4 mt-4 text-sm">
+                        <div class="bg-luxury-gray/30 p-4 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-2">Pendekatan Kontur</p>
+                            <p>Garis-garis tunggal seakan tak terputus, sebagai batas yang mengelilingi bentuk subyek. Tampak eksplisit, tajam, dan presisi. Tidak ada garis yang salah atau diulang.</p>
+                        </div>
+                        <div class="bg-luxury-gray/30 p-4 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-2">Pendekatan Gestur</p>
+                            <p>Garis-garis yang menangkap gerak dan energi subjek secara spontan. Lebih menekankan pada ekspresi dan dinamika daripada ketepatan bentuk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Kegagalan Tanpa Sketsa</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang siswa langsung membuka CorelDraw dan mulai mendesain brosur tanpa membuat sketsa awal. Setelah 3 jam bekerja di depan komputer, ia menyadari bahwa tata letak (layout) yang dibuatnya tidak seimbang, hierarki informasi berantakan, dan konsep visual tidak sesuai dengan brief klien. Ia harus mengulang dari awal, membuang waktu dan energi.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Sketsa awal 10-15 menit di atas kertas dapat menghemat berjam-jam waktu revisi di komputer. Sketsa adalah "peta" sebelum perjalanan kreatif dimulai.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span><strong>Hilangkan rasa takut salah.</strong> Pemula sering terlalu khawatir dan terus-menerus menggunakan penghapus. Sebaiknya jangan gunakan penghapus terlebih dahulu—biarkan tangan Anda lemas dan bebas bereksplorasi.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span><strong>Latih garis setiap hari.</strong> Luangkan 10 menit sehari untuk menggoreskan garis lurus, lengkung, dan berombak agar tangan terbiasa dan tidak kaku.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span><strong>Amati sebelum menggores.</strong> Gunakan kelima panca indra untuk memahami karakter objek sebelum menuangkannya ke kertas.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span><strong>Mulai dari garis tipis.</strong> Selalu buat kerangka dengan goresan tipis, baru tebalkan setelah komposisi dianggap benar.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span><strong>Bawa buku sketsa ke mana-mana.</strong> Kebiasaan ini akan mempertajam pengamatan dan meningkatkan koordinasi mata-tangan secara signifikan.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Gambar sketsa adalah fondasi tak tergantikan dalam proses desain grafis. Penguasaan teknik memegang pensil, pemahaman terhadap aturan membuat kerangka, serta kemampuan membedakan jenis sketsa (bentuk, makhluk hidup, suasana ramai) akan membentuk dasar keterampilan visual yang kokoh. Desainer yang mahir dalam sketsa akan lebih cepat, lebih tepat, dan lebih kreatif dalam mengeksekusi ide menjadi karya cetak yang profesional.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Sadjiman, E. S. (2009). <em>Dasar-Dasar Nirmana</em>. Yogyakarta: Andi Offset.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="4.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 4: Klasifikasi Huruf
+            </a>
+            <a href="6.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 6: Gambar Ilustrasi <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 5</h2>
+                <p class="text-gray-400 mt-2">Materi: Konsep, teknik, dan jenis-jenis gambar sketsa.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300" id="pg-questions">
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">1. Sketsa (sketch) secara umum dikenal sebagai...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Lukisan final yang sudah jadi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Bagan atau rencana bagi sebuah lukisan yang bersifat sementara</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Gambar yang sudah diwarnai secara lengkap</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Foto hasil cetakan komputer</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">2. Berikut yang BUKAN merupakan manfaat dari gambar sketsa adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. Memberikan gambaran tema</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Meminimalisir kesalahan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Menghasilkan karya akhir yang siap cetak</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Mempertajam pengamatan</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">3. Langkah pertama dalam aturan membuat gambar sketsa adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Membuat kerangka gambar dengan garis-garis tipis</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Menebalkan garis langsung dengan tegas</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Memberi warna pada objek</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Menghapus garis yang salah</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Teknik memegang pensil yang sangat sesuai untuk menghasilkan gambar yang detail adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Menggenggam dengan seluruh jari</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Ibu jari di atas dan 4 jari di bawahnya</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Menggunakan kepalan tangan penuh</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Seperti menulis</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">5. Semakin kasar kertas yang digunakan untuk menggambar sketsa, maka...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Makin abu-abu goresan pensil yang diperoleh</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Makin gelap goresan pensil yang diperoleh</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Makin tipis goresan pensil yang diperoleh</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Goresan pensil tidak akan terlihat sama sekali</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">6. Sketsa bentuk benda mati lebih mudah digambar karena...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Benda tidak dapat bergerak sehingga dapat dianalisa dengan lebih baik</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Benda mati selalu memiliki bentuk geometris</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Benda mati tidak memiliki tekstur</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Benda mati selalu berwarna hitam putih</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">7. Untuk menggambar binatang secara langsung, yang lebih diperlukan dibanding menggambar tumbuhan adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Ketelitian warna dan detail</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Kertas yang lebih besar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Kecepatan dan ketajaman penglihatan</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Pensil yang lebih keras</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">8. Untuk menggambar manusia dengan baik, diperlukan pengetahuan tentang...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Teknik pewarnaan digital</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Anatomi plastis tubuh manusia</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Sejarah seni rupa</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Teori tipografi</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">9. Dalam sketsa suasana ramai, pendekatan yang menggunakan garis-garis tunggal seakan tak terputus sebagai batas yang mengelilingi bentuk subyek disebut pendekatan...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Gestur</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Abstrak</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Realis</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Kontur</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">10. Dalam menggambar suasana keramaian, hal yang harus dilakukan adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Menggambar secara keseluruhan dan menghindari keinginan menggambar detail</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Menggambar setiap detail objek satu per satu</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Menggunakan banyak warna sekaligus</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Menggambar hanya satu objek saja</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan empat manfaat utama dari gambar sketsa dalam proses desain grafis!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Sebutkan tiga aturan utama dalam membuat gambar sketsa dan jelaskan masing-masing!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Bandingkan perbedaan antara sketsa bentuk, sketsa makhluk hidup, dan sketsa suasana ramai dari segi objek, tantangan, dan pendekatan yang digunakan!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Jelaskan perbedaan antara pendekatan kontur dan pendekatan gestur dalam menggambar sketsa suasana ramai! Berikan contoh kapan masing-masing pendekatan sebaiknya digunakan!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Mengapa seorang desainer grafis tetap perlu menguasai teknik sketsa manual di era digital saat ini? Jelaskan minimal 3 alasan!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Kunci Jawaban Pilihan Ganda
+        const kunciJawaban = {
+            q1: 'b', q2: 'c', q3: 'a', q4: 'd', q5: 'b',
+            q6: 'a', q7: 'c', q8: 'b', q9: 'd', q10: 'a'
+        };
+
+        function hitungSkor() {
+            // 1. Validasi Data Siswa
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            // 2. Validasi & Hitung Pilihan Ganda
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            // 3. Validasi Essay (Cek apakah sudah diisi, minimal 20 karakter)
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            // Simulasi Penilaian Essay (Skor kelengkapan 80 jika semua diisi dengan baik)
+            const skorEssay = 80; 
+
+            // 4. Tampilkan Hasil
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            // Scroll ke hasil
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Disable form inputs
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 5 - Gambar Sketsa\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan5_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 5 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 5 (Gambar Sketsa):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Set tanggal hari ini secara otomatis
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

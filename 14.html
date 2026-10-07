@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 14: Efek Gambar Bitmap - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 14</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB VIII - PERTEMUAN 14</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Efek <span class="gold-gradient-text">Gambar Bitmap</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai pemberian efek pada gambar bitmap dalam Adobe Photoshop—mulai dari efek teks (Warping, Type Mask, 14 jenis efek teks kreatif), Filter (13 kelompok filter + Clipping Mask + Adjustment Layer), Layer Style & Blending Options, hingga Adjustments (Image vs Layer)—sebagai keterampilan esensial untuk menciptakan desain grafis bitmap yang hidup, spesial, dan profesional.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="13.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 13
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Setelah menguasai teknik seleksi dan masking pada pertemuan sebelumnya, langkah selanjutnya dalam desain grafis bitmap adalah memberikan <strong>efek visual</strong> yang membuat karya menjadi hidup, spesial, dan bermakna. Adobe Photoshop menyediakan serangkaian fitur efek yang powerful: efek teks, filter, layer style, dan adjustments.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Efek-efek ini bukan sekadar hiasan—mereka adalah alat komunikasi visual yang mampu mengubah desain bitmap biasa menjadi karya yang memukau. Efek teks dapat menciptakan tipografi yang dramatis, filter memberikan karakter artistik pada gambar, layer style menambahkan dimensi dan kedalaman, dan adjustments memungkinkan koreksi warna yang presisi. Penguasaan keempat kategori efek ini akan membuka pintu bagi siswa untuk menciptakan desain web, brosur, poster, dan branding yang tidak hanya estetis, tetapi juga komunikatif dan profesional.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Efek Bitmap:</strong> Fitur dalam Photoshop yang memberikan modifikasi visual pada objek bitmap (teks, gambar, shape) untuk meningkatkan nilai estetika dan komunikasi.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Layer Type:</strong> Layer khusus untuk teks yang otomatis terbentuk saat mengetik. Tidak muncul sebagai layer baru pada mode multichannel, bitmap, atau indexed color.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Filter:</strong> Fasilitas untuk memberikan efek tertentu pada objek bitmap agar desain lebih hidup dan spesial. Photoshop menyediakan 13 kelompok filter.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Layer Style:</strong> Spesel efek yang dapat diterapkan pada layer, shape, atau teks. Terdiri dari <em>style</em> (preset instan) dan <em>blending options</em> (kustomisasi detail).</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Adjustment:</strong> Fitur untuk pengaturan/pengubahan warna. Terbagi menjadi <em>image adjustment</em> (destruktif) dan <em>layer adjustment</em> (non-destruktif).</li>
+            </ul>
+        </section>
+
+        <!-- Efek Pada Teks -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Efek Pada Teks: Tipografi yang Hidup</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Teks dalam Photoshop merupakan kumpulan <strong>pixel-pixel</strong> yang mempunyai resolusi sama dengan file objek. Jika dilakukan pembesaran atau zooming melewati batas resolusi asli, teks akan tampak <em>jagged</em> (berundak). Oleh karena itu, pemahaman tentang layer type dan efek teks sangat penting untuk menciptakan tipografi yang menarik tanpa mengorbankan kualitas.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Warping: Mendistorsi Bentuk Teks</h4>
+                    <p class="text-sm mb-3"><strong>Warping</strong> adalah fasilitas untuk mendistorsi bentuk objek teks dengan beberapa variasi bentuk. Teks akan mengikuti bentuk shape yang dipilih.</p>
+                    <p class="text-sm mb-2"><strong>Cara Melakukan Warp:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4 mb-3">
+                        <li>Pilih layer type</li>
+                        <li>Pilih Type Tool, klik tombol <strong>Warp</strong></li>
+                        <li>Pilih <em>warp style</em> dari menu Style Pop-up</li>
+                        <li>Pilih orientasi warp: horizontal atau vertikal</li>
+                        <li>Atur parameter: <strong>Bend</strong> (besar distorsi), <strong>Horizontal/Vertical Distortion</strong> (perspektif)</li>
+                        <li>Untuk membatalkan Warp, klik <em>None</em></li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">14 Jenis Efek Teks Kreatif</h4>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">1. Teks Melengkung</p>
+                            <p>Menggunakan Warp Text dengan berbagai style untuk melengkungkan teks secara langsung.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">2. Teks 3D</p>
+                            <p>Bentuk tiga dimensi yang populer untuk menambah keindahan desain.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">3. Teks Lembut</p>
+                            <p>Teks berlatar belakang kabur, terkesan lembut. Banyak untuk web design.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">4. Teks Gradasi</p>
+                            <p>Menerapkan efek gradasi warna, transisi halus antar 2+ warna.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">5. Teks Warna Warni</p>
+                            <p>Setiap huruf berbeda warna, kesan ceria, ramai, periang.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">6. Teks Outline Ganda</p>
+                            <p>Dua garis pinggir dengan warna berbeda, seperti tiga teks dalam satu tulisan.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">7. Teks Menyala</p>
+                            <p>Pencahayaan/sinar memudar di luar sisi teks, terlihat seperti api lilin.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">8. Teks Garis Bersusun</p>
+                            <p>Pola garis lurus horizontal sebagai motif, elegan untuk logo perusahaan.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">9. Teks Berkarat</p>
+                            <p>Efek besi karatan karena usia, kesan vintage/aged.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">10. Teks Emas</p>
+                            <p>Efek kuning keemasan mengkilap, kesan mewah dan premium.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">11. Teks Aqua</p>
+                            <p>Efek kaca bening dengan pendaran kebiruan, seperti galon aqua.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">12. Teks Bertabur Perak</p>
+                            <p>Taburan perak di permukaan teks, kesan glamor.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">13. Teks Api</p>
+                            <p>Efek api mengelilingi teks, dramatis dan intens.</p>
+                        </div>
+                        <div class="bg-luxury-dark p-3 rounded border border-gray-700">
+                            <p class="font-semibold text-white mb-1">14. Teks Ice</p>
+                            <p>Kesan terbungkus es, dingin dan unik.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Type Mask: Seleksi Berbentuk Teks</h4>
+                    <p class="text-sm mb-2"><strong>Type Mask</strong> digunakan untuk membentuk seleksi dengan bentuk font yang dipilih (horizontal/vertikal). Seleksi ini dapat dipindah, disalin, diisi warna, dan diberi stroke.</p>
+                    <p class="text-sm mb-2"><strong>Cara Membuat Type Mask:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4">
+                        <li>Pilih layer yang akan diberi type mask</li>
+                        <li>Pilih <em>Type Mask Tool</em> (vertikal/horizontal)</li>
+                        <li>Ketikkan pada layer baru—teks tampil dengan warna mask</li>
+                        <li>Klik pada layer palet atau <em>Commit any current edits</em> di Option Bar</li>
+                        <li>Pilih <em>Layer via Copy (Ctrl+J)</em> untuk membentuk layer baru dari salinan marquee teks</li>
+                        <li>Tambahkan <em>layer style glow</em> untuk kontras: <em>Layer &gt; Layer Style &gt; Drop Shadow</em></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Filter: Memberi Kehidupan pada Bitmap</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Filter</strong> adalah fasilitas yang disediakan Photoshop untuk memberikan efek tertentu pada objek gambar bitmap sehingga desain lebih hidup dan spesial. Photoshop menyediakan <strong>13 kelompok filter</strong> dengan ratusan variasi, yang dapat ditambah melalui <em>plug-ins</em> (seperti Digimarc).
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Kombinasi Filter + Clipping Mask + Adjustment Layer</h4>
+                    <p class="text-sm mb-3"><strong>Clipping Mask</strong> adalah fitur untuk membuat gambar menyesuaikan dengan bentuk objek di bawahnya. Dapat diterapkan pada shape, bitmap, maupun teks.</p>
+                    <p class="text-sm mb-2"><strong>Langkah-Langkah Kombinasi:</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4">
+                        <li>Buka gambar bitmap sebagai background layer</li>
+                        <li>Duplikasi background layer (Ctrl+J) → terbentuk "Layer 1"</li>
+                        <li>Buat layer baru di bawah Layer 1 (Ctrl+klik ikon create new layer) → beri nama "clipping mask"</li>
+                        <li>Pilih Rectangle Tool (U), buat bentuk Rectangle pada area yang ingin difokuskan</li>
+                        <li>Tekan <strong>Alt</strong> dan gerakkan kursor di antara "Layer 1" dan "clipping mask" hingga ikon clipping mask muncul → klik</li>
+                        <li>Tambahkan <em>Layer Style</em>: Stroke (border putih, Inside), Drop Shadow (bayangan)</li>
+                        <li>Gunakan <em>Free Transform (Ctrl+T)</em> untuk merotasi dan menskala</li>
+                        <li>Copy background layer, gunakan <em>Eyedropper Tool</em> untuk ambil sampel warna</li>
+                        <li>Klik <em>New Adjustment Layer</em> → pilih <em>Hue/Saturation</em> → centang <em>Colorize</em></li>
+                        <li>Tambahkan <em>Filter &gt; Blur &gt; Radial Blur</em> → pilih Zoom → atur Amount</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Mengapa Kombinasi Ini Powerful?</h4>
+                    <p class="text-sm">Kombinasi Filter + Clipping Mask + Adjustment Layer memungkinkan kita membuat <strong>efek fokus selektif</strong>—misalnya, satu area gambar tetap tajam dan berwarna, sementara area lainnya blur dan hitam-putih. Ini adalah teknik profesional yang banyak digunakan dalam fotografi dan desain editorial untuk mengarahkan perhatian audiens ke subjek utama.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layer Style & Style -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Layer Style & Style: Spesel Efek Instan</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Layer Styles</strong> adalah cara untuk memberikan spesial efek pada objek layer, shape, atau teks. Layer Styles berhubungan dengan <em>layer content</em> dan dapat diubah-ubah sesuai kebutuhan desain.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-magic mr-2"></i> Style</h4>
+                        <p class="text-sm">Cara cepat memberikan efek—efek blending option sudah diramu, tinggal digunakan. Efek-efek pada style telah disediakan, tinggal memilih dan menerapkan pada layer. <strong>Kecepatan tinggi, kustomisasi terbatas.</strong></p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-sliders-h mr-2"></i> Blending Options</h4>
+                        <p class="text-sm">Untuk membuat efek detail sesuai keinginan, gunakan layer style - blending options. Dapat dibuat sendiri dengan macam efek pilihan dan seting parameter. <strong>Kecepatan rendah, kustomisasi tinggi.</strong></p>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Penerapan Layer Mode</h4>
+                    <p class="text-sm mb-2">Untuk menerapkan layer mode, dibutuhkan minimal 2 layer agar efek terlihat:</p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4">
+                        <li>Buat file baru dengan minimal 2 layer (1 bitmap + 1 warna)</li>
+                        <li>Pilih layer aktif di atas</li>
+                        <li>Ganti <em>layer mode normal</em> dengan <em>blend mode</em> yang diinginkan</li>
+                    </ol>
+                    <p class="text-sm mt-3 italic text-gray-400">Catatan: Photoshop menyediakan 5 group blend mode termasuk <strong>Darken Mode</strong> dan <strong>Lighten Mode</strong> dengan fungsi yang berbeda.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Adjustments -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Adjustments: Pengaturan Warna Presisi</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Adjustment</strong> adalah fitur untuk pengaturan/pengubahan warna pada gambar bitmap. Ada dua jenis penerapan adjustment dengan perbedaan fundamental:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-red-900/30">
+                        <h4 class="text-red-400 font-serif text-lg mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Image Adjustment</h4>
+                        <p class="text-sm mb-2">Bersifat <strong>destruktif</strong>—langsung mengubah pixel asli gambar. Jika salah, sulit dikembalikan ke kondisi semula.</p>
+                        <p class="text-xs text-gray-500 italic">Gunakan dengan hati-hati, selalu duplikasi layer terlebih dahulu.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-green-900/30">
+                        <h4 class="text-green-400 font-serif text-lg mb-2"><i class="fas fa-check-circle mr-2"></i> Layer Adjustment</h4>
+                        <p class="text-sm mb-2">Bersifat <strong>non-destruktif</strong>—tidak mengubah pixel asli. Bekerja pada layer terpisah, dapat diedit atau dihapus kapan saja.</p>
+                        <p class="text-xs text-gray-500 italic">Disarankan untuk workflow profesional.</p>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Layer Adjustment: 4 Kelompok, 17 Adjustment Layer</h4>
+                    <p class="text-sm mb-3">Icon layer adjustment terletak di bagian bawah layer palette (lingkaran setengah hitam-putih). Ketika diklik, muncul pilihan adjustment yang dibagi <strong>4 kelompok berisi 17 adjustment layer</strong>.</p>
+                    <p class="text-sm mb-2"><strong>Contoh Penerapan: Efek Klasik Black & White pada Area Tertentu</strong></p>
+                    <ol class="text-sm space-y-1 list-decimal list-inside ml-4">
+                        <li>Buka gambar yang akan diberi efek</li>
+                        <li>Klik <em>Magnetic Lasso Tool</em> untuk menyeleksi area yang TIDAK terkena efek</li>
+                        <li>Klik menu <em>Select &gt; Inverse</em> (membalik area seleksi)</li>
+                        <li>Klik icon adjustment &gt; <em>Black & White</em></li>
+                        <li>Atur parameter pada kotak dialog</li>
+                        <li>Klik OK → area terseleksi berubah menjadi hitam-putih klasik</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Fungsi Selection dalam Layer Adjustment</h4>
+                    <p class="text-sm">Selection sangat penting dalam penerapan layer adjustment karena memungkinkan kita menerapkan efek hanya pada <strong>area tertentu</strong> dari gambar, bukan keseluruhan. Tanpa selection, adjustment akan berlaku pada seluruh layer—yang seringkali tidak diinginkan dalam desain profesional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Poster Konser Musik dengan Efek Teks Menyala</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang desainer ditugaskan membuat poster konser musik rock. Ia menggunakan <em>Teks Menyala</em> untuk judul utama—efek pencahayaan yang memudar secara bertahap di luar sisi teks, memberikan kesan seperti api lilin yang dramatis. Kemudian, ia menerapkan <em>Layer Style - Blending Options</em> untuk menambahkan Drop Shadow dan Outer Glow pada elemen grafis. Untuk foto artis, ia menggunakan <em>Layer Adjustment - Hue/Saturation</em> dengan seleksi Magnetic Lasso untuk membuat background hitam-putih sementara artis tetap berwarna. Hasilnya, poster terlihat dramatis, profesional, dan mampu menarik perhatian audiens dari jarak jauh.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Kombinasi efek teks, layer style, dan adjustment yang tepat dapat mengubah poster biasa menjadi karya yang dramatis dan komunikatif.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu gunakan <strong>Layer Adjustment</strong> daripada Image Adjustment—layer adjustment bersifat non-destruktif dan dapat diedit kapan saja.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Style</strong> untuk eksplorasi cepat, lalu beralih ke <strong>Blending Options</strong> untuk kustomisasi detail sesuai kebutuhan desain.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk efek teks dramatis seperti <em>Teks Menyala</em>, <em>Teks Emas</em>, atau <em>Teks Api</em>, kombinasikan dengan <strong>Drop Shadow</strong> dan <strong>Outer Glow</strong> untuk memperkuat kesan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Sebelum menerapkan filter, <strong>duplikasi layer asli (Ctrl+J)</strong> sebagai cadangan—jika hasil tidak sesuai, Anda masih memiliki layer asli.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Clipping Mask</strong> untuk menerapkan efek hanya pada area tertentu—ini adalah teknik profesional yang menghemat waktu dan memberikan hasil yang presisi.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Jangan gunakan terlalu banyak efek dalam satu desain—<strong>less is more</strong>. Pilih 2-3 efek yang paling memperkuat pesan visual.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Penguasaan efek gambar bitmap dalam Photoshop adalah langkah penting menuju desain grafis profesional. Empat kategori efek—efek teks (14 jenis efek kreatif + Warping + Type Mask), Filter (13 kelompok + Clipping Mask + Adjustment Layer), Layer Style & Style (blending options + preset), dan Adjustments (image vs layer)—memberikan desainer alat yang powerful untuk menciptakan karya yang hidup, spesial, dan komunikatif. Pemahaman mendalam tentang perbedaan destruktif vs non-destruktif, serta kemampuan mengombinasikan berbagai efek, akan membekali siswa dengan keterampilan teknis yang solid untuk menghasilkan desain web, brosur, poster, dan branding yang tidak hanya estetis, tetapi juga profesional dan siap cetak.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Adobe Systems. (2007). <em>Adobe Photoshop CS3 Official Documentation: Effects and Adjustments</em>. San Jose.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="13.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 13: Teknik Masking
+            </a>
+            <a href="15.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 15: Proyek Brosur <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 14</h2>
+                <p class="text-gray-400 mt-2">Materi: Efek teks, Filter, Layer Style, dan Adjustments dalam Photoshop.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">1. Teks di dalam Photoshop merupakan kumpulan...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Vektor matematis</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Pixel-pixel yang mempunyai resolusi sama dengan file objek</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Node dan anchor point</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Layer transparan</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">2. Layer type TIDAK akan muncul sebagai layer baru saat menggunakan mode...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. RGB</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. CMYK</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Grayscale</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Multichannel, bitmap, atau indexed color</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">3. Fasilitas untuk mendistorsi bentuk objek teks dengan beberapa variasi shape disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Type Mask</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Layer Style</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Warping</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Adjustment</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">4. Efek teks yang memberikan kesan seperti terbungkus es disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Teks Ice</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Teks Aqua</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Teks Api</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Teks Lembut</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">5. Fasilitas yang disediakan Photoshop untuk memberikan efek tertentu pada objek bitmap agar desain lebih hidup disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Layer Style</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Filter</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Adjustment</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Warp</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">6. Jumlah kelompok filter yang disediakan Photoshop secara garis besar adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. 7 kelompok</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. 10 kelompok</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. 13 kelompok</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. 17 kelompok</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">7. Fitur untuk membuat gambar menyesuaikan dengan bentuk objek yang berada di bawahnya disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Clipping Mask</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Layer Mask</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Quick Mask</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Type Mask</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Layer Style secara garis besar dapat dibagi menjadi 2, yaitu...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Style dan Filter</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Adjustment dan Blending</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Image dan Layer</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Style dan Blending Options</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">9. Adjustment yang bersifat non-destruktif (tidak mengubah pixel asli) adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Image Adjustment</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Layer Adjustment</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Filter Adjustment</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Style Adjustment</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">10. Adjustment yang bersifat destruktif (langsung mengubah pixel asli) adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Layer Adjustment</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Adjustment Layer</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Image Adjustment</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Non-Destructive Adjustment</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Sebutkan dan jelaskan minimal 7 dari 14 jenis efek teks kreatif dalam Photoshop! Berikan contoh kasus penggunaan masing-masing efek!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Jelaskan langkah-langkah melakukan Warping pada teks! Apa fungsi parameter Bend, Horizontal Distortion, dan Vertical Distortion dalam proses Warping?</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Jelaskan kombinasi Filter + Clipping Mask + Adjustment Layer! Berikan contoh kasus penggunaan kombinasi ini dalam desain grafis profesional!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Bandingkan perbedaan antara Style dan Blending Options dalam Layer Style! Kapan sebaiknya menggunakan Style, dan kapan sebaiknya menggunakan Blending Options? Berikan contoh kasus untuk masing-masing!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Jelaskan perbedaan mendasar antara Image Adjustment dan Layer Adjustment! Mengapa Layer Adjustment lebih disarankan dalam workflow profesional? Berikan contoh penerapan Layer Adjustment untuk membuat efek klasik black & white pada area tertentu!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'b', q2: 'd', q3: 'c', q4: 'a', q5: 'b',
+            q6: 'c', q7: 'a', q8: 'd', q9: 'b', q10: 'c'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 14 - Efek Gambar Bitmap\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan14_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 14 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 14 (Efek Gambar Bitmap):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

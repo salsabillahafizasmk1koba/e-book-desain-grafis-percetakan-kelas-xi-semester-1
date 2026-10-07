@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 12: Dasar Citra Bitmap - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 12</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB VII - PERTEMUAN 12</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Dasar <span class="gold-gradient-text">Citra Bitmap</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Memahami konsep dasar citra bitmap, mengenal antarmuka Adobe Photoshop CS3—mulai dari Title Bar, Menu Bar, Option Bar, Tool Box, Palet, hingga konsep Layer dan manajemen multi-layer—sebagai fondasi pengolahan grafis berbasis pixel untuk kebutuhan desain grafis percetakan profesional.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="11.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 11
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Setelah menguasai pengolahan citra vektor dengan CorelDraw, saatnya beralih ke dunia <strong>citra bitmap</strong>—dunia di mana setiap gambar tersusun dari ribuan hingga jutaan titik kecil bernama <em>pixel</em>. Adobe Photoshop, sebagai perangkat lunak pengolah bitmap terkemuka, menjadi standar industri dalam pengeditan foto, manipulasi gambar, dan pembuatan efek visual yang kompleks.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Citra bitmap sangat baik digunakan untuk merepresentasikan gambar yang kompleks dan detail, seperti foto, tekstur, dan ilustrasi realistis. Namun, berbeda dengan vektor, citra bitmap bergantung pada resolusi—memperbesar gambar di atas batas resolusinya akan menyebabkan tampilan <em>jagged</em> (berundak). Oleh karena itu, pemahaman mendalam tentang resolusi, pixel, dan manajemen layer dalam Photoshop menjadi kompetensi wajib bagi setiap desainer grafis profesional.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Citra Bitmap:</strong> Gambar digital yang dibentuk oleh sekumpulan titik yang disebut <em>pixel</em> (picture element). Kualitas gambar bergantung pada resolusi.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Pixel:</strong> Unit terkecil penyusun citra bitmap. Semakin banyak pixel per inci (PPI/DPI), semakin detail dan tajam gambar yang dihasilkan.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Layer:</strong> Lapisan transparan yang saling bertumpuk antara satu dengan yang lain, membentuk sebuah gambar utuh. Setiap layer memiliki objek sendiri sehingga tidak saling mengganggu.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Multi-Layer:</strong> Teknik menggabungkan beberapa gambar dalam layer yang berbeda, di mana layer atas akan menutupi layer di bawahnya.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Resolusi-Dependen:</strong> Citra bitmap sangat bergantung pada resolusi; memperbesar gambar di atas batas resolusinya akan menyebabkan gambar pecah (jagged).</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Landasan Teoretis Citra Bitmap</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Adobe Photoshop adalah salah satu perangkat lunak yang dikhususkan untuk pengeditan foto/gambar dan pembuatan efek, yang sangat baik untuk membuat desain grafis dalam bentuk bitmap. Photoshop menyediakan tool-tool yang terintegrasi dan tertata secara praktis untuk menciptakan dan menghasilkan karya dalam bentuk vektor dan teks. Bentuk grafik yang berdasarkan vektor dan teks bisa ditransfer menjadi image yang berdasarkan pixel untuk mendapatkan efek desain yang lebih sempurna.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Perbandingan Bitmap vs Vektor (Review)</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-2 text-luxury-gold">Aspek</th>
+                                    <th class="text-left py-2 text-luxury-gold">Bitmap</th>
+                                    <th class="text-left py-2 text-luxury-gold">Vektor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-300">
+                                <tr class="border-b border-gray-800"><td class="py-2">Dasar Penyusun</td><td>Pixel (picture element)</td><td>Garis, kurva, persamaan matematis</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Resolusi</td><td>Tergantung resolusi</td><td>Tidak tergantung resolusi</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Saat Diperbesar</td><td>Pecah (jagged)</td><td>Tetap tajam</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Ukuran File</td><td>Relatif besar</td><td>Relatif kecil</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Format File</td><td>.JPG, .PNG, .BMP, .PSD, .TIFF</td><td>.CDR, .AI, .SVG, .EPS</td></tr>
+                                <tr><td class="py-2">Penggunaan Ideal</td><td>Foto, tekstur, gambar kompleks</td><td>Logo, ilustrasi, tipografi</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Aplikasi Pengolah Citra Bitmap</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Adobe Photoshop:</strong> Perangkat lunak terkemuka untuk pengeditan foto dan desain grafis bitmap.</li>
+                        <li>▸ <strong>Corel PhotoPaint:</strong> Aplikasi pengolah bitmap dari Corel, terintegrasi dengan CorelDraw.</li>
+                        <li>▸ <strong>GIMP:</strong> Alternatif gratis dan open-source untuk Photoshop.</li>
+                        <li>▸ <strong>Paint.NET:</strong> Editor bitmap ringan untuk Windows.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Antarmuka Photoshop -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Antarmuka Adobe Photoshop CS3</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Secara garis besar, area kerja default Photoshop CS3 terbagi menjadi beberapa komponen utama. Memahami fungsi setiap komponen akan mempercepat alur kerja dan meningkatkan efisiensi dalam mendesain.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-window-maximize mr-2"></i> Title Bar</h4>
+                        <p class="text-sm">Jendela yang berisi informasi program yang sedang dijalankan. Title Bar dapat dipindahkan dengan cara mengkliknya dua kali dan menggesernya ke posisi yang diinginkan.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-bars mr-2"></i> Menu Bar</h4>
+                        <p class="text-sm">Berisi perintah utama seperti membuka file, menyimpan file, mengubah ukuran gambar, filter, dan lain-lain.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-sliders-h mr-2"></i> Option Bar</h4>
+                        <p class="text-sm">Berisi pilihan pengaturan dari tool yang dipilih. Setiap tool mempunyai tool option yang berbeda-beda. Misalnya dipilih brush, maka ukuran/diameter dan opacity brush ada di sini.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-image mr-2"></i> Active Image Area</h4>
+                        <p class="text-sm">Area utama yang menampilkan gambar yang sedang dikerjakan. Di sinilah semua proses editing visual dilakukan.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-toolbox mr-2"></i> Tool Box</h4>
+                        <p class="text-sm">Berisi berbagai macam tool atau alat-alat yang digunakan untuk mengedit atau membuat sebuah karya grafis. Tool tersebut memiliki kelompok tersendiri tergantung fungsi dan kegunaannya. Segitiga kecil di sebelah tool menandakan tool tersebut memiliki <em>sub tool</em>.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-th-large mr-2"></i> Palet</h4>
+                        <p class="text-sm">Berisi informasi mengenai image atau gambar yang dikerjakan, mencakup Layer, History, Navigator, Color, dan lain sebagainya. Palet dapat ditampilkan atau disembunyikan dengan membuka menu <em>Windows</em>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Konsep Layer -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Konsep Layer: Fondasi Editing Bitmap</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Layer</strong> adalah lapisan transparan yang saling bertumpuk antara satu lapisan dengan yang lain sehingga membentuk sebuah gambar baru. Setiap layer mempunyai objek-objek sendiri sehingga meskipun terlihat saling bertumpuk, objek-objeknya tidak saling mengganggu.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Prinsip Dasar Layer</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ Layer digunakan untuk menggabungkan beberapa gambar menjadi satu gambar</li>
+                        <li>▸ Setiap gambar diletakkan dalam satu lapisan layer dan digabungkan dengan lapisan layer yang lain</li>
+                        <li>▸ Lapisan tersebut saling bertumpuk sehingga menghasilkan sebuah gambar</li>
+                        <li>▸ <strong>Gambar yang berada pada layer atas akan menutupi tumpukan gambar di bawahnya</strong></li>
+                        <li>▸ Saat menggabungkan gambar satu dengan yang lain, akan terbentuk lebih dari satu layer (multi-layer)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Operasi Layer Penting</h4>
+                    <p class="text-sm mb-2">Untuk dapat merubah atau menambah objek dengan memakai palet layer, gunakan tombol-tombol berikut:</p>
+                    <ul class="text-sm space-y-1 ml-4">
+                        <li>▸ <strong>Add a layer style</strong> — Menambahkan efek pada layer</li>
+                        <li>▸ <strong>Add layer mask</strong> — Menambahkan masker untuk menyembunyikan bagian tertentu</li>
+                        <li>▸ <strong>Create a new set</strong> — Membuat grup layer</li>
+                        <li>▸ <strong>Create new fill or adjustment layer</strong> — Membuat layer penyesuaian warna</li>
+                        <li>▸ <strong>Create new layer</strong> — Membuat layer baru</li>
+                        <li>▸ <strong>Delete layer</strong> — Menghapus layer</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Langkah-langkah Multi-Layer -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Langkah-Langkah Menggabungkan Gambar dengan Multi-Layer</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Berikut adalah langkah-langkah sistematis untuk menggabungkan beberapa gambar menggunakan teknik multi-layer dalam Photoshop:
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <ol class="text-sm space-y-3 list-decimal list-inside">
+                        <li><strong>Buat file baru:</strong> Tekan <strong>Ctrl + N</strong>, atur width, height, dan background contents (misalnya 400×400 px dengan background color), lalu klik OK.</li>
+                        <li><strong>Buka file gambar yang akan digabung:</strong> Tekan <strong>Ctrl + O</strong>, cari file yang akan digabungkan (misalnya garfield1.jpg dan bart_simpson.jpg).</li>
+                        <li><strong>Drag gambar pertama:</strong> Klik dan drag file bart_simpson.jpg ke file ber-background. Otomatis akan terbentuk <strong>layer baru</strong> bernama "Layer 1".</li>
+                        <li><strong>Drag gambar kedua:</strong> Klik dan drag file garfield1.jpg ke file yang sama. Terbentuk layer baru lagi.</li>
+                        <li><strong>Tambahkan teks:</strong> Klik <em>Horizontal Type Tool</em>, ketik judul (misalnya "the simpson & garfield"). Otomatis muncul layer teks baru.</li>
+                        <li><strong>Atur urutan layer:</strong> Gunakan panel Layer untuk mengatur posisi layer mana yang di atas/bawah dengan cara drag layer.</li>
+                        <li><strong>Simpan hasil:</strong> Tekan <strong>Ctrl + S</strong> untuk menyimpan dalam format .PSD (agar layer tetap utuh) atau <em>Save As</em> untuk format .JPG/.PNG.</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Tips Penting Multi-Layer</h4>
+                    <p class="text-sm">Selalu simpan file master dalam format <strong>.PSD</strong> agar layer tetap dapat diedit di kemudian hari. Export ke format .JPG atau .PNG hanya dilakukan saat file sudah final dan siap digunakan/dicetak. Format .PSD mempertahankan semua layer, efek, dan mask yang telah dibuat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catatan Penting Layer Type -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-exclamation-triangle mr-2 text-luxury-gold"></i> Catatan Penting: Layer Type</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Layer teks (layer type) <strong>tidak akan muncul sebagai layer baru</strong> saat menggunakan mode <em>multichannel</em>, <em>bitmap</em>, maupun <em>indexed color</em>. Mode-mode ini tidak mendukung layer, sehingga teks hanya akan tampil pada layer background saja.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Oleh karena itu, sebelum menambahkan teks pada desain, pastikan dokumen Anda berada dalam mode <strong>RGB</strong> atau <strong>CMYK</strong> (untuk percetakan). Anda dapat memeriksa dan mengubah mode warna melalui menu <em>Image &gt; Mode</em>.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Pemilihan mode warna yang tepat sejak awal akan menghindari masalah kompatibilitas layer dan memastikan fleksibilitas editing.
+            </p>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Kegagalan Akibat Tidak Memahami Layer</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang siswa membuat poster dengan Photoshop. Ia menempatkan semua elemen (foto, teks, background, ornamen) dalam satu layer yang sama. Saat klien meminta revisi—mengganti foto utama—siswa tersebut harus mengulang seluruh pekerjaan dari awal karena tidak bisa memisahkan elemen-elemen yang sudah menyatu. Waktu terbuang sia-sia, klien kecewa.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Kesalahannya: Ia tidak memanfaatkan fitur <strong>multi-layer</strong>. Jika setiap elemen ditempatkan pada layer terpisah, revisi akan sangat mudah—cukup ganti layer foto, elemen lain tetap utuh.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Selalu gunakan multi-layer sejak awal proyek. Layer adalah "asuransi" terhadap revisi dan fleksibilitas editing.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Berilah <strong>nama yang bermakna</strong> pada setiap layer (misalnya "Background", "Foto Utama", "Teks Judul") agar mudah diidentifikasi, terutama pada proyek dengan puluhan layer.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>grup layer</strong> (Create a new set) untuk mengelompokkan layer yang berkaitan, misalnya semua layer teks dalam satu grup, semua layer ornamen dalam grup lain.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu simpan file master dalam format <strong>.PSD</strong> sebelum di-export ke format final (.JPG/.PNG/.PDF).</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Hafalkan <strong>shortcut keyboard</strong> penting: Ctrl+N (file baru), Ctrl+O (buka file), Ctrl+S (simpan), Ctrl+J (duplicate layer), Ctrl+T (free transform).</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk desain percetakan, pastikan dokumen menggunakan mode <strong>CMYK</strong> dan resolusi minimal <strong>300 DPI</strong> sejak awal pembuatan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Jangan langsung <em>flatten image</em> atau <em>merge layer</em> kecuali file sudah final. Flattening akan menyatukan semua layer dan menghilangkan fleksibilitas editing.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Penguasaan dasar citra bitmap dan antarmuka Adobe Photoshop adalah gerbang menuju dunia desain grafis berbasis pixel. Pemahaman bahwa bitmap tersusun dari pixel dan bergantung pada resolusi memberikan landasan penting dalam menentukan kualitas akhir karya. Penguasaan komponen antarmuka (Title Bar, Menu Bar, Option Bar, Active Image Area, Tool Box, Palet) serta konsep Layer dan teknik multi-layer akan membekali siswa dengan keterampilan teknis yang solid untuk menghasilkan karya bitmap yang profesional, fleksibel, dan siap cetak.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Adobe Systems. (2007). <em>Adobe Photoshop CS3 Official Documentation</em>. San Jose.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="11.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 11: Efek Vektor
+            </a>
+            <a href="13.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 13: Teknik Masking <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 12</h2>
+                <p class="text-gray-400 mt-2">Materi: Konsep citra bitmap, antarmuka Photoshop, dan manajemen layer.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">1. Citra bitmap dibentuk oleh sekumpulan titik yang disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Vektor</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Pixel (picture element)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Node</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Anchor point</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">2. Perangkat lunak yang dikhususkan untuk pengeditan foto/gambar dan pembuatan efek bitmap adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. CorelDraw</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Adobe Illustrator</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Adobe Photoshop</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Macromedia Freehand</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">3. Komponen area kerja Photoshop yang berisi perintah utama seperti membuka file, menyimpan file, dan filter adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Menu Bar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Option Bar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Tool Box</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Palet</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Berikut yang BUKAN merupakan komponen utama area kerja Photoshop adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Title Bar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Active Image Area</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Tool Box</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Page Navigator</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">5. Layer dalam Photoshop didefinisikan sebagai...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Alat untuk memberi warna pada objek</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Lapisan transparan yang saling bertumpuk antara satu dengan yang lain sehingga membentuk gambar baru</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Perintah untuk menggabungkan objek vektor</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Tool untuk membuat seleksi area</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">6. Shortcut keyboard untuk membuat file baru di Photoshop adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Ctrl + O</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Ctrl + S</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Ctrl + N</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Ctrl + P</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">7. Segitiga kecil yang terdapat di sebelah tool pada Tool Box menandakan bahwa...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Tool tersebut memiliki sub tool dengan fungsi yang hampir sama</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Tool tersebut tidak dapat digunakan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Tool tersebut sudah diaktifkan</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Tool tersebut hanya untuk mode CMYK</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Layer type (teks) TIDAK akan muncul sebagai layer baru saat menggunakan mode...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. RGB</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. CMYK</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Grayscale</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Multichannel, bitmap, atau indexed color</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">9. Dalam multi-layer, gambar yang berada pada layer atas akan...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Selalu transparan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Menutupi tumpukan gambar yang berada di bawahnya</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Otomatis menyatu dengan layer di bawahnya</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Dihapus secara otomatis</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">10. Untuk desain percetakan profesional, mode warna dan resolusi yang HARUS digunakan sejak awal pembuatan dokumen adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. RGB, 72 DPI</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Grayscale, 150 DPI</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. CMYK, 300 DPI</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Indexed Color, 96 DPI</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan perbedaan mendasar antara citra bitmap dan citra vektor dari segi dasar penyusun, resolusi, ukuran file, format file, dan penggunaan idealnya! Mengapa keduanya tetap dibutuhkan dalam desain grafis percetakan?</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Sebutkan dan jelaskan enam komponen utama area kerja Adobe Photoshop CS3 (Title Bar, Menu Bar, Option Bar, Active Image Area, Tool Box, Palet) beserta fungsi masing-masing!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Apa yang dimaksud dengan Layer dalam Photoshop? Jelaskan prinsip dasar layer dan mengapa penggunaan multi-layer sangat penting dalam proses editing bitmap!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Jelaskan langkah-langkah menggabungkan beberapa gambar menggunakan teknik multi-layer dalam Photoshop! Sebutkan minimal 7 langkah secara sistematis beserta shortcut keyboard yang digunakan!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Seorang siswa membuat poster dengan semua elemen (foto, teks, background, ornamen) dalam satu layer yang sama. Saat klien meminta revisi untuk mengganti foto utama, siswa harus mengulang seluruh pekerjaan. Analisis kesalahan yang dilakukan dan jelaskan solusi yang benar menggunakan prinsip multi-layer!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'b', q2: 'c', q3: 'a', q4: 'd', q5: 'b',
+            q6: 'c', q7: 'a', q8: 'd', q9: 'b', q10: 'c'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 12 - Dasar Citra Bitmap\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan12_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 12 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 12 (Dasar Citra Bitmap):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

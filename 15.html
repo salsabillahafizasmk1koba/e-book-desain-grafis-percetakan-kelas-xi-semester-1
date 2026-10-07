@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 15: Proyek Desain Brosur - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 15</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB IX - PERTEMUAN 15</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Proyek <span class="gold-gradient-text">Desain Brosur</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menerapkan seluruh kompetensi desain grafis percetakan dalam sebuah proyek komprehensif—mulai dari pengaturan dokumen profesional (A5, bleed 3mm, CMYK, 300 DPI), manipulasi foto dengan masking dan filter, tipografi hierarkis, hingga integrasi elemen vektor dan bitmap—menghasilkan brosur siap cetak yang memadukan estetika dan fungsi komunikasi visual.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="14.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 14
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Brosur adalah salah satu media cetak paling fundamental dalam desain grafis percetakan. Ia memadukan <strong>estetika visual</strong> dengan <strong>fungsi komunikasi</strong>—menyampaikan informasi produk, jasa, atau acara dalam format yang ringkas, menarik, dan profesional. Dalam era digital, brosur tetap relevan karena sifatnya yang tangible (dapat disentuh), mudah didistribusikan, dan memberikan kesan premium ketika dicetak dengan kualitas tinggi.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Pertemuan ini merupakan <strong>puncak dari seluruh pembelajaran semester</strong>. Siswa akan mengaplikasikan seluruh kompetensi yang telah dikuasai—mulai dari dasar nirmana, tipografi, sketsa, ilustrasi, perspektif, pengolahan vektor (CorelDraw), pengolahan bitmap (Photoshop), hingga efek-efek visual—dalam sebuah proyek komprehensif: <strong>membuat brosur travel profesional</strong> siap cetak. Proyek ini akan menguji kemampuan teknis, kreativitas, dan pemahaman terhadap standar industri percetakan.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Bleed:</strong> Area tambahan (biasanya 3mm) di luar batas potong dokumen yang memastikan desain "meluap" hingga tepi kertas setelah dipotong, menghindari tepi putih yang tidak diinginkan.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>CMYK:</strong> Mode warna subtractive (Cyan, Magenta, Yellow, Key/Black) yang wajib digunakan untuk desain percetakan agar hasil cetak sesuai dengan tampilan di layar.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Resolusi 300 DPI:</strong> Standar resolusi untuk cetak berkualitas tinggi. Lebih rendah akan menghasilkan gambar pecah; lebih tinggi hanya memperlambat proses tanpa peningkatan kualitas signifikan.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Integrasi Vektor-Bitmap:</strong> Brosur profesional memadukan kekuatan vektor (logo, ikon, teks) dengan bitmap (foto, tekstur) untuk hasil optimal.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Visual Hierarchy:</strong> Pengaturan ukuran, warna, dan posisi elemen untuk mengarahkan mata pembaca melalui informasi secara berurutan.</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Standar Profesional Desain Brosur</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Brosur yang siap cetak harus memenuhi standar teknis industri. Berikut adalah parameter teknis yang wajib diperhatikan:
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Parameter Teknis Brosur Profesional</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-2 text-luxury-gold">Parameter</th>
+                                    <th class="text-left py-2 text-luxury-gold">Standar</th>
+                                    <th class="text-left py-2 text-luxury-gold">Alasan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-300">
+                                <tr class="border-b border-gray-800"><td class="py-2">Ukuran Kertas</td><td>A5 (216×154 mm)</td><td>Ukuran standar yang nyaman dipegang dan didistribusikan</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Bleed</td><td>3 mm di setiap tepi</td><td>Menghindari tepi putih setelah pemotongan</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Mode Warna</td><td>CMYK</td><td>Kompatibel dengan proses cetak offset/digital</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Resolusi</td><td>300 DPI/PPI</td><td>Standar kualitas cetak profesional</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Format File</td><td>.PSD (master), .PDF (cetak)</td><td>.PSD mempertahankan layer, .PDF universal untuk percetakan</td></tr>
+                                <tr><td class="py-2">Margin Aman</td><td>5 mm dari tepi potong</td><td>Mencegah teks/elemen penting terpotong</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Prinsip Desain Brosur Efektif</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Keterbacaan (Readability):</strong> Teks harus mudah dibaca—gunakan kontras warna yang cukup, ukuran font minimal 9pt untuk body text, dan leading yang nyaman.</li>
+                        <li>▸ <strong>Hirarki Visual:</strong> Judul utama harus paling menonjol, diikuti sub-judul, lalu body text. Gunakan ukuran, warna, dan posisi untuk menciptakan hirarki.</li>
+                        <li>▸ <strong>White Space:</strong> Ruang kosong tidak boleh diabaikan—ia memberikan "napas" pada desain dan meningkatkan keterbacaan.</li>
+                        <li>▸ <strong>Konsistensi Branding:</strong> Gunakan palet warna, tipografi, dan gaya visual yang konsisten dengan identitas brand.</li>
+                        <li>▸ <strong>Call to Action (CTA):</strong> Brosur harus memiliki elemen yang mendorong pembaca untuk bertindak—misalnya nomor telepon, website, atau QR code.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Langkah-Langkah Proyek -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Workflow Proyek Brosur Travel</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Berikut adalah workflow komprehensif untuk membuat brosur travel profesional menggunakan Adobe Photoshop, berdasarkan tutorial dari modul:
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Fase 1: Pengaturan Dokumen</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Buat dokumen baru di Photoshop dengan dimensi <strong>216×154 mm</strong> (ukuran A5)</li>
+                        <li>Atur <strong>Mode Warna: CMYK</strong> dan <strong>Resolusi: 300 Pixel/Inch</strong></li>
+                        <li>Buat panduan (guides) untuk <strong>bleed area 3mm</strong> di setiap tepi menggunakan Move Tool (V) + Shift, tarik dari penggaris</li>
+                        <li>Buat layer baru (Shift+Cmd+N), isi dengan warna putih sebagai background</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Fase 2: Background & Elemen Dasar</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Tambahkan <strong>Gradient Overlay</strong> pada layer background melalui Layer Style Panel</li>
+                        <li>Gunakan <strong>Rectangle Tool (U)</strong> untuk membuat elemen bentuk dasar (misalnya 216×56 mm)</li>
+                        <li>Isi dengan warna solid (misalnya Dark Brown C=49 M=74 Y=80 K=70)</li>
+                        <li>Gunakan <strong>Pen Tool (P)</strong> dan <strong>Direct Selection Tool (A)</strong> untuk memodifikasi bentuk menjadi kurva Bezier yang elegan</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Fase 3: Integrasi Foto</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Import foto menggunakan <strong>File &gt; Place Embedded</strong></li>
+                        <li>Posisikan foto menggunakan <strong>Move Tool (V)</strong></li>
+                        <li>Buat <strong>Rectangle Tool (U)</strong> dengan ukuran yang sesuai, pilih opsi <strong>Mask</strong> di panel untuk membuat vektor mask</li>
+                        <li>Gunakan <strong>Pen Tool (P)</strong> dan <strong>Direct Selection Tool (A)</strong> untuk menyesuaikan mask menjadi bentuk melengkung</li>
+                        <li>Terapkan <strong>Filter &gt; Blur &gt; Gaussian Blur</strong> (Radius 6) pada Smart Filters mask</li>
+                        <li>Gunakan <strong>Gradient Tool (G)</strong> untuk memudarkan mask dari kiri ke kanan</li>
+                        <li>Tambahkan <strong>Layer Mask</strong> baru, gunakan <strong>Brush Tool (B)</strong> untuk memperhalus transisi</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Fase 4: Penyesuaian Warna & Efek</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Buat <strong>Brightness/Contrast Adjustment Layer</strong> (Brightness 40, Contrast 10)</li>
+                        <li>Klik kanan pada Adjustment Layer &gt; <strong>Create Clipping Mask</strong> agar hanya berlaku pada foto</li>
+                        <li>Buat <strong>Solid Color</strong> untuk elemen dekoratif (misalnya Coklat C=30 M=80 Y=100 K=30)</li>
+                        <li>Tambahkan <strong>Ellipse (U)</strong> dengan efek <strong>Drop Shadow</strong> (Opacity 14%, Distance 5px, Size 15px)</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Fase 5: Tipografi & Informasi</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Gunakan <strong>Type Tool (T)</strong> untuk menambahkan teks dengan hirarki yang jelas</li>
+                        <li>Judul utama: 36pt, Sub-judul: 18pt, Body text: 11-13pt</li>
+                        <li>Atur <strong>Character Tracking</strong> dan <strong>Leading</strong> untuk kenyamanan membaca</li>
+                        <li>Import logo vektor (.AI) menggunakan <strong>File &gt; Place Embedded</strong></li>
+                        <li>Tambahkan <strong>Drop Shadow</strong> pada logo (Opacity 11%, Distance 3px, Size 16px)</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Fase 6: Elemen Dekoratif & Finishing</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Tambahkan ikon vektor dari file .AI menggunakan <strong>Place Embedded</strong></li>
+                        <li>Gunakan <strong>Pen Tool (P)</strong> untuk membuat elemen dekoratif (misalnya arah peta dengan dashed line)</li>
+                        <li>Atur <strong>Stroke Options</strong>: Dashed, Caps Round, Dash 3, Gap 3</li>
+                        <li>Buat pin peta dengan <strong>Ellipse (U)</strong> + <strong>Pen Tool (P)</strong> + <strong>Direct Selection Tool (A)</strong> untuk mengubah anchor point</li>
+                        <li>Tambahkan <strong>Drop Shadow</strong> pada pin untuk efek 3D</li>
+                        <li>Simpan file master dalam format <strong>.PSD</strong>, export ke <strong>.PDF</strong> untuk percetakan</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrasi Vektor-Bitmap -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Integrasi Vektor & Bitmap dalam Brosur</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Brosur profesional memadukan kekuatan kedua jenis gambar:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-bezier-curve mr-2"></i> Elemen Vektor</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>▸ Logo perusahaan</li>
+                            <li>▸ Ikon (kalender, globe, pin peta)</li>
+                            <li>▸ Bentuk dekoratif (kurva Bezier)</li>
+                            <li>▸ Teks (Type Tool)</li>
+                            <li>▸ Garis dan stroke</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 italic mt-2">Keunggulan: Tetap tajam pada ukuran apa pun, ukuran file kecil</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-image mr-2"></i> Elemen Bitmap</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>▸ Foto destinasi wisata</li>
+                            <li>▸ Tekstur background</li>
+                            <li>▸ Efek blur dan filter</li>
+                            <li>▸ Gradient dan shading</li>
+                            <li>▸ Manipulasi foto</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 italic mt-2">Keunggulan: Detail tinggi, cocok untuk foto realistis</p>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Mengapa Integrasi Penting?</h4>
+                    <p class="text-sm">Brosur yang hanya menggunakan bitmap akan kehilangan ketajaman pada elemen teks dan logo saat dicetak dalam ukuran besar. Sebaliknya, brosur yang hanya menggunakan vektor tidak dapat menampilkan foto realistis. Integrasi keduanya memberikan hasil optimal: teks dan logo tetap tajam, foto tetap detail dan hidup.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Brosur yang Gagal di Percetakan</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang siswa membuat brosur promosi travel dengan Photoshop. Ia menggunakan mode RGB, resolusi 72 DPI, dan tidak menambahkan bleed. Saat brosur dicetak di percetakan digital, hasilnya mengecewakan: warna terlihat kusam (karena RGB tidak cocok untuk CMYK), foto pecah (karena resolusi rendah), dan tepi brosur memiliki garis putih tipis (karena tidak ada bleed). Klien menolak dan meminta revisi total.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Siswa harus mengulang dari awal: mengubah mode ke CMYK, meningkatkan resolusi ke 300 DPI, menambahkan bleed 3mm, dan menyesuaikan semua elemen. Waktu terbuang sia-sia, klien kecewa, dan reputasi siswa terganggu.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Pengaturan teknis sejak awal (CMYK, 300 DPI, bleed) adalah fondasi yang tidak bisa ditawar dalam desain percetakan. Kesalahan di tahap ini akan berakibat fatal pada hasil akhir.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu mulai dokumen baru dengan <strong>CMYK, 300 DPI, dan bleed 3mm</strong>—jangan menunda pengaturan ini hingga akhir proyek.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>nama layer yang bermakna</strong> (misalnya "Background", "Foto Utama", "Judul") untuk memudahkan editing dan kolaborasi.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Simpan file master dalam format <strong>.PSD</strong> dengan semua layer tetap utuh. Export ke <strong>.PDF</strong> hanya saat file sudah final dan siap cetak.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Clipping Mask</strong> untuk menerapkan efek hanya pada area tertentu—ini adalah teknik profesional yang menghemat waktu dan memberikan hasil presisi.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk elemen yang harus diskalakan (logo, ikon), SELALU gunakan <strong>vektor</strong>. Untuk foto dan tekstur, gunakan <strong>bitmap</strong> dengan resolusi minimal 300 DPI.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Sebelum mengirim ke percetakan, <strong>konsultasikan spesifikasi teknis</strong> dengan pihak percetakan—setiap percetakan mungkin memiliki preferensi berbeda (misalnya jenis PDF, profil warna, dll.).</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Buat <strong>dummy/mockup</strong> brosur dengan mencetak di kertas biasa terlebih dahulu untuk memeriksa tata letak, keterbacaan, dan proporsi sebelum cetak final.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Proyek desain brosur merupakan puncak dari seluruh pembelajaran desain grafis percetakan semester ini. Melalui proyek ini, siswa mengaplikasikan seluruh kompetensi—mulai dari dasar nirmana, tipografi, sketsa, ilustrasi, perspektif, pengolahan vektor (CorelDraw), pengolahan bitmap (Photoshop), hingga efek-efek visual—dalam sebuah karya komprehensif yang siap cetak. Penguasaan standar teknis (CMYK, 300 DPI, bleed), integrasi vektor-bitmap, prinsip desain (hirarki visual, keterbacaan, white space), serta workflow profesional akan membekali siswa dengan keterampilan yang dibutuhkan untuk menghasilkan brosur yang tidak hanya estetis, tetapi juga komunikatif dan siap untuk industri percetakan.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Ambrose, L., & Harris, P. (2009). <em>Layout: The Basics in Graphic Design</em>. Lausanne: AVA Publishing.</li>
+                <li>Adobe Systems. (2007). <em>Adobe Photoshop CS3 Official Documentation: Print Design</em>. San Jose.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="14.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 14: Efek Bitmap
+            </a>
+            <a href="16.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Ujian Akhir Semester <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 15</h2>
+                <p class="text-gray-400 mt-2">Materi: Proyek desain brosur profesional (standar teknis, workflow, integrasi vektor-bitmap).</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">1. Ukuran standar brosur A5 yang digunakan dalam proyek adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. 210×297 mm</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. 148×210 mm</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. 216×154 mm</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. 297×420 mm</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">2. Bleed area yang ditambahkan di setiap tepi dokumen brosur adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. 1 mm</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. 3 mm</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. 5 mm</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. 10 mm</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">3. Mode warna yang WAJIB digunakan untuk desain brosur siap cetak adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. CMYK</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. RGB</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Grayscale</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Indexed Color</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">4. Resolusi standar untuk cetak brosur berkualitas tinggi adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. 72 DPI</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. 150 DPI</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. 300 DPI</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. 600 DPI</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">5. Tool yang digunakan untuk membuat kurva Bezier pada elemen brosur adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Rectangle Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Ellipse Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Move Tool</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Pen Tool</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">6. Fitur yang digunakan untuk membuat gambar menyesuaikan dengan bentuk objek di bawahnya adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Layer Mask</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Clipping Mask</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Quick Mask</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Type Mask</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">7. Adjustment Layer yang bersifat non-destruktif (tidak mengubah pixel asli) digunakan untuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Menyesuaikan warna gambar tanpa merusak aslinya</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Menghapus pixel secara permanen</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Menggabungkan semua layer menjadi satu</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Mengubah mode warna dokumen</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">8. Format file yang digunakan untuk menyimpan file master brosur dengan semua layer tetap utuh adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. .JPG</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. .PNG</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. .PSD</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. .GIF</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">9. Dalam konteks brosur, elemen yang PALING TEPAT dibuat dengan vektor adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Foto destinasi wisata</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Tekstur background</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Efek blur pada foto</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Logo perusahaan dan ikon</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">10. Fungsi utama dari bleed area dalam desain brosur adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Menambah ruang untuk teks tambahan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Memastikan desain meluap hingga tepi kertas setelah dipotong, menghindari tepi putih</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Membuat brosur lebih besar dari ukuran standar</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Menambahkan efek dekoratif di tepi brosur</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan parameter teknis standar untuk desain brosur siap cetak (ukuran, bleed, mode warna, resolusi, format file, margin aman)! Mengapa setiap parameter ini penting dan apa akibat jika diabaikan?</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Jelaskan workflow lengkap pembuatan brosur travel profesional dalam 6 fase (Pengaturan Dokumen, Background & Elemen Dasar, Integrasi Foto, Penyesuaian Warna & Efek, Tipografi & Informasi, Elemen Dekoratif & Finishing)! Sebutkan tool-tool Photoshop yang digunakan di setiap fase!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Bandingkan perbedaan antara elemen vektor dan elemen bitmap dalam konteks desain brosur! Berikan masing-masing 5 contoh elemen yang paling tepat dibuat dengan vektor dan 5 contoh yang paling tepat dibuat dengan bitmap! Jelaskan alasannya!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Apa yang dimaksud dengan Clipping Mask dan Adjustment Layer? Jelaskan bagaimana keduanya digunakan dalam proyek brosur travel untuk menciptakan efek fokus selektif pada foto! Berikan contoh langkah-langkah penerapannya!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Seorang siswa membuat brosur dengan mode RGB, resolusi 72 DPI, dan tanpa bleed. Saat dicetak, hasilnya mengecewakan: warna kusam, foto pecah, dan tepi putih muncul. Analisis kesalahan yang dilakukan dan jelaskan solusi yang benar berdasarkan standar industri percetakan!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'c', q2: 'b', q3: 'a', q4: 'c', q5: 'd',
+            q6: 'b', q7: 'a', q8: 'c', q9: 'd', q10: 'b'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 15 - Proyek Desain Brosur\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan15_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 15 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 15 (Proyek Desain Brosur):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

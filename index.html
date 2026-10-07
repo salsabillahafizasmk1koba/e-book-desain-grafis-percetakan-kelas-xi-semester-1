@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desain Grafis Percetakan - Kelas XI Semester 1</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display (Luxury Serif) & Montserrat (Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Luxury Effects */
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -5px rgba(212, 175, 55, 0.15);
+        }
+        .hero-bg {
+            background-image: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                              radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/90 backdrop-blur-md border-b border-luxury-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-2xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-sm font-sans font-light ml-2">Kelas XI</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#beranda" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300">Beranda</a>
+                    <a href="#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300">Penulis</a>
+                    <a href="#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300">Materi Pertemuan</a>
+                    <a href="#kontak" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative min-h-screen flex items-center justify-center hero-bg pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            
+            <!-- Book Cover Area -->
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end relative">
+                <div class="relative w-72 md:w-96 aspect-[3/4] gold-border-gradient rounded-lg shadow-2xl shadow-luxury-gold/10 p-2">
+                    <!-- GANTI GAMBAR DI SINI: Pastikan file bernama cover-buku.png -->
+                    <img src="cover-buku.png" alt="Cover Buku Desain Grafis Percetakan" 
+                         class="w-full h-full object-cover rounded bg-luxury-gray"
+                         onerror="this.src='https://placehold.co/600x800/1a1a1a/d4af37?text=Cover+Buku+(cover-buku.png)'">
+                </div>
+                <!-- Decorative element -->
+                <div class="absolute -bottom-6 -left-6 w-24 h-24 border-l-2 border-b-2 border-luxury-gold/50 rounded-bl-3xl"></div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="w-full md:w-1/2 text-center md:text-left space-y-6">
+                <p class="text-luxury-gold uppercase tracking-[0.3em] text-sm font-semibold">Modul Pembelajaran Multimedia</p>
+                <h1 class="font-serif text-5xl md:text-7xl font-bold text-white leading-tight">
+                    Desain Grafis <br>
+                    <span class="gold-gradient-text">Percetakan</span>
+                </h1>
+                <p class="text-xl text-gray-400 font-light">Kelas XI Semester 1</p>
+                <p class="text-gray-500 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Sebuah panduan komprehensif yang menggabungkan teori nirmana, tipografi, ilustrasi, hingga penguasaan perangkat lunak vektor dan bitmap untuk mencetak karya desain yang profesional.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#materi" class="px-8 py-4 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all duration-300 uppercase tracking-wider text-sm">
+                        Mulai Belajar
+                    </a>
+                    <a href="#penulis" class="px-8 py-4 border border-luxury-gold/50 text-luxury-gold font-semibold rounded-sm hover:bg-luxury-gold/10 transition-all duration-300 uppercase tracking-wider text-sm">
+                        Tentang Penulis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section id="penulis" class="py-24 bg-luxury-dark border-y border-luxury-gold/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 relative">
+                    <div class="absolute inset-0 bg-luxury-gold/20 rounded-full blur-xl"></div>
+                    <!-- GANTI GAMBAR DI SINI: Pastikan file bernama photo-penulis.png -->
+                    <img src="photo-penulis.png" alt="Salsabilla Hafiza, S.Ds" 
+                         class="relative w-full h-full object-cover rounded-full border-2 border-luxury-gold/50 p-1 bg-luxury-gray"
+                         onerror="this.src='https://placehold.co/400x400/1a1a1a/d4af37?text=Photo+Penulis'">
+                </>
+                <div class="text-center md:text-left space-y-4">
+                    <h2 class="font-serif text-3xl md:text-4xl text-white">Salsabilla Hafiza, S.Ds</h2>
+                    <p class="text-luxury-gold uppercase tracking-widest text-sm font-medium">Penulis & Pengajar</p>
+                    <p class="text-gray-400 leading-relaxed max-w-2xl">
+                        Berdedikasi dalam membimbing generasi muda di bidang desain komunikasi visual. Modul ini disusun sebagai panduan praktis dan teoretis untuk siswa SMK, mengintegrasikan estetika seni rupa dengan teknologi desain digital terkini.
+                    </p>
+                    <div class="pt-4 flex items-center justify-center md:justify-start gap-6 text-sm text-gray-500">
+                        <span class="flex items-center gap-2"><i class="fas fa-school text-luxury-gold"></i> SMK Negeri 1 Koto Balingka</span>
+                        <span class="flex items-center gap-2"><i class="fas fa-envelope text-luxury-gold"></i> salsabillahafiza120@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum / Meetings Section -->
+    <section id="materi" class="py-24 bg-luxury-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-luxury-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4">Kurikulum Terstruktur</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-white font-bold">Peta Pertemuan Pembelajaran</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">9 Bab Utama yang dijabarkan menjadi 16 pertemuan intensif, mencakup teori dasar hingga proyek akhir.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Pertemuan 1 -->
+                <a href="1.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-shapes text-6xl text-luxury-gold"></i>
+                    </div>
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 01</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Dasar Desain & Nirmana</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Elemen titik, garis, bidang, dan penerapan dasar nirmana dwimatra.</p>
+                </a>
+
+                <!-- Pertemuan 2 -->
+                <a href="2.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 02</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Elemen Visual Lanjut</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Gempal (volume), tekstur (nyata & semu), dan dimensi warna (hue, value, chroma).</p>
+                </a>
+
+                <!-- Pertemuan 3 -->
+                <a href="3.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 03</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Pengantar Tipografi</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Sejarah perkembangan tipografi dari pictograph hingga era komputerisasi.</p>
+                </a>
+
+                <!-- Pertemuan 4 -->
+                <a href="4.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 04</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Klasifikasi Huruf</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Mengenal karakter font: Roman, Egyptian, Sans Serif, Script, dan Miscellaneous.</p>
+                </a>
+
+                <!-- Pertemuan 5 -->
+                <a href="5.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 05</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Gambar Sketsa</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Prinsip, peralatan, dan teknik menggambar sketsa bentuk, makhluk hidup, dan suasana.</p>
+                </a>
+
+                <!-- Pertemuan 6 -->
+                <a href="6.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 06</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Gambar Ilustrasi</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Teknik ilustrasi manual (arsir, blok, pointilis) dan pengantar ilustrasi digital.</p>
+                </a>
+
+                <!-- Pertemuan 7 -->
+                <a href="7.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 07</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Bentuk & Perspektif</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Prinsip proporsi, komposisi, dan teknik perspektif 1, 2, dan 3 titik hilang.</p>
+                </a>
+
+                <!-- Pertemuan 8 (UTS) -->
+                <a href="8.html" target="_blank" class="card-hover group block bg-luxury-gray/50 p-6 rounded-sm border-2 border-luxury-gold relative overflow-hidden">
+                    <div class="absolute inset-0 bg-luxury-gold/5"></div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-bold text-luxury-black bg-luxury-gold px-2 py-1 rounded-sm uppercase tracking-wider">Evaluasi</span>
+                        <h3 class="font-serif text-2xl text-luxury-gold mt-3 mb-2 font-bold">UJIAN TENGAH SEMESTER</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed">Evaluasi komprehensif materi Bab I s.d Bab IV (Nirmana hingga Perspektif).</p>
+                    </div>
+                </a>
+
+                <!-- Pertemuan 9 -->
+                <a href="9.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 09</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Dasar Citra Vektor</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Pengenalan CorelDraw, toolbox, color palette, dan manajemen halaman.</p>
+                </a>
+
+                <!-- Pertemuan 10 -->
+                <a href="10.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 10</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Manipulasi Objek Vektor</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Teknik penggabungan (Weld, Combine) dan pemotongan (Trim, Simplify, Intersect).</p>
+                </a>
+
+                <!-- Pertemuan 11 -->
+                <a href="11.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 11</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Efek Gambar Vektor</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Penerapan efek Blend, Contour, Drop Shadow, Envelope, Extrude, dan PowerClip.</p>
+                </a>
+
+                <!-- Pertemuan 12 -->
+                <a href="12.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 12</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Dasar Citra Bitmap</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Pengenalan Adobe Photoshop, area kerja, layer, dan manajemen multi-layer.</p>
+                </a>
+
+                <!-- Pertemuan 13 -->
+                <a href="13.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 13</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Teknik Masking</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Penggabungan gambar menggunakan Selection Tool, Layer Masking, dan Quick Masking.</p>
+                </a>
+
+                <!-- Pertemuan 14 -->
+                <a href="14.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 14</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Efek Gambar Bitmap</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Penerapan Filter, Clipping Mask, Adjustment Layer, dan Layer Styles pada teks/objek.</p>
+                </a>
+
+                <!-- Pertemuan 15 -->
+                <a href="15.html" target="_blank" class="card-hover group block bg-luxury-dark p-6 rounded-sm border border-gray-800 hover:border-luxury-gold/50 relative overflow-hidden">
+                    <span class="text-xs font-bold text-luxury-gold uppercase tracking-wider">Pertemuan 15</span>
+                    <h3 class="font-serif text-xl text-white mt-2 mb-3 group-hover:text-luxury-gold transition-colors">Proyek Desain Brosur</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Evaluasi dan praktik pembuatan desain brosur cetak (CMYK, 300 DPI, Bleed) menggabungkan vektor & bitmap.</p>
+                </a>
+
+                <!-- Pertemuan 16 (UAS) -->
+                <a href="16.html" target="_blank" class="card-hover group block bg-luxury-gray/50 p-6 rounded-sm border-2 border-luxury-gold relative overflow-hidden">
+                    <div class="absolute inset-0 bg-luxury-gold/5"></div>
+                    <div class="relative z-10">
+                        <span class="text-xs font-bold text-luxury-black bg-luxury-gold px-2 py-1 rounded-sm uppercase tracking-wider">Evaluasi Akhir</span>
+                        <h3 class="font-serif text-2xl text-luxury-gold mt-3 mb-2 font-bold">UJIAN AKHIR SEMESTER</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed">Evaluasi komprehensif materi Bab V s.d Bab IX (Pengolahan Vektor, Bitmap, dan Proyek).</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-luxury-dark border-t border-luxury-gold/20 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <span class="font-serif text-2xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-sm font-sans font-light ml-2">Kelas XI</span></span>
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed">
+                        Modul pembelajaran Desain Grafis Percetakan yang dirancang untuk membekali siswa dengan keterampilan teknis dan kepekaan artistik di dunia multimedia.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-4">Informasi Penulis</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-user-tie mt-1 text-luxury-gold"></i>
+                            <span>Salsabilla Hafiza, S.Ds</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-school mt-1 text-luxury-gold"></i>
+                            <span>SMK Negeri 1 Koto Balingka</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope mt-1 text-luxury-gold"></i>
+                            <a href="mailto:salsabillahafiza120@gmail.com" class="hover:text-luxury-gold transition-colors">salsabillahafiza120@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#beranda" class="hover:text-luxury-gold transition-colors">Beranda</a></li>
+                        <li><a href="#penulis" class="hover:text-luxury-gold transition-colors">Profil Penulis</a></li>
+                        <li><a href="#materi" class="hover:text-luxury-gold transition-colors">Daftar Pertemuan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-600 text-xs uppercase tracking-widest">
+                    &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

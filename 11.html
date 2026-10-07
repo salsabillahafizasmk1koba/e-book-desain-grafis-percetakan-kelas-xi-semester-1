@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 11: Efek Gambar Vektor - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 11</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB VI - PERTEMUAN 11</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Efek <span class="gold-gradient-text">Gambar Vektor</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai pemberian efek pada objek vektor dalam CorelDraw—mulai dari efek dasar (Blend, Contour, Distort, Drop Shadow, Envelope, Extrude, Transparency) hingga efek lanjutan (Outer Glow dan Powerclip)—sebagai keterampilan esensial untuk menciptakan desain grafis yang dinamis, profesional, dan siap cetak.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="10.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 10
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Setelah menguasai manipulasi objek vektor melalui perintah shaping (Combine, Weld, Trim, Simplify, Intersect), langkah selanjutnya dalam desain grafis profesional adalah memberikan <strong>efek visual</strong> pada objek tersebut. CorelDraw menyediakan serangkaian efek bawaan yang powerful untuk mengubah objek vektor biasa menjadi karya desain yang dinamis, menarik, dan bermakna.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Efek-efek ini bukan sekadar hiasan—mereka adalah alat komunikasi visual. Efek <em>Drop Shadow</em> menciptakan kedalaman, <em>Extrude</em> memberikan dimensi 3D, <em>Blend</em> menciptakan transisi halus antar objek, dan <em>Powerclip</em> memungkinkan kita menempatkan gambar di dalam bentuk tertentu. Penguasaan efek-efek ini akan membuka pintu bagi siswa untuk menciptakan desain logo, poster, kemasan, dan branding yang tidak hanya estetis, tetapi juga komunikatif dan profesional.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Efek Vektor:</strong> Fitur dalam CorelDraw yang memungkinkan modifikasi visual objek vektor secara non-destruktif (dapat diubah atau dihapus kapan saja).</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Property Bar:</strong> Panel dinamis yang menampilkan opsi pengaturan spesifik untuk tool atau efek yang sedang aktif.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Break Apart (Ctrl+K):</strong> Perintah untuk memisahkan efek dari objek asli, sehingga efek menjadi objek independen yang dapat diedit.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Non-Destruktif:</strong> Karakteristik efek vektor di mana objek asli tetap utuh dan efek dapat dimodifikasi atau dihapus kapan saja tanpa merusak objek sumber.</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis: Efek Dasar -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tujuh Efek Dasar Objek dalam CorelDraw</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    CorelDraw menyediakan tujuh efek dasar yang menjadi fondasi pengolahan visual objek vektor. Setiap efek memiliki fungsi, karakteristik, dan kasus penggunaan yang berbeda. Memahami perbedaan ini adalah kunci untuk bekerja secara efisien dan kreatif.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-infinity mr-2"></i> 1. Efek Blend</h4>
+                        <p class="text-sm">Efek yang mengisi ruang kosong dengan bentuk 3D antara dua objek yang telah dibuat. Menciptakan transisi halus dari satu bentuk ke bentuk lain.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Logo dengan gradasi bentuk, transisi warna antar objek.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-layer-group mr-2"></i> 2. Efek Contour</h4>
+                        <p class="text-sm">Efek yang memberi bagian-bagian yang sama dengan ukuran atau resolusi yang sebanding di dalam objek asli. Menciptakan lapisan konsentris.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Efek bayangan berlapis, stiker dengan outline tebal.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-wave-square mr-2"></i> 3. Efek Distort</h4>
+                        <p class="text-sm">Efek yang dapat merubah bentuk objek asli menjadi abstrak dengan perintah yang diinginkan. Memanipulasi node objek secara dinamis.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Efek gelombang, distorsi artistik, logo kreatif.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-cloud mr-2"></i> 4. Efek Drop Shadow</h4>
+                        <p class="text-sm">Efek untuk memberi bayangan pada objek yang dapat diatur arah datang cahayanya. Menciptakan ilusi kedalaman dan elevasi.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Tombol UI, kartu nama, poster dengan elemen timbul.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-expand-arrows-alt mr-2"></i> 5. Efek Envelope</h4>
+                        <p class="text-sm">Efek yang memungkinkan penyuntingan objek yang telah dibuat, fungsinya hampir sama dengan Shape Tool. Memanipulasi bentuk dengan node envelope.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Teks melengkung, bentuk organik, logo dinamis.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-cube mr-2"></i> 6. Efek Extrude</h4>
+                        <p class="text-sm">Efek yang dapat membuat satu objek menjadi 3D dengan dimensi yang dapat diatur sendiri. Menciptakan ilusi kedalaman dan volume.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Logo 3D, ikon timbul, tipografi dimensional.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-eye-slash mr-2"></i> 7. Efek Transparency</h4>
+                        <p class="text-sm">Efek yang merubah objek menjadi transparan dengan berbagai mode transparansi (uniform, fountain, pattern, texture).</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Kasus: Overlay, watermark, efek kaca, blending visual.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Efek Outer Glow -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Efek Outer Glow: Cahaya di Luar Objek</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Outer Glow</strong> adalah efek yang menciptakan cahaya atau pendaran di sekeliling objek, memberikan kesan objek bersinar atau berpendar. Efek ini sangat populer dalam desain poster, logo, dan branding untuk menciptakan kesan dramatis dan menarik perhatian.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Langkah-Langkah Pembuatan Outer Glow</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Siapkan gambar vektor (misalnya menggunakan <em>Pen Tool</em> atau <em>Bezier Tool</em>)</li>
+                        <li>Beri warna hitam pada objek kurva dan background kotak</li>
+                        <li>Seleksi objek kurva, pada menu <em>Toolbox</em> pilih <strong>Drop Shadow Tool</strong></li>
+                        <li>Pada <em>Property Bar</em>, klik drop down <em>Preset list</em> pilih <strong>Small Glow</strong></li>
+                        <li>Hasilnya akan berwarna gradasi putih (default)</li>
+                        <li>Untuk mengganti warna, ubah <em>Shadow color</em> pada Property Bar (misalnya orange)</li>
+                        <li>Untuk memperhalus efek: <em>Break Apart</em> (Ctrl+K) → menu <em>Bitmaps</em> → <em>Convert To Bitmap</em> → <em>Bitmaps &gt; Blur &gt; Gaussian Blur</em> → atur <em>Radius</em></li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Mengapa Outer Glow Efektif?</h4>
+                    <p class="text-sm">Outer glow menciptakan kontras visual yang kuat antara objek dan background, menarik perhatian mata secara langsung. Efek ini sering digunakan dalam desain neon, poster konser, logo teknologi, dan elemen branding yang ingin menonjolkan kesan modern, futuristik, atau dramatis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Efek Powerclip -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Efek Powerclip: Gambar di Dalam Bentuk</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Powerclip</strong> adalah fitur powerful dalam CorelDraw yang memungkinkan kita menempatkan gambar atau objek di dalam bentuk tertentu. Gambar akan otomatis terpotong mengikuti kontur bentuk frame, menciptakan efek "gambar dalam bentuk" yang sangat populer dalam desain poster, brosur, dan kemasan, dan branding.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Langkah-Langkah Pembuatan Powerclip</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Buat tulisan atau bentuk yang akan dijadikan frame menggunakan <em>Text Tool</em> atau <em>Shape Tool</em></li>
+                        <li>Siapkan gambar yang akan dimasukkan (import atau drag ke area kerja)</li>
+                        <li>Klik gambar, masuk ke menu <strong>Object &gt; Powerclip &gt; Place Inside Frame</strong></li>
+                        <li>Arahkan panah (kursor) ke bentuk/tulisan yang akan dijadikan frame</li>
+                        <li>Klik pada frame tersebut—gambar akan otomatis terpotong mengikuti bentuk frame</li>
+                        <li>Untuk mengedit posisi gambar di dalam frame: klik kanan pada objek Powerclip → pilih <em>Edit Powerclip</em> → atur posisi gambar → klik <em>Stop Editing</em></li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-magic mr-2"></i> Aplikasi Kreatif Powerclip</h4>
+                    <ul class="text-sm space-y-2 ml-4">
+                        <li>▸ <strong>Teks dengan tekstur:</strong> Masukkan foto atau tekstur di dalam teks besar untuk menciptakan tipografi visual</li>
+                        <li>▸ <strong>Logo dengan gambar:</strong> Tempatkan foto produk di dalam bentuk logo</li>
+                        <li>▸ <strong>Frame artistik:</strong> Buat bingkai foto dengan bentuk organik atau geometris yang unik</li>
+                        <li>▸ <strong>Infografis:</strong> Masukkan data visual ke dalam bentuk ikon atau simbol</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Logo Teknologi dengan Efek Extrude dan Drop Shadow</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Sebuah startup teknologi meminta desainer membuat logo yang mencerminkan inovasi, kedalaman, dan profesionalisme. Desainer menggunakan <em>Extrude</em> untuk memberikan dimensi 3D pada huruf logo, menciptakan kesan "timbul" dan modern. Kemudian, <em>Drop Shadow</em> ditambahkan untuk memperkuat ilusi kedalaman dan membuat logo tampak "melayang" di atas background. Hasilnya, logo terlihat profesional, dinamis, dan siap digunakan pada berbagai media—dari kartu nama hingga billboard.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Kombinasi efek yang tepat (Extrude + Drop Shadow) dapat mengubah logo 2D yang datar menjadi karya 3D yang memukau, memperkuat identitas brand secara signifikan.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu gunakan efek secara <strong>non-destruktif</strong>—jangan langsung melakukan <em>Break Apart</em> kecuali memang diperlukan. Efek yang masih aktif dapat diedit kapan saja.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Drop Shadow</strong> dengan bijak—bayangan yang terlalu kuat atau terlalu gelap dapat membuat desain terlihat "kotor". Atur <em>opacity</em> dan <em>feather</em> untuk hasil yang natural.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk efek <strong>Extrude</strong>, pertimbangkan arah cahaya konsisten di seluruh desain. Jika cahaya datang dari kiri atas, semua efek 3D harus mengikuti arah yang sama.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Powerclip</strong> untuk menciptakan tipografi visual yang menarik—foto atau tekstur di dalam teks besar dapat menjadi focal point yang powerful.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Jangan gunakan terlalu banyak efek dalam satu desain—<strong>less is more</strong>. Pilih 2-3 efek yang paling memperkuat pesan visual.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Sebelum mencetak, pastikan efek yang digunakan <strong>kompatibel dengan CMYK</strong>. Beberapa efek (terutama yang melibatkan transparansi kompleks) dapat menghasilkan hasil cetak yang tidak terduga.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Penguasaan efek gambar vektor dalam CorelDraw adalah langkah penting menuju desain grafis profesional. Tujuh efek dasar (Blend, Contour, Distort, Drop Shadow, Envelope, Extrude, Transparency) bersama dengan efek lanjutan (Outer Glow dan Powerclip) memberikan desainer alat yang powerful untuk menciptakan karya yang dinamis, komunikatif, dan estetis. Setiap efek memiliki fungsi spesifik—Blend untuk transisi, Contour untuk lapisan konsentris, Distort untuk manipulasi bentuk, Drop Shadow untuk kedalaman, Envelope untuk manipulasi node, Extrude untuk dimensi 3D, Transparency untuk efek tembus pandang, Outer Glow untuk pendaran cahaya, dan Powerclip untuk menempatkan gambar dalam bentuk. Penguasaan kombinasi efek-efek ini akan membuka pintu bagi siswa untuk menciptakan desain logo, poster, kemasan, dan branding yang tidak hanya indah, tetapi juga bermakna dan profesional.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Corel Corporation. (2023). <em>CorelDraw Official Documentation: Effects</em>. Ottawa.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="10.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 10: Manipulasi Objek
+            </a>
+            <a href="12.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 12: Dasar Citra Bitmap <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 11</h2>
+                <p class="text-gray-400 mt-2">Materi: Efek gambar vektor (Blend, Contour, Distort, Drop Shadow, Envelope, Extrude, Transparency, Outer Glow, Powerclip).</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">1. Efek yang mengisi ruang kosong dengan bentuk 3D antara dua objek yang telah dibuat disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Blend</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Contour</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Extrude</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Envelope</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">2. Efek yang memberi bagian-bagian yang sama dengan ukuran sebanding di dalam objek asli (lapisan konsentris) disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. Blend</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Contour</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Distort</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Transparency</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">3. Efek yang dapat merubah bentuk objek asli menjadi abstrak dengan perintah tertentu disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Envelope</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Extrude</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Distort</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Drop Shadow</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Efek untuk memberi bayangan pada objek yang dapat diatur arah datang cahayanya disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Contour</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Blend</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Transparency</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Drop Shadow</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">5. Efek yang memungkinkan penyuntingan objek dengan fungsi hampir sama dengan Shape Tool adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Envelope</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Extrude</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Distort</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Blend</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">6. Efek yang dapat membuat satu objek menjadi 3D dengan dimensi yang dapat diatur sendiri disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Contour</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Extrude</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Drop Shadow</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Transparency</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">7. Efek yang merubah objek menjadi transparan disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Distort</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Envelope</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Transparency</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Blend</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Dalam pembuatan efek Outer Glow, tool yang digunakan pada Toolbox adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Envelope Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Transparency Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Contour Tool</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Drop Shadow Tool</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">9. Fitur untuk menempatkan gambar di dalam bentuk tertentu (frame) sehingga gambar otomatis terpotong mengikuti kontur bentuk disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Powerclip</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Blend</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Extrude</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Contour</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">10. Menu yang digunakan untuk mengakses fitur Powerclip adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Edit &gt; Powerclip &gt; Place Inside Frame</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Object &gt; Powerclip &gt; Place Inside Frame</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Arrange &gt; Powerclip &gt; Place Inside Frame</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. View &gt; Powerclip &gt; Place Inside Frame</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Sebutkan dan jelaskan tujuh efek dasar objek dalam CorelDraw (Blend, Contour, Distort, Drop Shadow, Envelope, Extrude, Transparency)! Berikan masing-masing satu contoh kasus penggunaan!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Jelaskan langkah-langkah pembuatan efek Outer Glow dalam CorelDraw! Mengapa efek Outer Glow efektif untuk menarik perhatian visual?</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Apa yang dimaksud dengan Powerclip? Jelaskan langkah-langkah pembuatan Powerclip dan berikan minimal 3 contoh aplikasi kreatifnya dalam desain grafis!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Bandingkan perbedaan antara efek Extrude dan efek Drop Shadow! Kapan sebaiknya menggunakan Extrude, dan kapan sebaiknya menggunakan Drop Shadow? Berikan contoh kasus untuk masing-masing!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Seorang desainer diminta membuat logo startup teknologi yang harus mencerminkan inovasi dan profesionalisme. Rancanglah kombinasi minimal 3 efek vektor yang akan digunakan untuk menciptakan logo tersebut! Jelaskan alasan pemilihan setiap efek!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'a', q2: 'b', q3: 'c', q4: 'd', q5: 'a',
+            q6: 'b', q7: 'c', q8: 'd', q9: 'a', q10: 'b'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 11 - Efek Gambar Vektor\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan11_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 11 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 11 (Efek Gambar Vektor):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

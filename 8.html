@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS: Desain Grafis Percetakan - DGP Kelas XI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: { black:'#0f0f0f', dark:'#1a1a1a', gold:'#d4af37', goldLight:'#f3e5ab', gray:'#2a2a2a' }
+                    },
+                    fontFamily: { serif:['"Playfair Display"','serif'], sans:['"Montserrat"','sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text { background:linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fbf5b7,#aa771c); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        @media print {
+            body{background:#fff;color:#000}
+            .no-print{display:none!important}
+            .bg-luxury-black,.bg-luxury-dark{background:#fff!important;color:#000!important}
+            .text-gray-300,.text-gray-400,.text-gray-500{color:#333!important}
+            .text-white{color:#000!important}
+            .gold-gradient-text{color:#b38728!important;background:none!important;-webkit-text-fill-color:#b38728!important}
+            .border-luxury-gold\/20,.border-luxury-gold\/50,.border-luxury-gold\/30{border-color:#ccc!important}
+            .bg-luxury-gray\/30{background:#f5f5f5!important}
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+<!-- NAV -->
+<nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="flex-shrink-0 flex items-center">
+                <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">UTS</span></span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                <a href="7.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-arrow-left mr-1"></i> Pertemuan 7</a>
+                <a href="9.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors">Pertemuan 9 <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<header class="pt-28 pb-10 bg-luxury-dark border-b border-luxury-gold/20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="inline-block bg-luxury-gold text-luxury-black text-xs font-bold uppercase tracking-[0.3em] px-4 py-1 rounded-sm mb-4">Evaluasi Tengah Semester</span>
+        <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Ujian <span class="gold-gradient-text">Tengah Semester</span></h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-2">Desain Grafis Percetakan — Kelas XI Semester 1</p>
+        <p class="text-gray-500 text-sm">Materi: Pertemuan 1 s.d. 7 &nbsp;|&nbsp; 40 Soal &nbsp;|&nbsp; 100 Poin &nbsp;|&nbsp; Waktu: 90 Menit</p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3 text-xs text-gray-400 no-print">
+            <span class="bg-luxury-gray/50 px-3 py-1 rounded border border-gray-700">PG: 20 soal × 2 poin = 40</span>
+            <span class="bg-luxury-gray/50 px-3 py-1 rounded border border-gray-700">PG Kompleks: 10 × 3 = 30</span>
+            <span class="bg-luxury-gray/50 px-3 py-1 rounded border border-gray-700">B/S: 5 × 2 = 10</span>
+            <span class="bg-luxury-gray/50 px-3 py-1 rounded border border-gray-700">Jodoh: 5 × 4 = 20</span>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-4xl mx-auto px-4 py-12">
+<form id="quizForm" class="space-y-10">
+
+<!-- DATA SISWA -->
+<div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/20">
+    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+        </div>
+        <div>
+            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+        </div>
+        <div>
+            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+        </div>
+        <div>
+            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                <option value="">Pilih Kelas</option>
+                <option value="XI MM 1">XI Multimedia 1</option>
+                <option value="XI MM 2">XI Multimedia 2</option>
+                <option value="XI MM 3">XI Multimedia 3</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== BAGIAN A: PILIHAN GANDA (20 soal) ==================== -->
+<div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/20">
+    <h3 class="font-serif text-xl text-luxury-gold mb-1"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda</h3>
+    <p class="text-xs text-gray-500 mb-1">20 soal × 2 poin = 40 poin &nbsp;|&nbsp; Pilih SATU jawaban yang paling tepat.</p>
+    <p class="text-xs text-yellow-500 mb-4"><i class="fas fa-star mr-1"></i> Soal bertanda <span class="bg-red-900/50 text-red-300 px-1 rounded text-[10px]">HOTS</span> memerlukan analisis tingkat tinggi.</p>
+
+    <div class="space-y-5 text-gray-300 text-sm">
+
+        <!-- PG 1 (LOTS) -->
+        <div><p class="font-semibold mb-2">1. Elemen visual terkecil dalam nirmana yang tidak berdimensi tetapi dapat berkembang menjadi garis atau bidang disebut...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg1" value="a" class="accent-luxury-gold"><span>a. Garis</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg1" value="b" class="accent-luxury-gold"><span>b. Titik</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg1" value="c" class="accent-luxury-gold"><span>c. Bidang</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg1" value="d" class="accent-luxury-gold"><span>d. Gempal</span></label></div>
+
+        <!-- PG 2 (LOTS) -->
+        <div><p class="font-semibold mb-2">2. Bidang yang dibatasi oleh garis lengkung-lengkung bebas dan menyerupai bentuk alam disebut bidang...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg2" value="a" class="accent-luxury-gold"><span>a. Geometris</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg2" value="b" class="accent-luxury-gold"><span>b. Bersudut bebas</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg2" value="c" class="accent-luxury-gold"><span>c. Organik</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg2" value="d" class="accent-luxury-gold"><span>d. Maya</span></label></div>
+
+        <!-- PG 3 (LOTS) -->
+        <div><p class="font-semibold mb-2">3. Tekstur yang terlihat kasar secara visual, namun ketika diraba permukaannya terasa halus disebut...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg3" value="a" class="accent-luxury-gold"><span>a. Tekstur kasar nyata</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg3" value="b" class="accent-luxury-gold"><span>b. Tekstur kasar semu</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg3" value="c" class="accent-luxury-gold"><span>c. Tekstur alami seadanya</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg3" value="d" class="accent-luxury-gold"><span>d. Tekstur ekspresi</span></label></div>
+
+        <!-- PG 4 (LOTS) -->
+        <div><p class="font-semibold mb-2">4. Dimensi warna yang menunjukkan tingkat terang-gelapnya suatu warna (tonalitas) disebut...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg4" value="a" class="accent-luxury-gold"><span>a. Hue</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg4" value="b" class="accent-luxury-gold"><span>b. Chroma</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg4" value="c" class="accent-luxury-gold"><span>c. Value</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg4" value="d" class="accent-luxury-gold"><span>d. Saturation</span></label></div>
+
+        <!-- PG 5 (LOTS) -->
+        <div><p class="font-semibold mb-2">5. Dalam sistem warna subtractive untuk percetakan, warna primer yang digunakan adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg5" value="a" class="accent-luxury-gold"><span>a. Merah, Hijau, Biru (RGB)</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg5" value="b" class="accent-luxury-gold"><span>b. Merah, Kuning, Biru</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg5" value="c" class="accent-luxury-gold"><span>c. Hitam, Putih, Abu-abu</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg5" value="d" class="accent-luxury-gold"><span>d. Cyan, Magenta, Yellow (CMY)</span></label></div>
+
+        <!-- PG 6 (LOTS) -->
+        <div><p class="font-semibold mb-2">6. Sejarah perkembangan tipografi dimulai dari penggunaan...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg6" value="a" class="accent-luxury-gold"><span>a. Pictograph</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg6" value="b" class="accent-luxury-gold"><span>b. Hieroglif</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg6" value="c" class="accent-luxury-gold"><span>c. Huruf Romawi</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg6" value="d" class="accent-luxury-gold"><span>d. Huruf Etruska</span></label></div>
+
+        <!-- PG 7 (LOTS) -->
+        <div><p class="font-semibold mb-2">7. Jenis huruf yang memiliki sirip/kaki/serif berbentuk lancip pada ujungnya dan berkesan klasik, anggun, feminin adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg7" value="a" class="accent-luxury-gold"><span>a. Sans Serif</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg7" value="b" class="accent-luxury-gold"><span>b. Egyptian</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg7" value="c" class="accent-luxury-gold"><span>c. Roman</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg7" value="d" class="accent-luxury-gold"><span>d. Script</span></label></div>
+
+        <!-- PG 8 (LOTS) -->
+        <div><p class="font-semibold mb-2">8. Font Arial, Helvetica, Verdana, dan Calibri termasuk dalam klasifikasi huruf...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg8" value="a" class="accent-luxury-gold"><span>a. Roman</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg8" value="b" class="accent-luxury-gold"><span>b. Egyptian</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg8" value="c" class="accent-luxury-gold"><span>c. Script</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg8" value="d" class="accent-luxury-gold"><span>d. Sans Serif</span></label></div>
+
+        <!-- PG 9 (LOTS) -->
+        <div><p class="font-semibold mb-2">9. Sketsa (sketch) secara umum dikenal sebagai...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg9" value="a" class="accent-luxury-gold"><span>a. Lukisan final yang sudah jadi</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg9" value="b" class="accent-luxury-gold"><span>b. Bagan atau rencana bagi sebuah lukisan yang bersifat sementara</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg9" value="c" class="accent-luxury-gold"><span>c. Gambar yang sudah diwarnai secara lengkap</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg9" value="d" class="accent-luxury-gold"><span>d. Foto hasil cetakan komputer</span></label></div>
+
+        <!-- PG 10 (LOTS) -->
+        <div><p class="font-semibold mb-2">10. Teknik memegang pensil yang paling sesuai untuk menghasilkan gambar yang detail adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg10" value="a" class="accent-luxury-gold"><span>a. Menggenggam dengan seluruh jari</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg10" value="b" class="accent-luxury-gold"><span>b. Ibu jari di atas dan 4 jari di bawah</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg10" value="c" class="accent-luxury-gold"><span>c. Menggunakan kepalan tangan penuh</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg10" value="d" class="accent-luxury-gold"><span>d. Seperti menulis</span></label></div>
+
+        <!-- PG 11 (LOTS) -->
+        <div><p class="font-semibold mb-2">11. Kata "ilustrasi" berasal dari bahasa Latin "ilustrare" yang artinya...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg11" value="a" class="accent-luxury-gold"><span>a. Menggambar dengan pensil</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg11" value="b" class="accent-luxury-gold"><span>b. Penampakan, kemuliaan, cahaya, penerangan</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg11" value="c" class="accent-luxury-gold"><span>c. Seni mewarnai gambar</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg11" value="d" class="accent-luxury-gold"><span>d. Teknik mencetak gambar</span></label></div>
+
+        <!-- PG 12 (LOTS) -->
+        <div><p class="font-semibold mb-2">12. Teknik ilustrasi yang hanya menggambar garis luar saja sehingga terkesan datar disebut teknik...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg12" value="a" class="accent-luxury-gold"><span>a. Out line</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg12" value="b" class="accent-luxury-gold"><span>b. Arsir</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg12" value="c" class="accent-luxury-gold"><span>c. Blok</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg12" value="d" class="accent-luxury-gold"><span>d. Siluet</span></label></div>
+
+        <!-- PG 13 (LOTS) -->
+        <div><p class="font-semibold mb-2">13. Bentuk benda yang menyerupai kubus (TV, meja, kulkas, lemari) disebut bentuk...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg13" value="a" class="accent-luxury-gold"><span>a. Kubistis</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg13" value="b" class="accent-luxury-gold"><span>b. Silindris</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg13" value="c" class="accent-luxury-gold"><span>c. Bebas</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg13" value="d" class="accent-luxury-gold"><span>d. Organik</span></label></div>
+
+        <!-- PG 14 (LOTS) -->
+        <div><p class="font-semibold mb-2">14. Titik terjauh dari jangkauan pandang yang selalu terletak pada garis horizon disebut...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg14" value="a" class="accent-luxury-gold"><span>a. Garis horizon</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg14" value="b" class="accent-luxury-gold"><span>b. Titik hilang</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg14" value="c" class="accent-luxury-gold"><span>c. Titik fokus</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg14" value="d" class="accent-luxury-gold"><span>d. Titik pusat</span></label></div>
+
+        <!-- PG 15 (LOTS) -->
+        <div><p class="font-semibold mb-2">15. Bayangan yang ada pada benda itu sendiri karena sinar mengenai benda disebut...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg15" value="a" class="accent-luxury-gold"><span>a. Bayang-bayang awak</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg15" value="b" class="accent-luxury-gold"><span>b. Bayang-bayang langkah</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg15" value="c" class="accent-luxury-gold"><span>c. Bayang-bayang sendiri</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="pg15" value="d" class="accent-luxury-gold"><span>d. Bayang-bayang semu</span></label></div>
+
+        <!-- ===== HOTS ===== -->
+        <div class="border-t border-luxury-gold/20 pt-4 mt-4">
+            <p class="text-xs text-red-400 font-semibold uppercase tracking-wider mb-3"><i class="fas fa-brain mr-1"></i> Soal HOTS (Higher Order Thinking Skills) — Analisis & Evaluasi</p>
+        </div>
+
+        <!-- PG 16 (HOTS) -->
+        <div class="bg-luxury-gray/20 p-4 rounded border border-red-900/30"><p class="font-semibold mb-2">16. <span class="bg-red-900/50 text-red-300 px-1 rounded text-[10px]">HOTS</span> Seorang desainer membuat poster konser musik rock menggunakan font Roman tipis untuk judul utama dan font Script untuk detail acara. Analisis kesalahan utama dalam pemilihan tipografi tersebut adalah...</p>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg16" value="a" class="accent-luxury-gold mt-1"><span>a. Font Script seharusnya digunakan untuk judul utama, bukan untuk detail acara</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg16" value="b" class="accent-luxury-gold mt-1"><span>b. Semua jenis font sebenarnya cocok untuk semua jenis acara, tidak ada kesalahan</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg16" value="c" class="accent-luxury-gold mt-1"><span>c. Font Roman tipis tidak mencerminkan kesan kuat dan energik musik rock; seharusnya menggunakan Egyptian atau Sans Serif tebal untuk judul, dan Script tidak cocok untuk detail kecil karena sulit dibaca</span></label>
+        <label class="flex items-start space-x-2 cursor-pointer"><input type="radio" name="pg16" value="d" class="accent-luxury-gold mt-1"><span>d. Kesalahannya hanya pada ukuran font, bukan pada jenis klasifikasi huruf</span></label></div>
+
+        <!-- PG 17 (HOTS) -->
+        <div class="bg-luxury-gray/20 p-4 rounded border border-red-900/30"><p class="font-semibold mb-2">17. <span class="bg-red-900/50 text-red-300 px-1 rounded text-[10px]">HOTS</span> Sebuah brosur produk kopi premium dicetak dengan mode warna RGB dan hasilnya warna menjadi kusam, tidak sesuai tampilan layar. Evaluasi penyebab utama kegagalan tersebut adalah...</p>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg17" value="a" class="accent-luxury-gold mt-1"><span>a. Printer yang digunakan berkualitas rendah sehingga tidak mampu mencetak warna cerah</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg17" value="b" class="accent-luxury-gold mt-1"><span>b. Mode RGB adalah sistem additive untuk layar cahaya; untuk percetakan seharusnya menggunakan CMYK (subtractive) karena gamut warna tinta lebih sempit</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg17" value="c" class="accent-luxury-gold mt-1"><span>c. Kertas yang digunakan terlalu tebal sehingga tinta tidak meresap dengan baik</span></label>
+        <label class="flex items-start space-x-2 cursor-pointer"><input type="radio" name="pg17" value="d" class="accent-luxury-gold mt-1"><span>d. Resolusi gambar terlalu rendah sehingga warna tidak tercetak dengan akurat</span></label></div>
+
+        <!-- PG 18 (HOTS) -->
+        <div class="bg-luxury-gray/20 p-4 rounded border border-red-900/30"><p class="font-semibold mb-2">18. <span class="bg-red-900/50 text-red-300 px-1 rounded text-[10px]">HOTS</span> Seorang siswa menggambar interior ruangan dengan semua objek berukuran sama meskipun posisinya berjauhan, sehingga ruangan tampak datar. Solusi paling tepat untuk memperbaiki gambar tersebut adalah...</p>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg18" value="a" class="accent-luxury-gold mt-1"><span>a. Menerapkan hukum perspektif: tentukan garis horizon dan titik hilang, lalu perkecil objek yang lebih jauh dan perbesar yang lebih dekat</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg18" value="b" class="accent-luxury-gold mt-1"><span>b. Menambahkan lebih banyak warna pada objek agar terlihat lebih hidup</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg18" value="c" class="accent-luxury-gold mt-1"><span>c. Mengganti semua objek dengan bentuk silindris agar lebih realistis</span></label>
+        <label class="flex items-start space-x-2 cursor-pointer"><input type="radio" name="pg18" value="d" class="accent-luxury-gold mt-1"><span>d. Menggunakan teknik ilustrasi siluet agar kesan datar menjadi artistik</span></label></div>
+
+        <!-- PG 19 (HOTS) -->
+        <div class="bg-luxury-gray/20 p-4 rounded border border-red-900/30"><p class="font-semibold mb-2">19. <span class="bg-red-900/50 text-red-300 px-1 rounded text-[10px]">HOTS</span> Dalam proyek desain kemasan makanan anak-anak, seorang desainer menggabungkan ilustrasi siluet hitam-putih dengan font Miscellaneous penuh ornamen. Evaluasi kesesuaian pendekatan tersebut terhadap target audiens adalah...</p>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg19" value="a" class="accent-luxury-gold mt-1"><span>a. Sangat sesuai karena siluet hitam-putih menarik perhatian anak-anak</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg19" value="b" class="accent-luxury-gold mt-1"><span>b. Cukup sesuai asalkan ornamen font diperbesar</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg19" value="c" class="accent-luxury-gold mt-1"><span>c. Sesuai karena font Miscellaneous memberikan kesan ceria dan ramai</span></label>
+        <label class="flex items-start space-x-2 cursor-pointer"><input type="radio" name="pg19" value="d" class="accent-luxury-gold mt-1"><span>d. Tidak sesuai; anak-anak membutuhkan ilustrasi berwarna cerah dengan corak realis dan font yang mudah dibaca seperti Sans Serif, bukan siluet gelap dan font dekoratif yang sulit dibaca</span></label></div>
+
+        <!-- PG 20 (HOTS) -->
+        <div class="bg-luxury-gray/20 p-4 rounded border border-red-900/30"><p class="font-semibold mb-2">20. <span class="bg-red-900/50 text-red-300 px-1 rounded text-[10px]">HOTS</span> Seorang desainer diminta membuat logo perusahaan teknologi yang harus tetap tajam saat dicetak pada kartu nama maupun billboard. Berdasarkan analisis karakteristik citra digital, jenis gambar dan format yang PALING TEPAT adalah...</p>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg20" value="a" class="accent-luxury-gold mt-1"><span>a. Gambar bitmap (.JPG/.PNG) dengan resolusi 300 DPI agar detail terjaga</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg20" value="b" class="accent-luxury-gold mt-1"><span>b. Gambar vektor (.CDR/.AI/.SVG) karena berbasis persamaan matematis, tidak bergantung resolusi, dan tetap tajam pada ukuran apa pun</span></label>
+        <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="radio" name="pg20" value="c" class="accent-luxury-gold mt-1"><span>c. Kombinasi bitmap dan vektor agar mendapatkan detail foto dan ketajaman garis</span></label>
+        <label class="flex items-start space-x-2 cursor-pointer"><input type="radio" name="pg20" value="d" class="accent-luxury-gold mt-1"><span>d. Gambar bitmap (.PSD) dengan layer terpisah agar mudah diedit</span></label></div>
+
+    </div>
+</div>
+
+<!-- ==================== BAGIAN B: PILIHAN GANDA KOMPLEKS (10 soal) ==================== -->
+<div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/20">
+    <h3 class="font-serif text-xl text-luxury-gold mb-1"><i class="fas fa-check-double mr-2"></i> Bagian B: Pilihan Ganda Kompleks</h3>
+    <p class="text-xs text-gray-500 mb-4">10 soal × 3 poin = 30 poin &nbsp;|&nbsp; Pilih SEMUA jawaban yang benar (bisa lebih dari satu).</p>
+
+    <div class="space-y-5 text-gray-300 text-sm">
+
+        <div><p class="font-semibold mb-2">21. Manakah yang termasuk elemen dasar nirmana? <span class="text-gray-500 text-xs">(Pilih semua yang benar)</span></p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk1" value="a" class="accent-luxury-gold"><span>a. Titik</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk1" value="b" class="accent-luxury-gold"><span>b. Garis</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk1" value="c" class="accent-luxury-gold"><span>c. Bidang</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk1" value="d" class="accent-luxury-gold"><span>d. Gempal</span></label></div>
+
+        <div><p class="font-semibold mb-2">22. Berikut yang termasuk jenis tekstur kasar nyata adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk2" value="a" class="accent-luxury-gold"><span>a. Tekstur alami (kayu, batu, kulit)</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk2" value="b" class="accent-luxury-gold"><span>b. Tekstur alami berubah (kertas dikusutkan, logam dipukuli)</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk2" value="c" class="accent-luxury-gold"><span>c. Tekstur tersusun (pasir, biji-bijian disusun)</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk2" value="d" class="accent-luxury-gold"><span>d. Tekstur mekanik (hasil cetakan komputer)</span></label></div>
+
+        <div><p class="font-semibold mb-2">23. Klasifikasi warna berdasarkan pencampuran warna bahan meliputi...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk3" value="a" class="accent-luxury-gold"><span>a. Warna primer</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk3" value="b" class="accent-luxury-gold"><span>b. Warna sekunder</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk3" value="c" class="accent-luxury-gold"><span>c. Warna tersier</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk3" value="d" class="accent-luxury-gold"><span>d. Warna kuarter</span></label></div>
+
+        <div><p class="font-semibold mb-2">24. Berikut yang termasuk jenis huruf BER-SERIF (memiliki sirip/kaki) adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk4" value="a" class="accent-luxury-gold"><span>a. Roman</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk4" value="b" class="accent-luxury-gold"><span>b. Egyptian</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk4" value="c" class="accent-luxury-gold"><span>c. Sans Serif</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk4" value="d" class="accent-luxury-gold"><span>d. Script</span></label></div>
+
+        <div><p class="font-semibold mb-2">25. Teknik menggambar bentuk yang dapat menghasilkan kesan tiga dimensi (gelap-terang) adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk5" value="a" class="accent-luxury-gold"><span>a. Linear</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk5" value="b" class="accent-luxury-gold"><span>b. Arsir</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk5" value="c" class="accent-luxury-gold"><span>c. Blok</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk5" value="d" class="accent-luxury-gold"><span>d. Dusel</span></label></div>
+
+        <div><p class="font-semibold mb-2">26. Prinsip seni rupa yang perlu diperhatikan dalam menggambar bentuk meliputi...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk6" value="a" class="accent-luxury-gold"><span>a. Perspektif</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk6" value="b" class="accent-luxury-gold"><span>b. Proporsi</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk6" value="c" class="accent-luxury-gold"><span>c. Komposisi</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk6" value="d" class="accent-luxury-gold"><span>d. Gelap-terang (Half-Tone)</span></label></div>
+
+        <div><p class="font-semibold mb-2">27. Berikut yang termasuk teknik ilustrasi manual adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk7" value="a" class="accent-luxury-gold"><span>a. Arsir</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk7" value="b" class="accent-luxury-gold"><span>b. Blok</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk7" value="c" class="accent-luxury-gold"><span>c. Siluet</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk7" value="d" class="accent-luxury-gold"><span>d. Scraperboard</span></label></div>
+
+        <div><p class="font-semibold mb-2">28. Sudut pandang dalam gambar perspektif meliputi...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk8" value="a" class="accent-luxury-gold"><span>a. Sudut pandang mata burung</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk8" value="b" class="accent-luxury-gold"><span>b. Sudut pandang normal</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk8" value="c" class="accent-luxury-gold"><span>c. Sudut pandang mata kucing</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk8" value="d" class="accent-luxury-gold"><span>d. Sudut pandang bawah tanah</span></label></div>
+
+        <div><p class="font-semibold mb-2">29. Berikut yang termasuk contoh benda berbentuk silindris adalah...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk9" value="a" class="accent-luxury-gold"><span>a. Gelas</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk9" value="b" class="accent-luxury-gold"><span>b. Botol</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk9" value="c" class="accent-luxury-gold"><span>c. Bola</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk9" value="d" class="accent-luxury-gold"><span>d. Lemari</span></label></div>
+
+        <div><p class="font-semibold mb-2">30. Langkah-langkah utama dalam membuat gambar ilustrasi meliputi...</p>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk10" value="a" class="accent-luxury-gold"><span>a. Gagasan</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk10" value="b" class="accent-luxury-gold"><span>b. Sketsa</span></label>
+        <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="checkbox" name="pgk10" value="c" class="accent-luxury-gold"><span>c. Pewarnaan</span></label>
+        <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="pgk10" value="d" class="accent-luxury-gold"><span>d. Pencetakan</span></label></div>
+
+    </div>
+</div>
+
+<!-- ==================== BAGIAN C: BENAR / SALAH (5 soal) ==================== -->
+<div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/20">
+    <h3 class="font-serif text-xl text-luxury-gold mb-1"><i class="fas fa-toggle-on mr-2"></i> Bagian C: Benar atau Salah</h3>
+    <p class="text-xs text-gray-500 mb-4">5 soal × 2 poin = 10 poin &nbsp;|&nbsp; Tentukan apakah pernyataan berikut Benar atau Salah.</p>
+
+    <div class="space-y-4 text-gray-300 text-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2"><p class="flex-1 font-semibold">31. Susunan repetisi pada gempal dengan raut yang sama menghasilkan kesan harmonis, dinamis, dan enak dinikmati.</p>
+        <div class="flex gap-3"><label class="cursor-pointer"><input type="radio" name="bs1" value="B" class="accent-green-500 mr-1">Benar</label><label class="cursor-pointer"><input type="radio" name="bs1" value="S" class="accent-red-500 mr-1">Salah</label></div></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2"><p class="flex-1 font-semibold">32. Font Script sangat cocok digunakan untuk teks paragraf panjang dalam buku karena bentuknya yang mengalir dan mudah dibaca.</p>
+        <div class="flex gap-3"><label class="cursor-pointer"><input type="radio" name="bs2" value="B" class="accent-green-500 mr-1">Benar</label><label class="cursor-pointer"><input type="radio" name="bs2" value="S" class="accent-red-500 mr-1">Salah</label></div></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2"><p class="flex-1 font-semibold">33. Dalam sistem warna additive (RGB), pencampuran ketiga warna primer (Red, Green, Blue) dengan jumlah yang sama menghasilkan warna putih.</p>
+        <div class="flex gap-3"><label class="cursor-pointer"><input type="radio" name="bs3" value="B" class="accent-green-500 mr-1">Benar</label><label class="cursor-pointer"><input type="radio" name="bs3" value="S" class="accent-red-500 mr-1">Salah</label></div></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2"><p class="flex-1 font-semibold">34. Teknik pointilis menentukan gelap terang objek dengan menyusun titik-titik; semakin banyak titik dalam satu area, semakin kuat kesan gelapnya.</p>
+        <div class="flex gap-3"><label class="cursor-pointer"><input type="radio" name="bs4" value="B" class="accent-green-500 mr-1">Benar</label><label class="cursor-pointer"><input type="radio" name="bs4" value="S" class="accent-red-500 mr-1">Salah</label></div></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2"><p class="flex-1 font-semibold">35. Pada sudut pandang mata kucing dalam gambar perspektif, garis horizon berada di bagian atas bidang gambar.</p>
+        <div class="flex gap-3"><label class="cursor-pointer"><input type="radio" name="bs5" value="B" class="accent-green-500 mr-1">Benar</label><label class="cursor-pointer"><input type="radio" name="bs5" value="S" class="accent-red-500 mr-1">Salah</label></div></div>
+    </div>
+</div>
+
+<!-- ==================== BAGIAN D: MENJODOHKAN (5 soal) ==================== -->
+<div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/20">
+    <h3 class="font-serif text-xl text-luxury-gold mb-1"><i class="fas fa-arrows-alt-h mr-2"></i> Bagian D: Menjodohkan</h3>
+    <p class="text-xs text-gray-500 mb-4">5 soal × 4 poin = 20 poin &nbsp;|&nbsp; Pasangkan jenis huruf di kolom kiri dengan ciri khas yang tepat di kolom kanan.</p>
+
+    <div class="space-y-3 text-gray-300 text-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center">
+            <p class="font-semibold">36. Roman</p>
+            <select name="jodoh1" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                <option value="">— Pilih Ciri Khas —</option>
+                <option value="a">Sirip lancip, kesan klasik dan anggun</option>
+                <option value="b">Sirip persegi, kesan kokoh dan kuat</option>
+                <option value="c">Tanpa sirip, kesan modern dan efisien</option>
+                <option value="d">Goresan tangan, kesan akrab dan personal</option>
+                <option value="e">Ornamen dekoratif, kesan artistik</option>
+            </select>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center">
+            <p class="font-semibold">37. Egyptian</p>
+            <select name="jodoh2" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                <option value="">— Pilih Ciri Khas —</option>
+                <option value="a">Sirip lancip, kesan klasik dan anggun</option>
+                <option value="b">Sirip persegi, kesan kokoh dan kuat</option>
+                <option value="c">Tanpa sirip, kesan modern dan efisien</option>
+                <option value="d">Goresan tangan, kesan akrab dan personal</option>
+                <option value="e">Ornamen dekoratif, kesan artistik</option>
+            </select>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center">
+            <p class="font-semibold">38. Sans Serif</p>
+            <select name="jodoh3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                <option value="">— Pilih Ciri Khas —</option>
+                <option value="a">Sirip lancip, kesan klasik dan anggun</option>
+                <option value="b">Sirip persegi, kesan kokoh dan kuat</option>
+                <option value="c">Tanpa sirip, kesan modern dan efisien</option>
+                <option value="d">Goresan tangan, kesan akrab dan personal</option>
+                <option value="e">Ornamen dekoratif, kesan artistik</option>
+            </select>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center">
+            <p class="font-semibold">39. Script</p>
+            <select name="jodoh4" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                <option value="">— Pilih Ciri Khas —</option>
+                <option value="a">Sirip lancip, kesan klasik dan anggun</option>
+                <option value="b">Sirip persegi, kesan kokoh dan kuat</option>
+                <option value="c">Tanpa sirip, kesan modern dan efisien</option>
+                <option value="d">Goresan tangan, kesan akrab dan personal</option>
+                <option value="e">Ornamen dekoratif, kesan artistik</option>
+            </select>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center">
+            <p class="font-semibold">40. Miscellaneous</p>
+            <select name="jodoh5" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none">
+                <option value="">— Pilih Ciri Khas —</option>
+                <option value="a">Sirip lancip, kesan klasik dan anggun</option>
+                <option value="b">Sirip persegi, kesan kokoh dan kuat</option>
+                <option value="c">Tanpa sirip, kesan modern dan efisien</option>
+                <option value="d">Goresan tangan, kesan akrab dan personal</option>
+                <option value="e">Ornamen dekoratif, kesan artistik</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- HASIL & TOMBOL -->
+<div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+    <div id="hasilSkor" class="hidden mb-6">
+        <h3 class="font-serif text-2xl text-luxury-gold mb-3">Hasil Ujian Tengah Semester</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-4">
+            <div class="bg-luxury-dark p-3 rounded border border-gray-700">PG<br><span id="skorPG" class="font-bold text-white text-lg">0</span>/40</div>
+            <div class="bg-luxury-dark p-3 rounded border border-gray-700">PG Kompleks<br><span id="skorPGK" class="font-bold text-white text-lg">0</span>/30</div>
+            <div class="bg-luxury-dark p-3 rounded border border-gray-700">Benar/Salah<br><span id="skorBS" class="font-bold text-white text-lg">0</span>/10</div>
+            <div class="bg-luxury-dark p-3 rounded border border-gray-700">Menjodohkan<br><span id="skorJodoh" class="font-bold text-white text-lg">0</span>/20</div>
+        </div>
+        <div class="text-2xl font-bold text-luxury-gold">TOTAL: <span id="skorTotal" class="text-3xl">0</span>/100</div>
+        <p id="predikat" class="text-sm mt-2 text-gray-400"></p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+            <i class="fas fa-paper-plane mr-2"></i> Kumpulkan Jawaban & Lihat Hasil
+        </button>
+    </div>
+    <div class="hidden flex flex-wrap justify-center gap-4 no-print mt-4" id="resultButtons">
+        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm"><i class="fas fa-file-pdf mr-2"></i> Unduh PDF</button>
+        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm"><i class="fas fa-file-csv mr-2"></i> Unduh Skor</button>
+        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm"><i class="fas fa-envelope mr-2"></i> Kirim Email</button>
+        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm"><i class="fas fa-redo mr-2"></i> Mulai Ulang</button>
+    </div>
+</div>
+
+</form>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+    <p class="text-gray-600 text-xs uppercase tracking-widest">&copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka.</p>
+</footer>
+
+<script>
+// ===== KUNCI JAWABAN =====
+const kunciPG = {pg1:'b',pg2:'c',pg3:'b',pg4:'c',pg5:'d',pg6:'a',pg7:'c',pg8:'d',pg9:'b',pg10:'d',pg11:'b',pg12:'a',pg13:'a',pg14:'b',pg15:'a',pg16:'c',pg17:'b',pg18:'a',pg19:'d',pg20:'b'};
+const kunciPGK = {pgk1:['a','b','c','d'],pgk2:['a','b','c'],pgk3:['a','b','c','d'],pgk4:['a','b'],pgk5:['b','d'],pgk6:['a','b','c','d'],pgk7:['a','b','c','d'],pgk8:['a','b','c'],pgk9:['a','b','c'],pgk10:['a','b','c']};
+const kunciBS = {bs1:'S',bs2:'S',bs3:'B',bs4:'B',bs5:'S'};
+const kunciJodoh = {jodoh1:'a',jodoh2:'b',jodoh3:'c',jodoh4:'d',jodoh5:'e'};
+
+function arrEq(a,b){return a.length===b.length&&a.sort().every((v,i)=>v===b.sort()[i])}
+
+function hitungSkor(){
+    const nama=document.getElementById('nama').value.trim();
+    const nis=document.getElementById('nis').value.trim();
+    const tanggal=document.getElementById('tanggal').value;
+    const kelas=document.getElementById('kelas').value;
+    if(!nama||!nis||!tanggal||!kelas){alert("Mohon lengkapi semua Data Siswa!");return}
+
+    // PG
+    let sPG=0,allPG=true;
+    for(let i=1;i<=20;i++){const s=document.querySelector(`input[name="pg${i}"]:checked`);if(!s){allPG=false;break}if(s.value===kunciPG[`pg${i}`])sPG+=2}
+    if(!allPG){alert("Mohon lengkapi semua 20 soal Pilihan Ganda!");return}
+
+    // PG Kompleks
+    let sPGK=0,allPGK=true;
+    for(let i=1;i<=10;i++){const cbs=document.querySelectorAll(`input[name="pgk${i}"]:checked`);if(cbs.length===0){allPGK=false;break}const vals=Array.from(cbs).map(c=>c.value);if(arrEq(vals,kunciPGK[`pgk${i}`]))sPGK+=3}
+    if(!allPGK){alert("Mohon lengkapi semua 10 soal Pilihan Ganda Kompleks!");return}
+
+    // BS
+    let sBS=0,allBS=true;
+    for(let i=1;i<=5;i++){const s=document.querySelector(`input[name="bs${i}"]:checked`);if(!s){allBS=false;break}if(s.value===kunciBS[`bs${i}`])sBS+=2}
+    if(!allBS){alert("Mohon lengkapi semua 5 soal Benar/Salah!");return}
+
+    // Jodoh
+    let sJodoh=0,allJodoh=true;
+    for(let i=1;i<=5;i++){const s=document.querySelector(`select[name="jodoh${i}"]`).value;if(!s){allJodoh=false;break}if(s===kunciJodoh[`jodoh${i}`])sJodoh+=4}
+    if(!allJodoh){alert("Mohon lengkapi semua 5 soal Menjodohkan!");return}
+
+    const total=sPG+sPGK+sBS+sJodoh;
+    let predikat='';
+    if(total>=90)predikat='🏆 Sangat Baik (A)';
+    else if(total>=80)predikat='🌟 Baik (B)';
+    else if(total>=70)predikat='👍 Cukup (C)';
+    else if(total>=60)predikat='📖 Kurang (D)';
+    else predikat='⚠️ Sangat Kurang (E) — Perlu Remedial';
+
+    document.getElementById('skorPG').innerText=sPG;
+    document.getElementById('skorPGK').innerText=sPGK;
+    document.getElementById('skorBS').innerText=sBS;
+    document.getElementById('skorJodoh').innerText=sJodoh;
+    document.getElementById('skorTotal').innerText=total;
+    document.getElementById('predikat').innerText=predikat;
+    document.getElementById('hasilSkor').classList.remove('hidden');
+    document.getElementById('actionButtons').classList.add('hidden');
+    document.getElementById('resultButtons').classList.remove('hidden');
+    document.getElementById('hasilSkor').scrollIntoView({behavior:'smooth',block:'center'});
+    document.querySelectorAll('#quizForm input,#quizForm select').forEach(i=>i.disabled=true);
+}
+
+function unduhPDF(){window.print()}
+
+function unduhSkor(){
+    const n=document.getElementById('nama').value,ni=document.getElementById('nis').value,k=document.getElementById('kelas').value,t=document.getElementById('skorTotal').innerText;
+    const d=`HASIL UTS - DESAIN GRAFIS PERCETAKAN\n========================================\nNama : ${n}\nNIS  : ${ni}\nKelas: ${k}\nTanggal: ${new Date().toLocaleDateString('id-ID')}\n----------------------------------------\nPG (20×2)       : ${document.getElementById('skorPG').innerText}/40\nPG Kompleks(10×3): ${document.getElementById('skorPGK').innerText}/30\nBenar/Salah(5×2) : ${document.getElementById('skorBS').innerText}/10\nMenjodohkan(5×4) : ${document.getElementById('skorJodoh').innerText}/20\nTOTAL            : ${t}/100\n========================================`;
+    const b=new Blob([d],{type:'text/plain'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`UTS_DGP_${ni}_${n.replace(/\s+/g,'_')}.txt`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+}
+
+function kirimEmail(){
+    const n=document.getElementById('nama').value,ni=document.getElementById('nis').value,k=document.getElementById('kelas').value,t=document.getElementById('skorTotal').innerText;
+    const s=`Hasil UTS DGP - ${n} (${ni})`,b=`Yth. Ibu Salsabilla Hafiza, S.Ds,\n\nHasil UTS saya:\nNama: ${n}\nNIS: ${ni}\nKelas: ${k}\nNilai Total: ${t}/100\n\nTerima kasih.`;
+    window.location.href=`mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent(b)}`;
+}
+
+function mulaiUlang(){
+    if(confirm("Yakin ingin mengulang? Semua jawaban akan dihapus.")){
+        document.getElementById('quizForm').reset();
+        document.getElementById('hasilSkor').classList.add('hidden');
+        document.getElementById('actionButtons').classList.remove('hidden');
+        document.getElementById('resultButtons').classList.add('hidden');
+        document.querySelectorAll('#quizForm input,#quizForm select').forEach(i=>i.disabled=false);
+        window.scrollTo({top:0,behavior:'smooth'});
+    }
+}
+
+document.getElementById('tanggal').valueAsDate=new Date();
+</script>
+</body>
+</html>

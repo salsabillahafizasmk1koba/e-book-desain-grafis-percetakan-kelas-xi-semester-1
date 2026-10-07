@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 13: Teknik Masking - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 13</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB VII (LANJUTAN) - PERTEMUAN 13</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Teknik <span class="gold-gradient-text">Masking</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai teknik seleksi dan masking dalam Adobe Photoshop—mulai dari Selection Tool (Magic Wand, Lasso, Marquee), Layer Masking dengan Gradient Tool, hingga Quick Masking dengan Brush Tool dan Rubylith—sebagai fondasi penggabungan gambar bitmap yang halus, profesional, dan non-destruktif untuk kebutuhan desain grafis percetakan.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="12.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 12
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Dalam penggabungan gambar bitmap, seringkali kita tidak ingin menggabungkan seluruh gambar secara utuh—kita hanya ingin mengambil <strong>bagian tertentu</strong> dari sebuah gambar dan menempatkannya ke gambar lain dengan transisi yang halus dan natural. Di sinilah teknik <strong>seleksi dan masking</strong> menjadi sangat krusial.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Photoshop menyediakan berbagai teknik seleksi dan masking yang powerful: <em>Selection Tool</em> untuk memilih area tertentu, <em>Layer Masking</em> untuk menyembunyikan atau menampilkan bagian layer secara non-destruktif, dan <em>Quick Masking</em> untuk seleksi presisi dengan bantuan brush. Penguasaan ketiga teknik ini akan membuka pintu bagi siswa untuk menciptakan komposisi gambar yang mulus, profesional, dan siap cetak—tanpa merusak gambar asli.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Selection:</strong> Proses memilih area tertentu dari gambar untuk diedit, dipindahkan, atau digabungkan dengan gambar lain.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Masking:</strong> Teknik menyembunyikan atau menampilkan bagian tertentu dari layer tanpa menghapus pixel asli—bersifat <em>non-destruktif</em>.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Rubylith:</strong> Lapisan berwarna merah semi-transparan yang muncul saat Quick Mask Mode aktif, menandakan area yang TIDAK terseleksi.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Non-Destruktif:</strong> Karakteristik editing di mana gambar asli tidak rusak—mask dapat diubah atau dihapus kapan saja tanpa mempengaruhi pixel asli.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Hitam = Sembunyikan, Putih = Tampilkan:</strong> Prinsip dasar masking—area hitam pada mask akan menyembunyikan gambar, area putih akan menampilkannya.</li>
+            </ul>
+        </section>
+
+        <!-- Selection Tool -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Selection Tool: Memilih Area Gambar</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Sebelum melakukan masking, seringkali kita perlu <strong>menyeleksi</strong> area tertentu dari gambar terlebih dahulu. Photoshop menyediakan berbagai tool seleksi yang disesuaikan dengan karakteristik gambar:
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-magic mr-2"></i> Magic Wand Tool</h4>
+                        <p class="text-sm">Menyeleksi area berdasarkan <strong>kesamaan warna</strong>. Klik pada satu pixel, dan tool akan otomatis menyeleksi semua pixel di sekitarnya yang memiliki warna serupa. Cocok untuk background berwarna solid.</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Shortcut: W</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-draw-polygon mr-2"></i> Lasso Tool</h4>
+                        <p class="text-sm">Menyeleksi area dengan <strong>menggambar bebas</strong> menggunakan mouse. Ada tiga varian: Lasso (bebas), Polygonal Lasso (garis lurus), dan Magnetic Lasso (menempel pada tepi objek).</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Shortcut: L</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-vector-square mr-2"></i> Marquee Tool</h4>
+                        <p class="text-sm">Menyeleksi area dengan <strong>bentuk geometris</strong>: rectangular (kotak), elliptical (oval), single row (1 pixel tinggi), single column (1 pixel lebar).</p>
+                        <p class="text-xs text-gray-500 italic mt-2">Shortcut: M</p>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Kapan Menggunakan Tool Seleksi yang Tepat?</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Magic Wand:</strong> Background berwarna solid atau kontras tinggi dengan objek</li>
+                        <li>▸ <strong>Lasso Tool:</strong> Objek dengan bentuk tidak beraturan dan tepi yang kompleks</li>
+                        <li>▸ <strong>Magnetic Lasso:</strong> Objek dengan tepi yang jelas dan kontras dengan background</li>
+                        <li>▸ <strong>Marquee Tool:</strong> Area berbentuk kotak atau lingkaran sederhana</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layer Masking -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Layer Masking: Non-Destruktif & Profesional</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Layer Masking</strong> adalah teknik masking yang paling profesional dan banyak digunakan dalam industri desain. Layer mask memungkinkan kita menyembunyikan atau menampilkan bagian tertentu dari layer <strong>tanpa menghapus pixel asli</strong>. Ini adalah pendekatan non-destruktif yang memberikan fleksibilitas editing maksimal.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Prinsip Dasar Layer Masking</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Warna Hitam</strong> pada mask = <strong>Menyembunyikan</strong> gambar (area menjadi transparan)</li>
+                        <li>▸ <strong>Warna Putih</strong> pada mask = <strong>Menampilkan</strong> gambar (area terlihat normal)</li>
+                        <li>▸ <strong>Warna Abu-abu</strong> pada mask = <strong>Semi-transparan</strong> (area terlihat sebagian)</li>
+                        <li>▸ Layer mask dapat diedit kapan saja—tidak merusak gambar asli</li>
+                    </ul>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Langkah-Langkah Layer Masking dengan Gradient Tool</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Siapkan 2 gambar yang akan digabungkan (misalnya gedung berlatar awan biru dan awan sore hari)</li>
+                        <li>Pindahkan gambar B ke file gambar A dengan cara <strong>drag & drop</strong></li>
+                        <li>Atur ukuran gambar B agar sesuai komposisi menggunakan <em>Edit &gt; Free Transform (Ctrl+T)</em></li>
+                        <li>Pastikan <strong>foreground color berwarna hitam</strong></li>
+                        <li>Pastikan layer gambar B aktif, kemudian klik tombol <strong>"Add Vector Mask"</strong> di panel Layer</li>
+                        <li>Pilih <strong>Gradient Tool (G)</strong>, atur gradient dari hitam ke putih</li>
+                        <li>Tarik garis dari bawah ke atas pada gambar—hasilnya akan menciptakan transisi halus antara dua gambar</li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i> Mengapa Layer Masking Lebih Baik dari Eraser?</h4>
+                    <p class="text-sm">Menggunakan <em>Eraser Tool</em> akan <strong>menghapus pixel secara permanen</strong>—jika Anda salah menghapus, Anda harus mengulang dari awal atau menggunakan Undo. Sebaliknya, layer mask <strong>hanya menyembunyikan</strong> pixel—Anda dapat mengembalikan bagian yang "dihapus" kapan saja dengan menggambar putih pada mask. Ini adalah pendekatan profesional yang menghemat waktu dan memberikan fleksibilitas editing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Masking -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Quick Masking: Seleksi Presisi dengan Brush</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Quick Masking</strong> adalah teknik seleksi yang menggunakan <strong>channel secara live</strong> tanpa harus memilih layer pada panel Channel. Saat Quick Mask Mode aktif, area yang TIDAK terseleksi akan tertutup lapisan berwarna merah semi-transparan yang disebut <strong>Rubylith</strong>.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Langkah-Langkah Quick Masking</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li>Buka 2 file gambar yang akan digabungkan</li>
+                        <li>Aktifkan Quick Mask Mode dengan menekan tombol <strong>Q</strong> pada keyboard atau mengklik ikon Quick Mask di Toolbox</li>
+                        <li>Set <strong>foreground color menjadi hitam</strong></li>
+                        <li>Pilih <strong>Brush Tool (B)</strong>, atur diameter dan hardness sesuai kebutuhan (misalnya diameter 77-53-30, hardness 0% untuk tepi lembut)</li>
+                        <li>Arahkan brush ke area background gambar A yang akan disembunyikan—area tersebut akan tertutup <strong>Rubylith (merah)</strong></li>
+                        <li>Setelah selesai masking, tekan <strong>Q lagi</strong> atau klik "Edit in Standard Mode" untuk menghilangkan Rubylith</li>
+                        <li>Area yang tadi merah sekarang akan menjadi seleksi (garis putus-putus)</li>
+                        <li>Drag area yang terseleksi ke gambar B menggunakan <em>Move Tool (V)</em></li>
+                        <li>Sesuaikan ukuran dan posisi menggunakan <em>Free Transform (Ctrl+T)</em></li>
+                    </ol>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Tips Quick Masking</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ Untuk gambar dengan <strong>detail tinggi</strong>, gunakan brush dengan <strong>hardness tinggi</strong> (80-100%)</li>
+                        <li>▸ Untuk tepi yang <strong>lembut dan natural</strong>, gunakan brush dengan <strong>hardness rendah</strong> (0-30%)</li>
+                        <li>▸ Untuk <strong>menambah area seleksi</strong>, gunakan brush dengan foreground putih</li>
+                        <li>▸ Untuk <strong>mengurangi area seleksi</strong>, gunakan brush dengan foreground hitam</li>
+                        <li>▸ Quick Mask dapat dikombinasikan dengan <em>Gradient Tool</em>, <em>Layer Mask</em>, dan tool lainnya</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perbandingan -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-balance-scale mr-2"></i> Perbandingan Layer Masking vs Quick Masking</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="text-left py-2 text-luxury-gold">Aspek</th>
+                            <th class="text-left py-2 text-luxury-gold">Layer Masking</th>
+                            <th class="text-left py-2 text-luxury-gold">Quick Masking</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800"><td class="py-2">Sifat</td><td>Permanen (tersimpan di panel Layer)</td><td>Sementara (segera hilang setelah keluar mode)</td></tr>
+                        <tr class="border-b border-gray-800"><td class="py-2">Visualisasi</td><td>Tidak ada Rubylith</td><td>Area tidak terseleksi tertutup Rubylith (merah)</td></tr>
+                        <tr class="border-b border-gray-800"><td class="py-2">Alat Utama</td><td>Gradient Tool, Brush Tool</td><td>Brush Tool</td></tr>
+                        <tr class="border-b border-gray-800"><td class="py-2">Fleksibilitas</td><td>Sangat tinggi (dapat diedit kapan saja)</td><td>Terbatas (harus diulang jika keluar mode)</td></tr>
+                        <tr><td class="py-2">Penggunaan Ideal</td><td>Komposisi kompleks, editing berulang</td><td>Seleksi cepat, objek dengan tepi kompleks</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Penggabungan Foto Produk dengan Background Baru</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang desainer diminta membuat katalog produk untuk klien. Produk (sebuah botol parfum) difoto di atas meja kayu, tetapi klien ingin botol tersebut ditampilkan di atas background marmer putih yang elegan. Desainer menggunakan <em>Magnetic Lasso Tool</em> untuk menyeleksi botol dengan presisi, kemudian menggunakan <em>Layer Masking</em> dengan brush lembut untuk menghaluskan tepi seleksi. Hasilnya, botol terlihat natural di atas background baru tanpa tepi yang kasar atau tidak natural.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Kombinasi Selection Tool (untuk seleksi awal) dan Layer Masking (untuk menghaluskan tepi) adalah pendekatan profesional yang menghasilkan komposisi gambar yang mulus dan siap cetak.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu gunakan <strong>Layer Masking</strong> daripada <em>Eraser Tool</em>—masking bersifat non-destruktif dan dapat diedit kapan saja.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Ingat prinsip <strong>"Hitam = Sembunyikan, Putih = Tampilkan"</strong>—ini adalah fondasi dari semua teknik masking.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk tepi yang <strong>halus dan natural</strong>, gunakan brush dengan <strong>hardness rendah (0-30%)</strong> dan opacity 50-70%.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Gradient Tool</strong> pada layer mask untuk menciptakan transisi yang sangat halus antara dua gambar.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk objek dengan <strong>tepi kompleks</strong> (seperti rambut atau bulu), gunakan <em>Quick Masking</em> dengan brush kecil dan hardness tinggi.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Sebelum melakukan masking, <strong>duplikasi layer asli (Ctrl+J)</strong> sebagai cadangan—jika terjadi kesalahan, Anda masih memiliki layer asli.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Penguasaan teknik seleksi dan masking adalah fondasi tak tergantikan dalam penggabungan gambar bitmap profesional. Selection Tool (Magic Wand, Lasso, Marquee) memberikan kemampuan untuk memilih area tertentu, Layer Masking memberikan pendekatan non-destruktif untuk menyembunyikan atau menampilkan bagian layer, dan Quick Masking dengan Rubylith memberikan presisi seleksi untuk objek dengan tepi kompleks. Penguasaan ketiga teknik ini akan membekali siswa dengan keterampilan teknis yang solid untuk menciptakan komposisi gambar yang mulus, natural, dan siap cetak—tanpa merusak gambar asli.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Adobe Systems. (2007). <em>Adobe Photoshop CS3 Official Documentation: Selection and Masking</em>. San Jose.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="12.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 12: Dasar Citra Bitmap
+            </a>
+            <a href="14.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 14: Efek Gambar Bitmap <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 13</h2>
+                <p class="text-gray-400 mt-2">Materi: Selection Tool, Layer Masking, dan Quick Masking.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">1. Tool seleksi yang digunakan untuk memilih area berdasarkan kesamaan warna adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Lasso Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Magic Wand Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Marquee Tool</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Move Tool</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">2. Dalam layer masking, jika kita menggambar dengan warna hitam pada mask, maka...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. Gambar akan ditampilkan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Gambar akan menjadi semi-transparan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Gambar akan disembunyikan (menjadi transparan)</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Gambar akan dihapus permanen</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">3. Untuk mengaktifkan Quick Mask Mode, kita dapat menekan tombol...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Q</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. M</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. L</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. W</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">4. Rubylith dalam Quick Masking adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Area yang terseleksi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Lapisan merah semi-transparan yang menandakan area TIDAK terseleksi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Layer baru yang dibuat otomatis</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Efek blur pada gambar</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">5. Layer masking bersifat...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Non-destruktif (tidak merusak gambar asli)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Destruktif (menghapus pixel permanen)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Sementara (hilang setelah file ditutup)</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Hanya berlaku untuk teks</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">6. Tool seleksi yang digunakan untuk memilih area dengan menggambar bebas menggunakan mouse adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Magic Wand Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Marquee Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Lasso Tool</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Gradient Tool</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">7. Tool yang digunakan untuk menciptakan transisi halus pada layer masking adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Brush Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Gradient Tool</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Eraser Tool</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Move Tool</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">8. Dalam Quick Masking, brush tool digunakan untuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Menambah atau mengurangi area seleksi dengan menggambar Rubylith</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Menghapus pixel secara permanen</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Membuat layer baru</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Mengubah warna gambar</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">9. Jika kita menggambar dengan warna putih pada layer mask, maka...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Gambar akan disembunyikan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Gambar akan menjadi semi-transparan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Gambar akan ditampilkan kembali</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Layer akan dihapus</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">10. Perbedaan utama antara Layer Masking dan Quick Masking adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Layer Masking untuk teks, Quick Masking untuk gambar</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Layer Masking bersifat permanen dan non-destruktif, Quick Masking bersifat sementara</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Layer Masking hanya untuk bitmap, Quick Masking hanya untuk vektor</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Tidak ada perbedaan, keduanya sama</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan perbedaan antara Magic Wand Tool, Lasso Tool, dan Marquee Tool! Berikan contoh kasus penggunaan masing-masing tool!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Apa yang dimaksud dengan Layer Masking? Jelaskan prinsip dasar "Hitam = Sembunyikan, Putih = Tampilkan" dan mengapa layer masking lebih baik daripada menggunakan Eraser Tool!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Jelaskan langkah-langkah membuat layer masking dengan Gradient Tool untuk menggabungkan dua gambar dengan transisi halus! Sebutkan minimal 7 langkah secara sistematis!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Apa yang dimaksud dengan Quick Masking dan Rubylith? Jelaskan langkah-langkah menggunakan Quick Masking dengan Brush Tool untuk menyeleksi objek dengan tepi kompleks!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Seorang desainer diminta menggabungkan foto produk (botol parfum) dengan background baru (marmer putih). Rancanglah pendekatan teknik masking yang akan digunakan! Jelaskan kombinasi tool seleksi dan masking yang paling tepat, serta alasan pemilihan setiap tool!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'b', q2: 'c', q3: 'a', q4: 'b', q5: 'a',
+            q6: 'c', q7: 'b', q8: 'a', q9: 'c', q10: 'b'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 13 - Teknik Masking\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan13_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 13 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 13 (Teknik Masking):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

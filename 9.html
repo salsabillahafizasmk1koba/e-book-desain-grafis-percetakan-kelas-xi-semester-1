@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 9: Dasar Citra Vektor - DGP Kelas XI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 9</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB V - PERTEMUAN 09</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Dasar <span class="gold-gradient-text">Citra Vektor</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Memahami konsep dasar citra vektor, perbedaan fundamental dengan bitmap, serta mengenal antarmuka CorelDraw—mulai dari Page Navigator, Color Palettes, Toolbox, hingga manajemen objek dan perintah shaping (Combine, Weld, Trim, Intersect)—sebagai fondasi pengolahan grafis berbasis vektor untuk kebutuhan percetakan profesional.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="8.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> UTS
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Dalam dunia desain grafis percetakan, pemahaman mendalam tentang <strong>citra vektor</strong> adalah kompetensi fundamental yang tidak bisa ditawar. Berbeda dengan citra bitmap yang bergantung pada pixel dan resolusi, citra vektor dibangun dari persamaan matematis yang mendefinisikan garis, kurva, dan bentuk—sehingga tetap tajam dan presisi pada ukuran apa pun, dari kartu nama hingga billboard raksasa.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                CorelDraw, sebagai salah satu editor grafik vektor terkemuka yang dikembangkan oleh Corel Corporation (Ottawa, Kanada), telah menjadi standar industri dalam desain percetakan. Sejak diluncurkan pertama kali pada tahun 1989, CorelDraw terus berinovasi dengan fitur-fitur seperti Note-edit tool, Stroke before fill, dan Mesh fill. Penguasaan antarmuka dan perintah dasarnya akan membuka jalan bagi siswa untuk menghasilkan karya desain profesional yang siap cetak.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Citra Vektor:</strong> Gambar digital yang berbasiskan persamaan perhitungan matematis (vektor), tersusun dari titik dan garis yang membentuk objek, tidak tergantung pada resolusi.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Resolusi-Independen:</strong> Citra vektor dapat diperbesar atau diperkecil tanpa kehilangan detail dan ketajaman, berbeda dengan bitmap yang akan pecah saat diperbesar.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Toolbox:</strong> Panel berisi tombol-tombol perintah untuk membuat dan memodifikasi objek dalam CorelDraw.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Shaping Commands:</strong> Perintah untuk menggabungkan (Combine, Weld) atau memotong (Trim, Simplify, Intersect) objek vektor.</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Landasan Teoretis Citra Vektor</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Citra vektor merepresentasikan gambar bukan dengan menggunakan pixel, melainkan dengan kurva dan garis yang didefinisikan dalam persamaan matematis yang disebut <em>vektor</em>. Sebagai contoh, untuk menggambar lingkaran, sistem mendefinisikan persamaan matematis lingkaran sehingga membentuk garis pembatas, lalu memberi warna di dalamnya.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Perbedaan Vektor vs Bitmap</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-2 text-luxury-gold">Aspek</th>
+                                    <th class="text-left py-2 text-luxury-gold">Vektor</th>
+                                    <th class="text-left py-2 text-luxury-gold">Bitmap</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-300">
+                                <tr class="border-b border-gray-800"><td class="py-2">Dasar Penyusun</td><td>Garis, kurva, persamaan matematis</td><td>Pixel (picture element)</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Resolusi</td><td>Tidak tergantung resolusi</td><td>Tergantung resolusi</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Saat Diperbesar</td><td>Tetap tajam</td><td>Pecah (jagged)</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Ukuran File</td><td>Relatif kecil</td><td>Relatif besar</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Format File</td><td>.CDR, .AI, .SVG, .EPS, .WMF</td><td>.JPG, .PNG, .BMP, .PSD, .TIFF</td></tr>
+                                <tr><td class="py-2">Penggunaan Ideal</td><td>Logo, ilustrasi, tipografi</td><td>Foto, tekstur, gambar kompleks</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Aplikasi Pengolah Citra Vektor</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>CorelDraw:</strong> Editor grafik vektor dari Corel Corporation (Ottawa, Kanada), diluncurkan 1989.</li>
+                        <li>▸ <strong>Adobe Illustrator:</strong> Program editor grafis vektor terkemuka dari Adobe Systems.</li>
+                        <li>▸ <strong>Macromedia Freehand:</strong> Aplikasi vektor 2D berorientasi pasar profesional.</li>
+                        <li>▸ <strong>Xara Extreme:</strong> Editor vektor alternatif yang ringan.</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mt-3 italic">Catatan: Untuk format 3D vektor tersedia Maya 3D, Strata 3D CX, Ulead COOL 3D, Swift 3D, AutoCAD, Google SketchUp, dll.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Antarmuka CorelDraw -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Antarmuka CorelDraw</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    CorelDraw memiliki perbedaan dengan aplikasi pengolah grafis vektor lainnya: ia merupakan <strong>paket software grafis</strong>, bukan hanya editor gambar vektor. Peralatannya memungkinkan pengguna mengatur kontras, keseimbangan warna, bahkan mengubah mode RGB menjadi CMYK. Khusus untuk gambar bitmap, dapat diolah dengan Corel PhotoPaint.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-file-alt mr-2"></i> Page Navigator</h4>
+                        <p class="text-sm">Sekumpulan informasi dan tombol perintah untuk berpindah dari satu halaman (<em>page</em>) ke halaman lain dalam dokumen multi-halaman.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-palette mr-2"></i> Color Palettes</h4>
+                        <p class="text-sm">Panel untuk memberi warna pada objek. Warna dapat diberikan pada bidang objek maupun garis tepi (outline) dari objek.</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2"><i class="fas fa-tools mr-2"></i> Toolbox</h4>
+                        <p class="text-sm">Panel berisi tombol-tombol perintah untuk membuat dan memodifikasi objek. Klik tahan pada ikon untuk melihat sub-tool yang tersembunyi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manajemen Objek -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Manajemen Urutan Objek</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Dalam desain, seringkali objek saling bertumpuk. CorelDraw menyediakan perintah <strong>Arrange → Order</strong> untuk mengatur posisi objek dari atas hingga bawah. Berikut adalah perintah-perintah penting beserta shortcut-nya:
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-2 text-luxury-gold">Perintah</th>
+                                    <th class="text-left py-2 text-luxury-gold">Fungsi</th>
+                                    <th class="text-left py-2 text-luxury-gold">Shortcut</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-300">
+                                <tr class="border-b border-gray-800"><td class="py-2">To Front Of Page</td><td>Pindah ke paling depan</td><td>Ctrl + Home</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">To Front Of Layer</td><td>Pindah ke depan layer</td><td>Shift + PgUp</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">To Back Of Page</td><td>Pindah ke paling belakang</td><td>Ctrl + End</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">To Back Of Layer</td><td>Pindah ke belakang layer</td><td>Shift + PgDn</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Forward One</td><td>Maju satu tingkat</td><td>Ctrl + PgUp</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Back One</td><td>Mundur satu tingkat</td><td>Ctrl + PgDn</td></tr>
+                                <tr class="border-b border-gray-800"><td class="py-2">Reverse Order</td><td>Balik urutan seluruh objek terpilih</td><td>—</td></tr>
+                                <tr><td class="py-2">In Front Of / Behind</td><td>Di depan/di belakang objek tertentu</td><td>—</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perintah Shaping -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Perintah Shaping: Menggabungkan & Memotong Objek</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Perintah shaping adalah fitur powerful dalam CorelDraw untuk menciptakan objek baru dari kombinasi objek yang sudah ada. Berikut adalah empat perintah utama:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2">1. Combine (Ctrl + L)</h4>
+                        <p class="text-sm mb-2">Menggabungkan dua atau lebih objek menjadi objek tunggal. Perpotongan antar objek akan <strong>berlubang</strong> (transparan).</p>
+                        <p class="text-xs text-gray-500 italic">Arrange → Combine</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2">2. Weld</h4>
+                        <p class="text-sm mb-2">Menggabungkan beberapa objek menjadi objek baru yang <strong>tidak dapat dipecah kembali</strong>. Warna menjadi satu (uniform).</p>
+                        <p class="text-xs text-gray-500 italic">Arrange → Shaping → Weld</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2">3. Trim</h4>
+                        <p class="text-sm mb-2">Memotong objek dengan objek pemotong yang <strong>berada di atas</strong> objek yang dipotong. Bagian yang tumpang tindih hilang.</p>
+                        <p class="text-xs text-gray-500 italic">Arrange → Shaping → Trim</p>
+                    </div>
+                    <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-lg mb-2">4. Intersect</h4>
+                        <p class="text-sm mb-2">Menciptakan objek baru berdasarkan <strong>perpotongan/irisan</strong> beberapa objek yang terseleksi, tanpa menghilangkan objek asli.</p>
+                        <p class="text-xs text-gray-500 italic">Arrange → Shaping → Intersect</p>
+                    </div>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Simplify</h4>
+                    <p class="text-sm">Perintah khusus untuk memotong objek yang telah <strong>terletak di bawah objek lain</strong>. Jika ada tumpukan lebih dari satu objek, objek di atas akan memotong objek di bawahnya secara otomatis.</p>
+                    <p class="text-xs text-gray-500 italic mt-2">Arrange → Shaping → Simplify</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shape Tool -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Shape Tool: Modifikasi Bentuk</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    <strong>Shape Tool (F10)</strong> adalah fasilitas untuk memodifikasi bentuk objek secara detail. Dengan tool ini, siswa dapat:
+                </p>
+                <ul class="space-y-2 ml-4">
+                    <li class="flex items-start"><span class="text-luxury-gold mr-2">▸</span> Melengkungkan bentuk garis objek</li>
+                    <li class="flex items-start"><span class="text-luxury-gold mr-2">▸</span> Menambahkan dan menghapus titik-titik pembentuk objek (node)</li>
+                    <li class="flex items-start"><span class="text-luxury-gold mr-2">▸</span> Meluruskan bentuk garis objek</li>
+                    <li class="flex items-start"><span class="text-luxury-gold mr-2">▸</span> Menggunakan <em>Smudge Brush</em> untuk efek smear/blur artistik</li>
+                </ul>
+                <div class="bg-luxury-dark p-5 rounded-sm border border-luxury-gold/30 mt-4">
+                    <h4 class="text-luxury-gold font-serif text-lg mb-2">Smudge Brush</h4>
+                    <p class="text-sm">Tool khusus dalam Shape Editing untuk memodifikasi objek dengan cara "mengoleskan" bagian objek. Atur <em>Nip Size</em> pada property bar, klik tahan dari dalam objek ke luar objek untuk menghasilkan efek smear yang artistik.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Kegagalan Format dalam Desain Logo</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang siswa membuat logo perusahaan dalam format .JPG (bitmap) dengan resolusi 72 DPI. Saat logo tersebut dicetak pada spanduk besar 3×2 meter, hasilnya pecah, blur, dan tidak profesional. Klien menolak dan meminta revisi. Siswa harus mengulang dari awal menggunakan CorelDraw dan menyimpan dalam format .CDR atau .EPS (vektor) agar logo tetap tajam pada ukuran berapa pun.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Untuk elemen desain yang harus diskalakan (logo, ikon, tipografi), SELALU gunakan citra vektor. Bitmap hanya cocok untuk foto dan tekstur.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu mulai dokumen baru dengan <strong>mode warna CMYK</strong> dan <strong>resolusi 300 DPI</strong> jika tujuan akhir adalah percetakan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Hafalkan <strong>shortcut keyboard</strong> penting seperti Ctrl+L (Combine), Ctrl+Home (To Front), dan F10 (Shape Tool) untuk mempercepat alur kerja.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Gunakan <strong>Weld</strong> saat ingin menggabungkan objek secara permanen, dan <strong>Combine</strong> saat masih ingin mempertahankan kemungkinan editing di area perpotongan.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Sebelum melakukan <strong>Trim</strong>, pastikan objek pemotong berada DI ATAS objek yang akan dipotong.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Simpan file master dalam format <strong>.CDR</strong> (native CorelDraw) dan export ke <strong>.PDF</strong> atau <strong>.EPS</strong> untuk pengiriman ke percetakan.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Penguasaan citra vektor dan antarmuka CorelDraw adalah gerbang menuju desain grafis percetakan profesional. Pemahaman bahwa vektor berbasis persamaan matematis—bukan pixel—memberikan keunggulan resolusi-independen yang krusial untuk logo, tipografi, dan ilustrasi. Penguasaan Toolbox, Color Palettes, Page Navigator, perintah Order, serta shaping commands (Combine, Weld, Trim, Simplify, Intersect) akan membekali siswa dengan keterampilan teknis yang solid untuk menghasilkan karya vektor yang presisi dan siap cetak.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Corel Corporation. (2023). <em>CorelDraw Official Documentation</em>. Ottawa.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="8.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> UTS
+            </a>
+            <a href="10.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 10: Manipulasi Objek Vektor <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 9</h2>
+                <p class="text-gray-400 mt-2">Materi: Konsep citra vektor, antarmuka CorelDraw, dan perintah shaping.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">1. Citra vektor merepresentasikan gambar berdasarkan...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Kumpulan pixel (picture element)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Persamaan matematis yang mendefinisikan garis dan kurva</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Resolusi gambar dalam DPI</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Mode warna RGB</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">2. Berikut yang merupakan format file citra vektor adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. .JPG, .PNG, .BMP</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. .PSD, .TIFF, .GIF</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. .CDR, .AI, .SVG, .EPS</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. .RAW, .HEIC, .WEBP</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">3. Aplikasi pengolah citra vektor yang dikembangkan oleh Corel Corporation (Ottawa, Kanada) adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. CorelDraw</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Adobe Photoshop</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Macromedia Flash</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. AutoCAD</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Fungsi dari Page Navigator dalam CorelDraw adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Memberi warna pada objek</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Membuat dan memodifikasi objek</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Mengatur kontras dan keseimbangan warna</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Berpindah dari satu halaman (page) ke halaman lain</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">5. Color Palettes dalam CorelDraw berfungsi untuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Membuat efek 3D pada objek</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Memberi warna pada bidang objek maupun garis tepi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Menggabungkan beberapa objek</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Mengatur urutan layer</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">6. Shortcut keyboard untuk memindahkan objek ke urutan paling depan (To Front Of Page) adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Ctrl + End</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Shift + PgUp</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Ctrl + Home</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Ctrl + PgUp</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">7. Perbedaan utama antara perintah Combine dan Weld adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Combine menghasilkan perpotongan berlubang dan bisa dipecah, Weld menyatu permanen</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Weld menghasilkan perpotongan berlubang, Combine menyatu permanen</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Keduanya menghasilkan efek yang sama persis</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Combine untuk memotong, Weld untuk menggabungkan</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Perintah untuk memotong objek dengan objek pemotong yang berada di atasnya disebut...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Weld</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Intersect</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Combine</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Trim</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">9. Perintah Intersect digunakan untuk...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Menggabungkan objek menjadi satu warna</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Menciptakan objek baru dari irisan/perpotongan beberapa objek tanpa menghilangkan objek asli</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Memotong objek yang berada di bawah</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Mengubah urutan objek</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">10. Keunggulan utama citra vektor dibandingkan bitmap dalam desain percetakan adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Mampu menyimpan foto dengan detail tinggi</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Ukuran file selalu lebih besar sehingga kualitas lebih baik</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Dapat diperbesar/diperkecil tanpa kehilangan detail dan ketajaman (resolusi-independen)</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Lebih cocok untuk mengedit foto digital</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan perbedaan mendasar antara citra vektor dan citra bitmap dari segi dasar penyusun, resolusi, ukuran file, format file, dan penggunaan idealnya!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Sebutkan dan jelaskan tiga komponen utama antarmuka CorelDraw (Page Navigator, Color Palettes, Toolbox) beserta fungsi masing-masing!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Bandingkan perbedaan antara perintah Combine, Weld, Trim, dan Intersect dalam CorelDraw! Berikan contoh kasus penggunaan masing-masing perintah!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Mengapa dalam desain logo untuk percetakan, seorang desainer HARUS menggunakan citra vektor, bukan bitmap? Jelaskan minimal 3 alasan teknis!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Jelaskan fungsi Shape Tool dalam CorelDraw! Sebutkan minimal 4 kemampuan modifikasi yang dapat dilakukan dengan Shape Tool, dan jelaskan cara penggunaan Smudge Brush!</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const kunciJawaban = {
+            q1: 'b', q2: 'c', q3: 'a', q4: 'd', q5: 'b',
+            q6: 'c', q7: 'a', q8: 'd', q9: 'b', q10: 'c'
+        };
+
+        function hitungSkor() {
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            const skorEssay = 80; 
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 9 - Dasar Citra Vektor\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan9_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 9 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 9 (Dasar Citra Vektor):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

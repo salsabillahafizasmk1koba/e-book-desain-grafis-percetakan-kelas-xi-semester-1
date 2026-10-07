@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 6: Gambar Ilustrasi - DGP Kelas XI</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            black: '#0f0f0f',
+                            dark: '#1a1a1a',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            gray: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(45deg, #bf953f, #fcf6ba, #aa771c) border-box;
+        }
+        /* Print Styles for PDF Download */
+        @media print {
+            body { background-color: white; color: black; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .bg-luxury-black, .bg-luxury-dark { background-color: white !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-gray-500 { color: #333 !important; }
+            .text-white { color: black !important; }
+            .gold-gradient-text { color: #b38728 !important; background: none !important; -webkit-text-fill-color: #b38728 !important; }
+            .border-luxury-gold\/20, .border-luxury-gold\/50 { border-color: #ccc !important; }
+        }
+        .print-only { display: none; }
+    </style>
+</head>
+<body class="bg-luxury-black text-gray-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-black/95 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-xl font-bold text-luxury-gold tracking-wider">DGP<span class="text-white text-xs font-sans font-light ml-2">Pertemuan 6</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-home mr-1"></i> Beranda</a>
+                    <a href="index.html#penulis" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-user mr-1"></i> Penulis</a>
+                    <a href="index.html#materi" class="text-sm uppercase tracking-widest hover:text-luxury-gold transition-colors duration-300"><i class="fas fa-list mr-1"></i> Daftar Bab</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 bg-luxury-dark border-b border-luxury-gold/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">BAB III (LANJUTAN) - PERTEMUAN 06</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Gambar <span class="gold-gradient-text">Ilustrasi</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                Menguasai seni menggambar ilustrasi—mulai dari pengertian, fungsi, jenis, hingga berbagai teknik manual (arsir, blok, dot, siluet, scraperboard) dan digital—sebagai alat komunikasi visual yang memperjelas pesan dan memperkuat narasi dalam desain grafis percetakan.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 no-print">
+                <a href="5.html" class="px-6 py-3 border border-luxury-gold/50 text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm uppercase tracking-wider">
+                    <i class="fas fa-arrow-left mr-2"></i> Pertemuan 5
+                </a>
+                <a href="#materi-inti" class="px-6 py-3 bg-luxury-gold text-luxury-black font-semibold rounded-sm hover:bg-white transition-all text-sm uppercase tracking-wider">
+                    Mulai Membaca <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="materi-inti" class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+        
+        <!-- Pendahuluan -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Pendahuluan</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Kata <strong>ilustrasi</strong> berasal dari bahasa Latin <em>ilustrare</em> yang artinya penampakan, kemuliaan, cahaya, penerangan, dan penggambaran secara hidup-hidup. Dalam konteks desain grafis percetakan, ilustrasi bukan sekadar hiasan—ia adalah alat komunikasi visual yang berfungsi memperjelas, menerangkan, dan memperkuat pesan dari sebuah naskah atau cerita.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Ilustrasi memiliki peran strategis dalam membantu <strong>retensi</strong> (daya ingat) pembaca. Sebuah konsep atau gagasan yang disampaikan melalui ilustrasi cenderung lebih mudah diingat dibandingkan teks semata. Oleh karena itu, seorang desainer grafis wajib menguasai berbagai teknik ilustrasi—baik manual maupun digital—untuk menghasilkan karya yang tidak hanya estetis, tetapi juga komunikatif.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-dark p-8 rounded-sm border border-luxury-gold/20">
+            <h3 class="font-serif text-2xl text-luxury-gold mb-4"><i class="fas fa-key mr-2"></i> Konsep Kunci</h3>
+            <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Ilustrasi:</strong> Seni membuat gambar yang berfungsi memperjelas dan menerangkan naskah, serta membantu retensi pembaca dalam mengingat konsep atau gagasan.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Retensi:</strong> Kemampuan pembaca untuk mengingat kembali konsep atau gagasan yang disampaikan melalui ilustrasi.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Corak Realis:</strong> Pewarnaan ilustrasi yang harus sesuai dengan keadaan nyata di alam.</li>
+                <li class="flex items-start"><span class="text-luxury-gold mr-3 mt-1">▹</span> <strong>Corak Non-Realis:</strong> Pewarnaan ilustrasi yang lebih bebas dan tidak terikat oleh warna aslinya (ekspresionisme, impresionisme, abstrakisme).</li>
+            </ul>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Landasan Teoretis Gambar Ilustrasi</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Gambar ilustrasi adalah suatu karya seni rupa dua dimensi, yang berupa gambar tangan (manual), gambar dari hasil olah digital (komputer/fotografi), atau kombinasi dari keduanya, baik hitam putih maupun berwarna, yang berfungsi sebagai penerang/penghias untuk memperjelas atau memperkuat arti dari suatu teks atau naskah.
+                </p>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700 mt-6">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Jenis-Jenis Ilustrasi</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>▸ <strong>Ilustrasi Cerita:</strong> Penjelasan visual tentang isi cerita (cerpen, komik, fiksi/khayalan).</li>
+                        <li>▸ <strong>Ilustrasi Ilmu Pengetahuan:</strong> Visualisasi konsep ilmiah, anatomi, diagram teknis.</li>
+                        <li>▸ <strong>Ilustrasi Sampul Buku:</strong> Visual yang mewakili keseluruhan isi buku untuk menarik minat pembaca.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-gray-700">
+                    <h4 class="text-luxury-gold font-serif text-xl mb-3">Langkah-Langkah Membuat Ilustrasi</h4>
+                    <ol class="text-sm space-y-2 list-decimal list-inside">
+                        <li><strong>Gagasan:</strong> Bersumber dari bahan yang akan diilustrasikan. Tentukan adegan, tokoh, suasana, corak gambar, dan media yang akan digunakan.</li>
+                        <li><strong>Sketsa:</strong> Proses awal dengan menuangkan gagasan dalam bentuk rancangan. Rencanakan tata letak, gerak, dan detail objek. Satukan semua unsur agar bercorak sama.</li>
+                        <li><strong>Pewarnaan:</strong> Dilakukan setelah sketsa dianggap selesai. Dapat menggunakan corak realis atau non-realis sesuai konsep.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teknik Ilustrasi Manual -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Delapan Teknik Ilustrasi Manual</h2>
+            <div class="space-y-6 text-gray-300 leading-relaxed">
+                <p>
+                    Penguasaan teknik manual adalah fondasi tak tergantikan bagi setiap ilustrator. Meskipun era digital telah mendominasi, pemahaman terhadap teknik manual akan memberikan karakter unik dan kedalaman artistik yang tidak dapat ditiru sepenuhnya oleh perangkat lunak.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">1. Teknik Out Line</h4>
+                        <p class="text-sm">Menggambar secara global, hanya garis luar saja, sehingga terkesan datar karena tidak ada pengaturan gelap terang.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">2. Teknik Arsir</h4>
+                        <p class="text-sm">Menggunakan garis-garis sejajar atau menyilang yang digoreskan teratur dan berulang-ulang untuk mewujudkan efek gelap terang, volume, dan plastisitas.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">3. Teknik Blok</h4>
+                        <p class="text-sm">Memanfaatkan warna secara blok, tanpa gradasi dan transisi, sehingga terasa datar. Perbedaan antar bagian ditunjukkan dengan perbedaan warna.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">4. Teknik Scraperboard</h4>
+                        <p class="text-sm">Menggoreskan garis yang arahnya mengikuti volume objek, saling sejajar (tidak menumpuk). Bagian gelap dibuat rapat, bagian terang dibuat renggang.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">5. Teknik Dot (Pointilis)</h4>
+                        <p class="text-sm">Menyusun titik-titik sehingga membentuk objek. Kesan gelap-terang ditentukan oleh jumlah titik dalam satu area—semakin banyak, semakin gelap.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">6. Teknik Goresan Kering (Dry Brush)</h4>
+                        <p class="text-sm">Memanfaatkan tinta atau cat yang sengaja dibuat agak kering, sehingga warna tidak merata. Efek ini digunakan untuk membuat tekstur.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">7. Teknik Half Tone</h4>
+                        <p class="text-sm">Memanfaatkan efek transisi warna dari terang ke gelap menggunakan tinta/cat yang dibuat agak encer untuk mencapai plastisitas.</p>
+                    </div>
+
+                    <div class="bg-luxury-dark p-6 rounded-sm border border-luxury-gold/30">
+                        <h4 class="text-luxury-gold font-serif text-xl mb-2">8. Teknik Siluet</h4>
+                        <p class="text-sm">Mewujudkan warna tunggal yang solid atau pekat (biasanya hitam). Objek seolah diambil dari posisi berlawanan dengan arah sinar, seperti bayangan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ilustrasi Digital -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-laptop-code mr-2 text-luxury-gold"></i> Ilustrasi Digital & Kombinasi</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                <strong>Ilustrasi Digital:</strong> Ilmu mengeksplorasi kemampuan kreatif program komputer (CorelDraw, Adobe Illustrator, Photoshop) untuk membuat seni visual ilustrasi. Gambar digital terbagi menjadi dua: <em>vektor</em> (berbasis matematis, tidak tergantung resolusi) dan <em>bitmap</em> (berbasis pixel, tergantung resolusi).
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                <strong>Ilustrasi Kombinasi (Manual + Digital):</strong> Tahapan membuat ilustrasi kombinasi:
+            </p>
+            <ol class="text-gray-300 text-sm space-y-2 list-decimal list-inside ml-4 mb-4">
+                <li>Membuat sketsa manual di kertas putih menggunakan pensil/spidol.</li>
+                <li>Scan sketsa dan simpan ke hardisk komputer.</li>
+                <li>Tampilkan sketsa di layar monitor sebagai pola gambar.</li>
+                <li>Menggambar digital menggunakan aplikasi (CorelDraw, Photoshop) dengan sketsa sebagai acuan.</li>
+                <li>Mewarnai ilustrasi digital.</li>
+                <li>Mengolah detail bagian demi bagian agar lebih sempurna.</li>
+            </ol>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Kombinasi manual dan digital menghasilkan karya yang memiliki karakter artistik manual dengan presisi dan efisiensi digital.
+            </p>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-luxury-dark p-8 rounded-sm border-l-4 border-luxury-gold">
+            <h3 class="font-serif text-2xl text-white mb-3"><i class="fas fa-book-open mr-2 text-luxury-gold"></i> Studi Kasus: Ilustrasi Cerita Anak</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Seorang ilustrator ditugaskan membuat ilustrasi untuk cerita anak berjudul "Buah Nangka yang Hilang" karya Rahap Ganendra. Ia memilih teknik <em>arsir</em> untuk memberikan kesan hangat dan tradisional, dipadukan dengan pewarnaan <em>corak realis</em> agar anak-anak dapat mengenali objek dengan mudah. Ia mengilustrasikan tiga adegan kunci: (1) Mbah Gino membelah nangka, (2) Anton mengambil nangka dengan tangan lengket, (3) Mbah Gino tersenyum sambil menyodorkan minyak jelantah.
+            </p>
+            <p class="text-luxury-gold font-semibold text-sm uppercase tracking-wider">
+                <i class="fas fa-lightbulb mr-1"></i> Pembelajaran: Pemilihan teknik dan corak ilustrasi harus disesuaikan dengan target audiens dan pesan cerita. Ilustrasi yang tepat akan memperkuat retensi dan emosi pembaca.
+            </p>
+        </section>
+
+        <!-- Tips Praktis -->
+        <section>
+            <h2 class="font-serif text-3xl text-white mb-6 border-l-4 border-luxury-gold pl-4">Tips Praktis untuk Siswa</h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Mulailah dengan teknik <strong>out line</strong> dan <strong>blok</strong> untuk memahami bentuk dasar sebelum beralih ke teknik yang lebih kompleks seperti arsir atau pointilis.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Selalu buat <strong>sketsa tipis</strong> terlebih dahulu sebelum mengeksekusi teknik final. Sketsa adalah peta perjalanan ilustrasi Anda.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Untuk ilustrasi cerita, <strong>pilih adegan yang paling representatif</strong>—momen yang dapat mewakili keseluruhan narasi.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Jaga <strong>konsistensi corak</strong> di seluruh ilustrasi. Jangan mencampur corak realis dan non-realis dalam satu seri ilustrasi kecuali memang disengaja untuk efek khusus.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-luxury-gold mt-1 mr-3"></i> <span>Manfaatkan <strong>ilustrasi kombinasi</strong> (manual + digital) untuk mendapatkan karakter artistik manual dengan efisiensi digital.</span></li>
+            </ul>
+        </section>
+
+        <!-- Kesimpulan & Daftar Pustaka -->
+        <section class="border-t border-luxury-gold/20 pt-10">
+            <h2 class="font-serif text-2xl text-white mb-4">Kesimpulan</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+                Gambar ilustrasi adalah jembatan antara teks dan imajinasi pembaca. Penguasaan delapan teknik manual (out line, arsir, blok, scraperboard, dot, dry brush, half tone, siluet) serta kemampuan mengolah ilustrasi digital dan kombinasi akan membekali siswa dengan keterampilan visual yang komprehensif. Desainer yang memahami fungsi ilustrasi—memperjelas pesan, membantu retensi, dan memperkuat emosi—akan menghasilkan karya cetak yang tidak hanya indah, tetapi juga bermakna dan komunikatif.
+            </p>
+            
+            <h3 class="font-serif text-xl text-luxury-gold mb-4">Daftar Pustaka</h3>
+            <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside">
+                <li>Modul Desain Grafis Percetakan Kelas XI, SMK Negeri 1 Koto Balingka.</li>
+                <li>Hendratman, Hendra. (2017). <em>Computer Graphic Design</em>. Bandung: Informatika.</li>
+                <li>Ganendra, Rahap. (2023). <em>Buah Nangka yang Hilang</em> (Cerpen).</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Footer -->
+        <div class="flex justify-between items-center pt-8 border-t border-luxury-gold/20 no-print">
+            <a href="5.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                <i class="fas fa-arrow-left mr-2"></i> Pertemuan 5: Gambar Sketsa
+            </a>
+            <a href="7.html" class="text-luxury-gold hover:text-white transition-colors text-sm uppercase tracking-wider">
+                Pertemuan 7: Bentuk & Perspektif <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- UJI FORMATIF SECTION -->
+    <section id="uji-formatif" class="bg-luxury-dark border-t border-luxury-gold/30 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mt-2">Uji Formatif Pertemuan 6</h2>
+                <p class="text-gray-400 mt-2">Materi: Pengertian, fungsi, jenis, dan teknik gambar ilustrasi.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-user-graduate mr-2"></i> Data Siswa</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="nama" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">NIS <span class="text-red-500">*</span></label>
+                            <input type="text" id="nis" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Tanggal <span class="text-red-500">*</span></label>
+                            <input type="date" id="tanggal" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Kelas <span class="text-red-500">*</span></label>
+                            <select id="kelas" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="XI MM 1">XI Multimedia 1</option>
+                                <option value="XI MM 2">XI Multimedia 2</option>
+                                <option value="XI MM 3">XI Multimedia 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-list-ol mr-2"></i> Bagian A: Pilihan Ganda (10 Soal x 10 Poin)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon lengkapi semua 10 soal pilihan ganda!</p>
+                    
+                    <div class="space-y-6 text-gray-300" id="pg-questions">
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">1. Kata "ilustrasi" berasal dari bahasa Latin "ilustrare" yang artinya...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span>a. Menggambar dengan pensil</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span>b. Penampakan, kemuliaan, cahaya, penerangan, dan penggambaran secara hidup-hidup</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span>c. Seni mewarnai gambar</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span>d. Teknik mencetak gambar</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">2. Fungsi utama dari gambar ilustrasi adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span>a. Menghias halaman agar penuh</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span>b. Mengganti teks yang panjang</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span>c. Memperjelas, menerangkan, dan memperkuat pesan dari naskah</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span>d. Menambah jumlah halaman buku</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">3. Teknik menggambar ilustrasi yang hanya menggambar garis luar saja sehingga terkesan datar disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span>a. Out line</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span>b. Arsir</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span>c. Blok</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span>d. Scraperboard</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">4. Teknik menggambar dengan menggunakan garis-garis sejajar atau menyilang untuk menentukan gelap terang sehingga tampak tiga dimensi disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span>a. Blok</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span>b. Dot</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span>c. Siluet</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span>d. Arsir</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">5. Teknik menggambar ilustrasi dengan memanfaatkan warna secara blok tanpa gradasi dan transisi disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span>a. Arsir</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span>b. Blok</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span>c. Half tone</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span>d. Dry brush</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">6. Teknik menggambar dengan menggoreskan garis yang arahnya mengikuti volume objek, saling sejajar, dan bagian gelap dibuat lebih rapat disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span>a. Out line</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span>b. Arsir</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span>c. Scraperboard</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span>d. Pointilis</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="a">
+                            <p class="font-semibold mb-2">7. Teknik menggambar dengan menyusun titik-titik sehingga membentuk objek, di mana kesan gelap-terang ditentukan oleh jumlah titik, disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span>a. Dot (Pointilis)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span>b. Arsir</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span>c. Blok</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span>d. Half tone</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="d">
+                            <p class="font-semibold mb-2">8. Teknik menggambar dengan mewujudkan warna tunggal yang solid atau pekat (biasanya hitam), di mana objek seolah diambil dari posisi berlawanan dengan arah sinar, disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span>a. Blok</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span>b. Out line</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span>c. Scraperboard</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span>d. Siluet</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="b">
+                            <p class="font-semibold mb-2">9. Teknik menggambar dengan memanfaatkan tinta atau cat yang sengaja dibuat agak kering sehingga warna tidak merata, digunakan untuk membuat tekstur, disebut teknik...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span>a. Half tone</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span>b. Goresan kering (dry brush)</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span>c. Arsir</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span>d. Blok</span></label>
+                        </div>
+
+                        <div class="question-block" data-answer="c">
+                            <p class="font-semibold mb-2">10. Langkah pertama dalam membuat gambar ilustrasi adalah...</p>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span>a. Pewarnaan</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span>b. Sketsa</span></label>
+                            <label class="flex items-center space-x-2 mb-1 cursor-pointer"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span>c. Gagasan</span></label>
+                            <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span>d. Scan</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="bg-luxury-black p-6 rounded-sm border border-luxury-gold/20">
+                    <h3 class="font-serif text-xl text-luxury-gold mb-4"><i class="fas fa-pen-fancy mr-2"></i> Bagian B: Essay (5 Soal)</h3>
+                    <p class="text-xs text-red-400 mb-4"><i class="fas fa-exclamation-triangle mr-1"></i> Mohon isi semua 5 soal essay dengan jawaban yang lengkap!</p>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <p class="font-semibold mb-2">1. Jelaskan pengertian ilustrasi menurut asal katanya (ilustrare) dan sebutkan tiga fungsi utamanya dalam desain grafis percetakan!</p>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">2. Sebutkan dan jelaskan tiga langkah utama dalam membuat gambar ilustrasi (Gagasan, Sketsa, Pewarnaan)! Berikan contoh konkret untuk masing-masing langkah!</p>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">3. Bandingkan perbedaan antara teknik arsir, teknik blok, dan teknik siluet! Jelaskan kapan masing-masing teknik sebaiknya digunakan!</p>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">4. Apa yang dimaksud dengan "corak realis" dan "corak non-realis" dalam pewarnaan ilustrasi? Berikan masing-masing satu contoh penerapannya!</p>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2">5. Jelaskan tahapan membuat ilustrasi kombinasi (manual + digital)! Mengapa pendekatan kombinasi ini semakin populer di era modern?</p>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-gray border border-gray-700 rounded px-3 py-2 text-white focus:border-luxury-gold focus:outline-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-gray/30 p-6 rounded-sm border border-luxury-gold/30 text-center">
+                    <div id="hasilSkor" class="hidden mb-6">
+                        <h3 class="font-serif text-2xl text-luxury-gold mb-2">Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-lg">
+                            <div>Bagian A (PG): <span id="skorPG" class="font-bold text-white">0</span>/100</div>
+                            <div>Bagian B (Essay): <span id="skorEssay" class="font-bold text-white">0</span>/100 <span class="text-xs text-gray-500 block mt-1">*Dinilai otomatis berdasarkan kelengkapan, detail oleh guru</span></div>
+                            <div class="border-l border-gray-600 pl-8">Total Rata-rata: <span id="skorTotal" class="font-bold text-luxury-gold text-2xl">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 no-print" id="actionButtons">
+                        <button type="button" onclick="hitungSkor()" class="px-6 py-3 bg-luxury-gold text-luxury-black font-bold rounded-sm hover:bg-white transition-all uppercase tracking-wider text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                        </button>
+                    </div>
+
+                    <div class="hidden flex flex-wrap justify-center gap-4 no-print" id="resultButtons">
+                        <button type="button" onclick="unduhPDF()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Unduh PDF Lengkap
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-file-csv mr-2"></i> Unduh Skor Saja
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="px-4 py-2 bg-gray-700 text-white rounded-sm hover:bg-gray-600 transition-all text-sm">
+                            <i class="fas fa-envelope mr-2"></i> Kirim Email ke Guru
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="px-4 py-2 border border-luxury-gold text-luxury-gold rounded-sm hover:bg-luxury-gold/10 transition-all text-sm">
+                            <i class="fas fa-redo mr-2"></i> Mulai Ulang
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black border-t border-luxury-gold/20 py-8 text-center no-print">
+        <p class="text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2026 Salsabilla Hafiza, S.Ds. SMK Negeri 1 Koto Balingka. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Kunci Jawaban Pilihan Ganda
+        const kunciJawaban = {
+            q1: 'b', q2: 'c', q3: 'a', q4: 'd', q5: 'b',
+            q6: 'c', q7: 'a', q8: 'd', q9: 'b', q10: 'c'
+        };
+
+        function hitungSkor() {
+            // 1. Validasi Data Siswa
+            const nama = document.getElementById('nama').value.trim();
+            const nis = document.getElementById('nis').value.trim();
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+
+            if (!nama || !nis || !tanggal || !kelas) {
+                alert("Mohon lengkapi semua Data Siswa terlebih dahulu!");
+                return;
+            }
+
+            // 2. Validasi & Hitung Pilihan Ganda
+            let skorPG = 0;
+            let allPGAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allPGAnswered = false;
+                    break;
+                }
+                if (selected.value === kunciJawaban[`q${i}`]) {
+                    skorPG += 10;
+                }
+            }
+
+            if (!allPGAnswered) {
+                alert("Mohon lengkapi semua 10 soal pilihan ganda terlebih dahulu!");
+                return;
+            }
+
+            // 3. Validasi Essay (Cek apakah sudah diisi, minimal 20 karakter)
+            let allEssayAnswered = true;
+            for (let i = 1; i <= 5; i++) {
+                const essayVal = document.getElementById(`essay${i}`).value.trim();
+                if (essayVal.length < 20) {
+                    allEssayAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allEssayAnswered) {
+                alert("Mohon isi semua 5 soal essay dengan jawaban yang lengkap dan bermakna (minimal 20 karakter per soal)!");
+                return;
+            }
+
+            // Simulasi Penilaian Essay (Skor kelengkapan 80 jika semua diisi dengan baik)
+            const skorEssay = 80; 
+
+            // 4. Tampilkan Hasil
+            const skorTotal = Math.round((skorPG + skorEssay) / 2);
+            
+            document.getElementById('skorPG').innerText = skorPG;
+            document.getElementById('skorEssay').innerText = skorEssay + " (Simulasi)";
+            document.getElementById('skorTotal').innerText = skorTotal;
+            
+            document.getElementById('hasilSkor').classList.remove('hidden');
+            document.getElementById('actionButtons').classList.add('hidden');
+            document.getElementById('resultButtons').classList.remove('hidden');
+            
+            // Scroll ke hasil
+            document.getElementById('hasilSkor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Disable form inputs
+            const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const pg = document.getElementById('skorPG').innerText;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const textData = `HASIL UJI FORMATIF - DESAIN GRAFIS PERCETAKAN\n` +
+                             `================================================\n` +
+                             `Nama  : ${nama}\n` +
+                             `NIS   : ${nis}\n` +
+                             `Kelas : ${kelas}\n` +
+                             `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n` +
+                             `Materi : Pertemuan 6 - Gambar Ilustrasi\n` +
+                             `------------------------------------------------\n` +
+                             `Nilai Pilihan Ganda : ${pg}/100\n` +
+                             `Nilai Essay         : Dinilai Manual oleh Guru\n` +
+                             `TOTAL RATA-RATA     : ${total}/100\n` +
+                             `================================================\n` +
+                             `Dokumen ini dibuat secara otomatis dari sistem pembelajaran DGP.`;
+
+            const blob = new Blob([textData], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif_Pertemuan6_${nis}_${nama.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('skorTotal').innerText;
+
+            const subject = `Hasil Uji Formatif Pertemuan 6 - ${nama} (${nis})`;
+            const body = `Yth. Ibu Salsabilla Hafiza, S.Ds,\n\n` +
+                         `Berikut adalah hasil uji formatif saya untuk Pertemuan 6 (Gambar Ilustrasi):\n` +
+                         `Nama : ${nama}\n` +
+                         `NIS  : ${nis}\n` +
+                         `Kelas: ${kelas}\n` +
+                         `Nilai Total: ${total}/100\n\n` +
+                         `Terima kasih.`;
+
+            window.location.href = `mailto:salsabillahafiza120@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengulang ujian? Semua jawaban akan dihapus.")) {
+                document.getElementById('quizForm').reset();
+                document.getElementById('hasilSkor').classList.add('hidden');
+                document.getElementById('actionButtons').classList.remove('hidden');
+                document.getElementById('resultButtons').classList.add('hidden');
+                
+                const inputs = document.querySelectorAll('#quizForm input, #quizForm textarea, #quizForm select');
+                inputs.forEach(input => input.disabled = false);
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Set tanggal hari ini secara otomatis
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>
